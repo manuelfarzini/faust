@@ -13,7 +13,13 @@ else
 endif
 MAKE ?= make
 
-GCCOPTIONS := -O3 -I../../architecture -I/usr/local/include/ap_fixed -Iarchs -pthread -std=c++11
+# NOTE:(manu)
+# Added -fwrapv flag because of the table test.
+# There a random generator initializes the table
+# and the algorithm uses the overflow wrapping.
+# The overflow wrapping is UB without that flag.
+# (If we use -O0 it works even without the flag).
+GCCOPTIONS := -O3 -fwrapv -I../../architecture -I/usr/local/include/ap_fixed -Iarchs -pthread -std=c++11
 outdir ?= cpp/double
 lang ?= cpp
 ext  ?= cpp
