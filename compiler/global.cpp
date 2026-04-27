@@ -104,6 +104,10 @@
 #include "julia_code_container.hh"
 #endif
 
+#ifdef MOJO_BUILD
+#include "mojo_code_container.hh"
+#endif
+
 #ifdef JSFX_BUILD
 #include "jsfx_code_container.hh"
 #endif
@@ -580,6 +584,10 @@ void global::reset()
     gJAXVisitor = nullptr;  // Will be (possibly) allocated in JAX backend
 #endif
 
+#ifdef MOJO_BUILD
+    gMojoVisitor = nullptr; // Will be (possibly) allocated in Mojo backend
+#endif
+
 #ifdef ASSEMBLYSCRIPT_BUILD
     gAssemblyScriptVisitor = nullptr;  // Will be (possibly) allocated in AssemblyScript backend
 #endif
@@ -976,13 +984,13 @@ bool global::hasForeignFunction(const string& name, const string& inc_file)
 #else
     bool is_linkable = false;
 #endif
-    bool internal_math_ff =
-        ((gOutputLang == "llvm") || startWith(gOutputLang, "wast") ||
-         startWith(gOutputLang, "wasm") || (gOutputLang == "interp") ||
-         startWith(gOutputLang, "cmajor") || startWith(gOutputLang, "codebox") ||
-         (gOutputLang == "dlang") || (gOutputLang == "csharp") || (gOutputLang == "rust") ||
-         (gOutputLang == "julia") || startWith(gOutputLang, "jsfx") || (gOutputLang == "jax") ||
-         (gOutputLang == "asc"));
+    bool internal_math_ff = (
+        startWith(gOutputLang, "wast")   || startWith(gOutputLang, "jsfx")    ||
+        startWith(gOutputLang, "wasm")   || startWith(gOutputLang, "codebox") ||
+        startWith(gOutputLang, "cmajor") || gOutputLang == "llvm"  ||
+        gOutputLang == "interp" || gOutputLang == "dlang"  || gOutputLang == "jax"    ||
+        gOutputLang == "rust"   || gOutputLang == "julia"  || gOutputLang == "csharp" ||
+        gOutputLang == "mojo"   || gOutputLang == "asc");
 
     return (internal_math_ff &&
             (gMathForeignFunctions.find(name) != gMathForeignFunctions.end())) ||
@@ -1068,6 +1076,9 @@ global::~global()
 #endif
 #ifdef JAX_BUILD
     JAXInstVisitor::cleanup();
+#endif
+#ifdef MOJO_BUILD
+    mojo::MojoInstVisitor::cleanup();
 #endif
 #ifdef ASSEMBLYSCRIPT_BUILD
     AssemblyScriptInstVisitor::cleanup();
@@ -1867,7 +1878,7 @@ bool global::processCmdline(int argc, const char* argv[])
         ((gOutputLang == "wast") || (gOutputLang == "wasm") || (gOutputLang == "interp") ||
          (gOutputLang == "llvm") || (gOutputLang == "fir"))) {
         throw faustexception(
-            "ERROR : -a can only be used with 'asc', 'c', 'cpp', 'ocpp', 'rust' and 'cmajor' "
+            "ERROR : -a can only be used with 'asc', 'c', 'cpp', 'ocpp', 'mojo', 'rust' and 'cmajor' "
             "backends\n");
     }
 
@@ -2114,6 +2125,14 @@ static void enumBackends(ostream& out)
     out << dspto << "SDF3" << endl;
 #endif
 
+#ifdef MOJO_BUILD
+    out << dspto << "Mojo" << endl;
+#endif
+
+#ifdef ASSEMBLYSCRIPT_BUILD
+    out << dspto << "AssemblyScript" << endl;
+#endif
+
 #ifdef TEMPLATE_BUILD
     out << dspto << "Template" << endl;
 #endif
@@ -2203,7 +2222,7 @@ string global::printHelp()
             "cmajor, "
             "codebox, csharp, "
             "dlang, fir, interp, java, jax, jsfx, julia, llvm, "
-            "ocpp, rust, sdf3, vhdl or wast/wasm."
+            "mojo ocpp, rust, sdf3, vhdl or wast/wasm."
          << endl;
 #endif
     sstr << tab
