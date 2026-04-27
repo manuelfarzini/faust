@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             gate_compressor
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     64
+  inputs:          1
+  outputs:         2
+  warm-up iters:   50
+  run iters:       142950
+  batches:         1000
+------------------------------------
+Timing
+  elapsed:         1.4943849999981467 s
+  ns/compute:      10453.899965009772
+  fast ns/cmp:     10021.364576473536
+  slow ns/cmp:     10593.12320946126
+  spread ns/cmp:   571.7586329877249
+  spread %:        5.469333310070472
+  ns/frame:        163.3421869532777
+  ns/out_samp:     81.67109347663884
+------------------------------------
+Throughput
+  frames/s:        6122117.125112569
+  fast frames/s:   6386355.821266933
+  slow frames/s:   6041655.396100587
+  out_samp/s:      12244234.250225138
+  fast out_samp/s: 12772711.642533867
+  slow out_samp/s: 12083310.792201174
+------------------------------------
+Validation
+  checksum:        0.0

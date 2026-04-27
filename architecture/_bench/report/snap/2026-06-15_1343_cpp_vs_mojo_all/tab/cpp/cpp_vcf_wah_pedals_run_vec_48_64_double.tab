@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            vcf_wah_pedals
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    64
+  inputs:         1
+  outputs:        2
+  warm-up iters:  50
+  run iters:      143254
+  batches:        999
+------------------------------------
+Timing
+  elapsed:        1.461964125 s
+  ns/compute:     10205.398
+  fast ns/cmp:    9852.758
+  slow ns/cmp:    10333.560
+  spread ns/cmp:  480.802
+  spread %:       4.711
+  ns/frame:       159.459
+  ns/out_samp:    79.730
+------------------------------------
+Throughput
+  frames/s:       6271190.820
+  fast frames/s:  6495642.910
+  slow frames/s:  6193412.434
+  out_samp/s: 12542381.640
+  fast out_samp/s: 12991285.821
+  slow out_samp/s: 12386824.868
+------------------------------------
+Validation
+  checksum:       2.8114621041241961e-06

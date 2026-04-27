@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            karplus32
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    64
+  inputs:         0
+  outputs:        2
+  warm-up iters:  50
+  run iters:      103188
+  batches:        330
+------------------------------------
+Timing
+  elapsed:        0.179698461 s
+  ns/compute:     1741.467
+  fast ns/cmp:    1689.332
+  slow ns/cmp:    1760.219
+  spread ns/cmp:  70.887
+  spread %:       4.071
+  ns/frame:       27.210
+  ns/out_samp:    13.605
+------------------------------------
+Throughput
+  frames/s:       36750631.938
+  fast frames/s:  37884802.000
+  slow frames/s:  36359116.293
+  out_samp/s: 73501263.876
+  fast out_samp/s: 75769604.000
+  slow out_samp/s: 72718232.585
+------------------------------------
+Validation
+  checksum:       0.034857314021792263

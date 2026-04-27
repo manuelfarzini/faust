@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            _bargraph
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    64
+  inputs:         1
+  outputs:        8
+  warm-up iters:  50
+  run iters:      990000
+  batches:        991
+------------------------------------
+Timing
+  elapsed:        0.102223292 s
+  ns/compute:     103.256
+  fast ns/cmp:    97.663
+  slow ns/cmp:    105.088
+  spread ns/cmp:  7.425
+  spread %:       7.191
+  ns/frame:       1.613
+  ns/out_samp:    0.202
+------------------------------------
+Throughput
+  frames/s:       619819600.410
+  fast frames/s:  655318059.644
+  slow frames/s:  609016295.944
+  out_samp/s: 4958556803.277
+  fast out_samp/s: 5242544477.153
+  slow out_samp/s: 4872130367.551
+------------------------------------
+Validation
+  checksum:       7.5400000123336213

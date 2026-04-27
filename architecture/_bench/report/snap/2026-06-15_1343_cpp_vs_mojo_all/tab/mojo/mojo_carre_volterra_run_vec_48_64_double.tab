@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             carre_volterra
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     64
+  inputs:          0
+  outputs:         1
+  warm-up iters:   50
+  run iters:       99773
+  batches:         193
+------------------------------------
+Timing
+  elapsed:         0.0998700000000099 s
+  ns/compute:      1000.9722069097842
+  fast ns/cmp:     994.8071214271848
+  slow ns/cmp:     1008.7263275652571
+  spread ns/cmp:   13.91920613807224
+  spread %:        1.3905686933150536
+  ns/frame:        15.640190732965378
+  ns/out_samp:     15.640190732965378
+------------------------------------
+Throughput
+  frames/s:        63937839.1909419
+  fast frames/s:   64334079.06065588
+  slow frames/s:   63446346.398507856
+  out_samp/s:      63937839.1909419
+  fast out_samp/s: 64334079.06065588
+  slow out_samp/s: 63446346.398507856
+------------------------------------
+Validation
+  checksum:        -16.646956631004286

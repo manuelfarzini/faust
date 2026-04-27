@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             vcf_wah_pedals
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     64
+  inputs:          1
+  outputs:         2
+  warm-up iters:   50
+  run iters:       137650
+  batches:         1000
+------------------------------------
+Timing
+  elapsed:         1.6443440000039118 s
+  ns/compute:      11945.833636061834
+  fast ns/cmp:     11582.921666332903
+  slow ns/cmp:     12068.10035737395
+  spread ns/cmp:   485.1786910410483
+  spread %:        4.061488765224396
+  ns/frame:        186.65365056346616
+  ns/out_samp:     93.32682528173308
+------------------------------------
+Throughput
+  frames/s:        5357516.432072026
+  fast frames/s:   5525376.225760326
+  slow frames/s:   5303237.303698273
+  out_samp/s:      10715032.864144051
+  fast out_samp/s: 11050752.451520652
+  slow out_samp/s: 10606474.607396547
+------------------------------------
+Validation
+  checksum:        -7.84783937319844e-05

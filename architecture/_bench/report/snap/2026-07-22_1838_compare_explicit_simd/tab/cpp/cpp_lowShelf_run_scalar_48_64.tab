@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            lowShelf
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    64
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      560000
+  batches:        562
+------------------------------------
+Timing
+  elapsed:        0.100490502 s
+  ns/compute:     179.447
+  fast ns/cmp:    178.867
+  slow ns/cmp:    182.113
+  spread ns/cmp:  3.246
+  spread %:       1.809
+  ns/frame:       2.804
+  ns/out_samp:    2.804
+------------------------------------
+Throughput
+  frames/s:       356650621.568
+  fast frames/s:  357808556.768
+  slow frames/s:  351431120.873
+  out_samp/s: 356650621.568
+  fast out_samp/s: 357808556.768
+  slow out_samp/s: 351431120.873
+------------------------------------
+Validation
+  checksum:       2.0800000071758404

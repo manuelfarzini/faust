@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            recosc_mini
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    64
+  inputs:         0
+  outputs:        1
+  warm-up iters:  50
+  run iters:      380000
+  batches:        381
+------------------------------------
+Timing
+  elapsed:        0.101380830 s
+  ns/compute:     266.792
+  fast ns/cmp:    265.146
+  slow ns/cmp:    268.854
+  spread ns/cmp:  3.708
+  spread %:       1.390
+  ns/frame:       4.169
+  ns/out_samp:    4.169
+------------------------------------
+Throughput
+  frames/s:       239887560.597
+  fast frames/s:  241376631.272
+  slow frames/s:  238047238.987
+  out_samp/s: 239887560.597
+  fast out_samp/s: 241376631.272
+  slow out_samp/s: 238047238.987
+------------------------------------
+Validation
+  checksum:       -25.488675829023123

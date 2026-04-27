@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             osc
+  bench case:      run
+  mode:            vec
+  precision:       single
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     64
+  inputs:          0
+  outputs:         1
+  warm-up iters:   50
+  run iters:       310000
+  batches:         319
+------------------------------------
+Timing
+  elapsed:         0.09859099999994214 s
+  ns/compute:      318.03548387078115
+  fast ns/cmp:     316.1000000545755
+  slow ns/cmp:     322.5999998903717
+  spread ns/cmp:   6.499999835796189
+  spread %:        2.0437970495258195
+  ns/frame:        4.9693044354809555
+  ns/out_samp:     4.9693044354809555
+------------------------------------
+Throughput
+  frames/s:        201235406.8830993
+  fast frames/s:   202467573.51771665
+  slow frames/s:   198388096.78161484
+  out_samp/s:      201235406.8830993
+  fast out_samp/s: 202467573.51771665
+  slow out_samp/s: 198388096.78161484
+------------------------------------
+Validation
+  checksum:        0.6936800265684724

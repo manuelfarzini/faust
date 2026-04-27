@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            volterra_mini_50
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    64
+  inputs:         0
+  outputs:        1
+  warm-up iters:  50
+  run iters:      210000
+  batches:        217
+------------------------------------
+Timing
+  elapsed:        0.098857290 s
+  ns/compute:     470.749
+  fast ns/cmp:    460.342
+  slow ns/cmp:    474.342
+  spread ns/cmp:  14.000
+  spread %:       2.974
+  ns/frame:       7.355
+  ns/out_samp:    7.355
+------------------------------------
+Throughput
+  frames/s:       135953554.867
+  fast frames/s:  139027161.780
+  slow frames/s:  134923860.779
+  out_samp/s: 135953554.867
+  fast out_samp/s: 139027161.780
+  slow out_samp/s: 134923860.779
+------------------------------------
+Validation
+  checksum:       1.4951293356716633

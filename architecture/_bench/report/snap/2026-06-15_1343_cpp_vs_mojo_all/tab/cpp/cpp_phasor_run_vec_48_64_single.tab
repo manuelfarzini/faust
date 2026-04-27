@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            phasor
+  bench case:     run
+  mode:           vec
+  precision:      single
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    64
+  inputs:         0
+  outputs:        3
+  warm-up iters:  50
+  run iters:      930000
+  batches:        936
+------------------------------------
+Timing
+  elapsed:        0.099056788 s
+  ns/compute:     106.513
+  fast ns/cmp:    98.683
+  slow ns/cmp:    109.904
+  spread ns/cmp:  11.221
+  spread %:       10.535
+  ns/frame:       1.664
+  ns/out_samp:    0.555
+------------------------------------
+Throughput
+  frames/s:       600867453.930
+  fast frames/s:  648539317.189
+  slow frames/s:  582325334.246
+  out_samp/s: 1802602361.789
+  fast out_samp/s: 1945617951.568
+  slow out_samp/s: 1746976002.737
+------------------------------------
+Validation
+  checksum:       74.537501104176044

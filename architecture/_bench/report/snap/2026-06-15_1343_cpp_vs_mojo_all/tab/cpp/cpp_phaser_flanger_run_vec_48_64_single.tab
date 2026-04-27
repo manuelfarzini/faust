@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            phaser_flanger
+  bench case:     run
+  mode:           vec
+  precision:      single
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    64
+  inputs:         1
+  outputs:        2
+  warm-up iters:  50
+  run iters:      142591
+  batches:        997
+------------------------------------
+Timing
+  elapsed:        1.456543749 s
+  ns/compute:     10214.836
+  fast ns/cmp:    9800.236
+  slow ns/cmp:    10373.666
+  spread ns/cmp:  573.430
+  spread %:       5.614
+  ns/frame:       159.607
+  ns/out_samp:    79.803
+------------------------------------
+Throughput
+  frames/s:       6265396.426
+  fast frames/s:  6530454.964
+  slow frames/s:  6169468.091
+  out_samp/s: 12530792.853
+  fast out_samp/s: 13060909.929
+  slow out_samp/s: 12338936.182
+------------------------------------
+Validation
+  checksum:       -0.058352932828711346

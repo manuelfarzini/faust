@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             volterra_mini_50
+  bench case:      run
+  mode:            scalar
+  precision:       single
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     64
+  inputs:          0
+  outputs:         1
+  warm-up iters:   50
+  run iters:       400000
+  batches:         402
+------------------------------------
+Timing
+  elapsed:         0.101066000002902 s
+  ns/compute:      252.665000007255
+  fast ns/cmp:     250.40000000444707
+  slow ns/cmp:     255.69999997969717
+  spread ns/cmp:   5.299999975250103
+  spread %:        2.097639156629497
+  ns/frame:        3.9478906251133594
+  ns/out_samp:     3.9478906251133594
+------------------------------------
+Throughput
+  frames/s:        253299823.87019297
+  fast frames/s:   255591054.30855978
+  slow frames/s:   250293312.49543083
+  out_samp/s:      253299823.87019297
+  fast out_samp/s: 255591054.30855978
+  slow out_samp/s: 250293312.49543083
+------------------------------------
+Validation
+  checksum:        -46.91018897294998

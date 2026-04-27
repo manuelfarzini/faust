@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            carre_volterra
+  bench case:     cubic_distortion_vec_double
+  mode:           scalar
+  precision:      single
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    64
+  inputs:         0
+  outputs:        1
+  warm-up iters:  50
+  run iters:      210000
+  batches:        212
+------------------------------------
+Timing
+  elapsed:        0.102204539 s
+  ns/compute:     486.688
+  fast ns/cmp:    479.058
+  slow ns/cmp:    526.208
+  spread ns/cmp:  47.150
+  spread %:       9.688
+  ns/frame:       7.605
+  ns/out_samp:    7.605
+------------------------------------
+Throughput
+  frames/s:       131501008.972
+  fast frames/s:  133595430.869
+  slow frames/s:  121624839.441
+  out_samp/s: 131501008.972
+  fast out_samp/s: 133595430.869
+  slow out_samp/s: 121624839.441
+------------------------------------
+Validation
+  checksum:       0.24067337487940677

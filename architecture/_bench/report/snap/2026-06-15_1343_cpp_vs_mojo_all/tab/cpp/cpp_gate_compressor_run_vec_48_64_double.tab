@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            gate_compressor
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    64
+  inputs:         1
+  outputs:        2
+  warm-up iters:  50
+  run iters:      142677
+  batches:        982
+------------------------------------
+Timing
+  elapsed:        1.317551460 s
+  ns/compute:     9234.505
+  fast ns/cmp:    8818.479
+  slow ns/cmp:    9327.135
+  spread ns/cmp:  508.656
+  spread %:       5.508
+  ns/frame:       144.289
+  ns/out_samp:    72.145
+------------------------------------
+Throughput
+  frames/s:       6930528.543
+  fast frames/s:  7257487.596
+  slow frames/s:  6861699.594
+  out_samp/s: 13861057.085
+  fast out_samp/s: 14514975.191
+  slow out_samp/s: 13723399.189
+------------------------------------
+Validation
+  checksum:       0

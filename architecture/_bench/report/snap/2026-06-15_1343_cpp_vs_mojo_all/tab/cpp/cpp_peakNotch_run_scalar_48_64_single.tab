@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            peakNotch
+  bench case:     run
+  mode:           scalar
+  precision:      single
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    64
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      360000
+  batches:        362
+------------------------------------
+Timing
+  elapsed:        0.100927543 s
+  ns/compute:     280.354
+  fast ns/cmp:    278.375
+  slow ns/cmp:    283.038
+  spread ns/cmp:  4.663
+  spread %:       1.663
+  ns/frame:       4.381
+  ns/out_samp:    4.381
+------------------------------------
+Throughput
+  frames/s:       228282580.901
+  fast frames/s:  229905702.739
+  slow frames/s:  226118447.202
+  out_samp/s: 228282580.901
+  fast out_samp/s: 229905702.739
+  slow out_samp/s: 226118447.202
+------------------------------------
+Validation
+  checksum:       2.0800005956552923

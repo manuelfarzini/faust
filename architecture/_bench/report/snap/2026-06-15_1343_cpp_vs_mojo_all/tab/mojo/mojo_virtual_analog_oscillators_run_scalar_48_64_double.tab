@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             virtual_analog_oscillators
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     64
+  inputs:          1
+  outputs:         2
+  warm-up iters:   50
+  run iters:       135150
+  batches:         1000
+------------------------------------
+Timing
+  elapsed:         1.6698320000014064 s
+  ns/compute:      12355.397706262718
+  fast ns/cmp:     11841.984733040284
+  slow ns/cmp:     12539.47368496212
+  spread ns/cmp:   697.4889519218359
+  spread %:        5.645216515922364
+  ns/frame:        193.05308916035497
+  ns/out_samp:     96.52654458017749
+------------------------------------
+Throughput
+  frames/s:        5179922.291579462
+  fast frames/s:   5404499.451973941
+  slow frames/s:   5103882.476084429
+  out_samp/s:      10359844.583158923
+  fast out_samp/s: 10808998.903947882
+  slow out_samp/s: 10207764.952168858
+------------------------------------
+Validation
+  checksum:        -0.02122527810934116

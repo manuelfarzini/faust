@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            cubic_distortion
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    64
+  inputs:         0
+  outputs:        2
+  warm-up iters:  50
+  run iters:      135828
+  batches:        907
+------------------------------------
+Timing
+  elapsed:        1.043539877 s
+  ns/compute:     7682.804
+  fast ns/cmp:    7453.471
+  slow ns/cmp:    7786.391
+  spread ns/cmp:  332.921
+  spread %:       4.333
+  ns/frame:       120.044
+  ns/out_samp:    60.022
+------------------------------------
+Throughput
+  frames/s:       8330292.106
+  fast frames/s:  8586603.678
+  slow frames/s:  8219468.661
+  out_samp/s: 16660584.213
+  fast out_samp/s: 17173207.356
+  slow out_samp/s: 16438937.323
+------------------------------------
+Validation
+  checksum:       -6.611492269221344

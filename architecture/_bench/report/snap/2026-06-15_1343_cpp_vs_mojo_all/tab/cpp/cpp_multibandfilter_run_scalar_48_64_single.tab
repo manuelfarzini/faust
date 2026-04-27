@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            multibandfilter
+  bench case:     run
+  mode:           scalar
+  precision:      single
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    64
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      187834
+  batches:        198
+------------------------------------
+Timing
+  elapsed:        0.101514250 s
+  ns/compute:     540.447
+  fast ns/cmp:    538.004
+  slow ns/cmp:    543.990
+  spread ns/cmp:  5.987
+  spread %:       1.108
+  ns/frame:       8.444
+  ns/out_samp:    8.444
+------------------------------------
+Throughput
+  frames/s:       118420576.422
+  fast frames/s:  118958280.174
+  slow frames/s:  117649138.312
+  out_samp/s: 118420576.422
+  fast out_samp/s: 118958280.174
+  slow out_samp/s: 117649138.312
+------------------------------------
+Validation
+  checksum:       2.0799946391489357

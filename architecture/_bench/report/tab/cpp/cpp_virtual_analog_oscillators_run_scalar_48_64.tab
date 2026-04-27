@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            virtual_analog_oscillators
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    64
+  inputs:         1
+  outputs:        2
+  warm-up iters:  50
+  run iters:      133650
+  batches:        1000
+------------------------------------
+Timing
+  elapsed:        1.712471339 s
+  ns/compute:     12813.104
+  fast ns/cmp:    12383.499
+  slow ns/cmp:    12974.388
+  spread ns/cmp:  590.888
+  spread %:       4.612
+  ns/frame:       200.205
+  ns/out_samp:    100.102
+------------------------------------
+Throughput
+  frames/s:       4994886.516
+  fast frames/s:  5168167.639
+  slow frames/s:  4932795.468
+  out_samp/s: 9989773.032
+  fast out_samp/s: 10336335.279
+  slow out_samp/s: 9865590.936
+------------------------------------
+Validation
+  checksum:       0.0053667904819576506

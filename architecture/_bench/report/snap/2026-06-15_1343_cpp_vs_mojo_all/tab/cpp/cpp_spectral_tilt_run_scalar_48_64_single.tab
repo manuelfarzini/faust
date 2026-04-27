@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            spectral_tilt
+  bench case:     run
+  mode:           scalar
+  precision:      single
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    64
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      139450
+  batches:        1000
+------------------------------------
+Timing
+  elapsed:        1.592594129 s
+  ns/compute:     11420.539
+  fast ns/cmp:    10991.988
+  slow ns/cmp:    11601.565
+  spread ns/cmp:  609.576
+  spread %:       5.338
+  ns/frame:       178.446
+  ns/out_samp:    178.446
+------------------------------------
+Throughput
+  frames/s:       5603938.780
+  fast frames/s:  5822422.475
+  slow frames/s:  5516497.342
+  out_samp/s: 5603938.780
+  fast out_samp/s: 5822422.475
+  slow out_samp/s: 5516497.342
+------------------------------------
+Validation
+  checksum:       -0.0036678194082924165

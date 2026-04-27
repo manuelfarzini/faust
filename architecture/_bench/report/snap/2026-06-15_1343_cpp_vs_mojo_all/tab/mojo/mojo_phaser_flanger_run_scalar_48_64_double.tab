@@ -1,0 +1,39 @@
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             phaser_flanger
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     64
+  inputs:          1
+  outputs:         2
+  warm-up iters:   50
+  run iters:       136550
+  batches:         1000
+------------------------------------
+Timing
+  elapsed:         1.6796610000001237 s
+  ns/compute:      12300.703039180693
+  fast ns/cmp:     11755.988024054308
+  slow ns/cmp:     12474.157303811071
+  spread ns/cmp:   718.169279756763
+  spread %:        5.8384409205654455
+  ns/frame:        192.19848498719833
+  ns/out_samp:     96.09924249359916
+------------------------------------
+Throughput
+  frames/s:        5202954.643823579
+  fast frames/s:   5444034.127037858
+  slow frames/s:   5130607.097639124
+  out_samp/s:      10405909.287647158
+  fast out_samp/s: 10888068.254075715
+  slow out_samp/s: 10261214.195278248
+------------------------------------
+Validation
+  checksum:        -0.01840119608459645
