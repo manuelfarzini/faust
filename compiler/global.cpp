@@ -2222,7 +2222,7 @@ string global::printHelp()
             "cmajor, "
             "codebox, csharp, "
             "dlang, fir, interp, java, jax, jsfx, julia, llvm, "
-            "mojo ocpp, rust, sdf3, vhdl or wast/wasm."
+            "mojo, ocpp, rust, sdf3, vhdl or wast/wasm."
          << endl;
 #endif
     sstr << tab

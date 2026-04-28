@@ -125,6 +125,10 @@
 #include "rust_code_container.hh"
 #endif
 
+#ifdef MOJO_BUILD
+#include "mojo_code_container.hh"
+#endif
+
 #ifdef ASSEMBLYSCRIPT_BUILD
 #include "assemblyscript_code_container.hh"
 #endif
@@ -621,6 +625,31 @@ static void compileJulia(Tree signals, int numInputs, int numOutputs, ostream* o
 #endif
 }
 
+static void compileMojo(Tree signals, int numInputs, int numOutputs, ostream* out)
+{
+#ifdef MOJO_BUILD
+    // gGlobal->gAllowForeignFunction = false;
+    gGlobal->gNeedManualPow = false;
+    gGlobal->gBool2Int = true;
+    gContainer = mojo::MojoCodeContainer::createContainer(
+        gGlobal->gClassName, numInputs, numOutputs, out
+    );
+
+    if (gGlobal->gVectorSwitch) {
+        gNewComp = new DAGInstructionsCompiler(gContainer);
+    } else {
+        gNewComp = new InstructionsCompiler(gContainer);
+    }
+
+    if (gGlobal->gPrintXMLSwitch || gGlobal->gPrintDocSwitch) {
+        gNewComp->setDescription(new Description());
+    }
+    gNewComp->compileMultiSignal(signals);
+#else
+    throw faustexception("ERROR : -lang mojo not supported since Mojo backend is not built\n");
+#endif
+}
+
 static void compileJSFX(Tree signals, int numInputs, int numOutputs, ostream* out)
 {
 #ifdef JSFX_BUILD
@@ -1111,6 +1140,8 @@ static void generateCode(Tree signals, int numInputs, int numOutputs, bool gener
         compileOCPP(signals, numInputs, numOutputs);
     } else if (gGlobal->gOutputLang == "rust") {
         compileRust(signals, numInputs, numOutputs, gDst.get());
+    } else if (gGlobal->gOutputLang == "mojo") {
+        compileMojo(signals, numInputs, numOutputs, gDst.get());
     } else if (gGlobal->gOutputLang == "java") {
         compileJava(signals, numInputs, numOutputs, gDst.get());
     } else if (gGlobal->gOutputLang == "jax") {
