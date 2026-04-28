@@ -47,5 +47,6 @@ tests/impulse-tests/ir
 .gradle/
 ### CMake
 CMakeFiles/
+compile_commands.json
 ### Nvim clangd cache
 .cache/
