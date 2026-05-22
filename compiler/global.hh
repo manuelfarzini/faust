@@ -67,7 +67,7 @@ class WASMInstVisitor;
 class JAXInstVisitor;
 class JuliaInstVisitor;
 class JSFXInstVisitor;
-namespace mojo { class MojoInstVisitor; }
+inline namespace mojo { class MojoInstVisitor; }
 class AssemblyScriptInstVisitor;
 class TemplateInstVisitor;
 class CodeboxInstVisitor;
@@ -713,7 +713,7 @@ struct global {
 #endif
 
 #ifdef MOJO_BUILD
-    mojo::MojoInstVisitor* gMojoVisitor;
+    MojoInstVisitor* gMojoVisitor;
 #endif
 
 #ifdef ASSEMBLYSCRIPT_BUILD
