@@ -19,6 +19,9 @@ comptime F32 = Float32
 comptime F64 = Float64
 comptime Void = NoneType
 
+comptime f32 = F32.dtype
+comptime f64 = F64.dtype
+
 comptime Res = Tuple
 comptime Arr = InlineArray
 
@@ -48,3 +51,5 @@ comptime MUTA_EXT = MutExternalOrigin
 
 comptime is_real[dreal: DType]: Bool = dreal.is_floating_point()
 
+comptime dfaust = get_defined_dtype["FAUST_DTYPE", f32]()
+comptime FaustFloat = SIMD[dfaust, 1]

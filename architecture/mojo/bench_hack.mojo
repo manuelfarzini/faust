@@ -1,12 +1,22 @@
-# bench/bench.mojo
+# ==============================================================================
+# Faust to Mojo architecture file for the benchmark framework integration.
+# Provides the definitions and the main entry point to run the DSP code in
+# several batches and write the report to `.tab` and `.csv` files.
+# ==============================================================================
+# First section of architecture provided code start.
+# Imports the modules and the definitions of the architecture code.
+# ==============================================================================
 
 from std.pathlib import Path
 from std.time import perf_counter
 from std.benchmark import keep, clobber_memory
 
 from conf import *
+from help import *
 from mem import *
-from dsp import FaustDsp
+from dsp import *
+from gui import *
+from meta import *
 
 # ==============================================================
 # Faust benchmark architecture implementation.
@@ -119,26 +129,28 @@ struct FaustReport(ImplicitlyCopyable):
         report.slow_out_samp_per_s = 0.0
         report.checksum = 0.0
 
-def fill_inputs(inputs: MutaStreams[dfaust], n_ins: S32) -> None:
+def fill_inputs(
+    inputs: Span[Ptr[FaustFloat, MUTA_EXT], MUTA_EXT], n_ins: S32
+) -> None:
     for chan in range(n_ins):
+        var input = inputs.unsafe_get(Int(chan))
         for frame in range(BUFF_SIZE):
             var value = 0.001 * F64(frame + 1) + F64(chan)
-            inputs[chan][frame] = FaustFloat(value)
+            input[frame] = FaustFloat(value)
 
 def warmup(
-    mut dsp: Some[FaustDsp], inputs: MutaStreams[dfaust], outputs: MutaStreams[dfaust]
+    mut dsp: Some[FaustDsp],
+    inputs: Span[Ptr[FaustFloat, READ_EXT], READ_EXT],
+    outputs: Span[Ptr[FaustFloat, MUTA_EXT], MUTA_EXT]
 ) -> None:
-    comptime Real = SIMD[dfaust, 1]
-    var read_inputs = inputs.bitcast[Ptr[Real, READ_EXT]]().as_immutable()
     for _ in range(S32(WARMUP_ITERS)):
-        dsp.compute(BUFF_SIZE, read_inputs, outputs)
+        dsp.compute(SInt(BUFF_SIZE), inputs, outputs)
 
 def _measure_adaptive(
-    mut dsp: Some[FaustDsp], inputs: MutaStreams[dfaust], outputs: MutaStreams[dfaust]
+    mut dsp: Some[FaustDsp],
+    inputs: Span[Ptr[FaustFloat, READ_EXT], READ_EXT], 
+    outputs: Span[Ptr[FaustFloat, MUTA_EXT], MUTA_EXT]
 ) -> BenchRun:
-    comptime Real = SIMD[dfaust, 1]
-    var read_inputs = inputs.bitcast[Ptr[Real, READ_EXT]]().as_immutable()
-
     var batches = Arr[BenchBatch, MAX_BATCHES](fill=BenchBatch())
 
     var batch_count = S32(0)
@@ -166,9 +178,9 @@ def _measure_adaptive(
 
         for _ in range(batch_iters):
             comptime if BENCH_BARRIERS:
-                keep(read_inputs) 
+                keep(inputs)
                 keep(outputs)
-            dsp.compute(BUFF_SIZE, read_inputs, outputs)
+            dsp.compute(SInt(BUFF_SIZE), inputs, outputs)
             comptime if BENCH_BARRIERS:
                 clobber_memory()
 
@@ -241,7 +253,9 @@ def _measure_adaptive(
     return run
 
 def measure(
-    mut dsp: Some[FaustDsp], inputs: MutaStreams[dfaust], outputs: MutaStreams[dfaust]
+    mut dsp: Some[FaustDsp],
+    inputs: Span[Ptr[FaustFloat, READ_EXT], READ_EXT],
+    outputs: Span[Ptr[FaustFloat, MUTA_EXT], MUTA_EXT]
 ) raises -> FaustReport:
     var raw_report = _measure_adaptive(dsp, inputs, outputs)
     var dsp_inputs = dsp.get_num_inputs()
@@ -278,15 +292,17 @@ def measure(
     if report.slow_ns_per_compute > 0.0:
         report.slow_frames_per_s = 1.0e9 / report.slow_ns_per_compute * F64(BUFF_SIZE)
         report.slow_out_samp_per_s = report.slow_frames_per_s * F64(dsp_outputs)
-    report.checksum = checksum_outputs[dfaust](outputs, dsp_outputs)
+    report.checksum = checksum_outputs(outputs, dsp_outputs)
     return report
 
-def checksum_outputs[dfaust: DType](outputs: MutaStreams[dfaust], n_outs: S32) -> F64:
-    comptime Real = SIMD[dfaust, 1]
+def checksum_outputs(
+    outputs: Span[Ptr[FaustFloat, MUTA_EXT], MUTA_EXT], n_outs: S32
+) -> F64:
     var sum = 0.0
     for chan in range(n_outs):
+        var output = outputs.unsafe_get(Int(chan))
         for frame in range(BUFF_SIZE):
-            sum += F64(outputs[chan][frame])
+            sum += F64(output[frame])
     return sum
 
 def print_report(report: FaustReport) -> None:
@@ -369,3 +385,64 @@ def write_csv(report: FaustReport) raises -> None:
 
 def assert_dfaust() -> None: comptime assert dfaust == f32
 comptime _ = assert_dfaust()
+# ==============================================================================
+# First section of architecture provided code end.
+# ==============================================================================
+
+<<includeIntrinsic>>
+<<includeclass>>
+
+# ==============================================================================
+# Faust generated DSP code end.
+# ==============================================================================
+# Second section of architecture provided code start.
+# Defines the main entry point of the application, initializes the dsp object
+# and the user interface, allocates the buffers and runs the benchmark.
+# ==============================================================================
+
+def main() raises -> None:
+    var dsp = alloc[mydsp](1)
+    dsp[] = mydsp()
+    dsp[].init(SAMP_RATE)
+
+    var n_ins = dsp[].get_num_inputs()
+    var n_outs = dsp[].get_num_outputs()
+
+    var base, err = make_streams[dfaust](BUFF_SIZE, n_ins, n_outs)
+    if err:
+        print("Panic in main - Critical allocation error: ", err)
+        dsp.free()
+        return
+
+    var ptr = base.unsafe_value()
+
+    var mut_inputs = Span(
+        ptr=ptr.bitcast[Ptr[FaustFloat]](),
+        length=Int(n_ins)
+    )
+    var inputs = Span(
+        ptr=ptr.bitcast[Ptr[FaustFloat, READ_EXT]]().as_immutable(),
+        length=Int(n_ins)
+    )
+    var outputs = Span(
+        ptr=(ptr + n_ins).bitcast[Ptr[FaustFloat]](),
+        length=Int(n_outs)
+    )
+
+    comptime if FILL_INPUTS:
+        fill_inputs(mut_inputs, n_ins)
+
+    warmup(dsp[], inputs, outputs)
+    var report = measure(dsp[], inputs, outputs)
+    report.checksum = checksum_outputs(outputs, n_outs)
+    print_report(report) # the output will be redirected via script
+
+    comptime if WRITE_CSV:
+        write_csv(report)
+
+    free_streams[dfaust](base)
+    dsp.free()
+
+# ==============================================================================
+# Second section of architecture provided code end.
+# ==============================================================================

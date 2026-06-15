@@ -37,7 +37,6 @@ comptime _ = assert_dfaust()
 # ==============================================================================
 
 def main() -> None:
-    comptime Real = SIMD[dfaust, 1]
     var dsp = alloc[mydsp](1)
     dsp[] = mydsp()
     dsp[].init(SAMP_RATE)
@@ -48,23 +47,32 @@ def main() -> None:
         dsp.free()
         return
     var ptr = base.unsafe_value()
-    var inputs = ptr.bitcast[Ptr[Real, READ_EXT]]().as_immutable()
-    var outputs = (ptr + n_ins).bitcast[Ptr[Real, MUTA_EXT]]()
+    var inputs = Span(
+        ptr=ptr.bitcast[Ptr[FaustFloat, READ_EXT]]().as_immutable(),
+        length=SInt(n_ins)
+    )
+    var outputs = Span(
+        ptr=(ptr.bitcast[Ptr[FaustFloat, MUTA_EXT]]()+n_ins), 
+        length=SInt(n_outs)
+    )
     inspect_compute(dsp[], inputs, outputs)
     ptr.free()
     dsp.free()
 
-@export("inspect_compute")
 @no_inline
+@export("inspect_compute")
 def inspect_compute(
-    mut dsp: mydsp, inputs: ReadStreams[dfaust], outputs: MutaStreams[dfaust]
-) -> None:
+    mut dsp:    mydsp,
+    inputs:     Span[Ptr[FaustFloat, READ_EXT], READ_EXT],
+    outputs:    Span[Ptr[FaustFloat, MUTA_EXT], MUTA_EXT]
+) abi("Mojo") -> None:
     for _ in range(COMPUTE_ITERS):
         keep(inputs)
         keep(outputs)
-        dsp.compute[dfaust](BUFF_SIZE, inputs, outputs)
+        dsp.compute(BUFF_SIZE, inputs, outputs)
         clobber_memory()
 
 # ==============================================================================
 # Second section of architecture provided code end.
 # ==============================================================================
+

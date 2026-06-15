@@ -1,19 +1,27 @@
 # ==============================================================================
-# Faust to Mojo architecture file for the benchmark framework integration.
-# Provides the definitons and the main entry point to run the dsp code in
-# several batches and print the write the report to `.tab` and `.csv` files 
+# Faust to Mojo inspect architecture for the benchmark framework.
+# Provides the minimal definitions and entry point needed to generate
+# low-level code with clear symbols for inspecting the generated compute code.
 # ==============================================================================
 # First section of architecture provided code start.
 # Imports the modules and the definitions of the architecture code.
 # ==============================================================================
 
+from std.benchmark import keep, clobber_memory
+
 from conf import *
 from help import *
 from mem import *
-from bench import *
 from dsp import *
 from gui import *
 from meta import *
+
+comptime SAMP_RATE = S32(get_defined_int["SAMP_RATE", 96_000]())
+comptime BUFF_SIZE = S32(get_defined_int["BUFF_SIZE", 512]())
+comptime COMPUTE_ITERS = S32(get_defined_int["COMPUTE_ITERS", 100]())
+
+def assert_dfaust() -> None: comptime assert dfaust == F32.dtype
+comptime _ = assert_dfaust()
 
 # ==============================================================================
 # First section of architecture provided code end.
@@ -25,8 +33,8 @@ from meta import *
 # name: "multibandfilter"
 # version: "1.0"
 # Compilation options: 
-#   -a bench.mojo -lang mojo -fpga-mem-th 4 -ct 1 -es 1 -mcd 16 -mdd 1024 
-#   -mdy 33 -single -ftz 0
+#   -a inspect.mojo -lang mojo -fpga-mem-th 4 -ct 1 -es 1 -mcd 16 -mdd 1024 
+#   -mdy 33 -double -ftz 0
 # ==============================================================================
 
 @fieldwise_init
@@ -140,7 +148,7 @@ struct mydsp(FaustDsp):
     @always_inline
     def instance_constants(mut dsp, read sample_rate: S32) -> None:
         dsp.sample_rate = sample_rate
-        dsp.const0 = (F64(3.1415927)) / (min(F64(1.92e+05), max(F64(1.0), F64(dsp.sample_rate))))
+        dsp.const0 = (3.141592653589793) / (min(1.92e+05, max(1.0, F64(dsp.sample_rate))))
 
     @always_inline
     def instance_reset_user_interface(mut dsp) -> None:
@@ -177,46 +185,46 @@ struct mydsp(FaustDsp):
 
     @always_inline
     def instance_clear(mut dsp) -> None:
-        var l0 = S32(0)
-        while ((l0) < (S32(3))): 
-            dsp.rec9[l0] = F64(0.0)
-            l0 = (l0) + (S32(1))
-        var l1 = S32(0)
-        while ((l1) < (S32(3))): 
-            dsp.rec8[l1] = F64(0.0)
-            l1 = (l1) + (S32(1))
-        var l2 = S32(0)
-        while ((l2) < (S32(3))): 
-            dsp.rec7[l2] = F64(0.0)
-            l2 = (l2) + (S32(1))
-        var l3 = S32(0)
-        while ((l3) < (S32(3))): 
-            dsp.rec6[l3] = F64(0.0)
-            l3 = (l3) + (S32(1))
-        var l4 = S32(0)
-        while ((l4) < (S32(3))): 
-            dsp.rec5[l4] = F64(0.0)
-            l4 = (l4) + (S32(1))
-        var l5 = S32(0)
-        while ((l5) < (S32(3))): 
-            dsp.rec4[l5] = F64(0.0)
-            l5 = (l5) + (S32(1))
-        var l6 = S32(0)
-        while ((l6) < (S32(3))): 
-            dsp.rec3[l6] = F64(0.0)
-            l6 = (l6) + (S32(1))
-        var l7 = S32(0)
-        while ((l7) < (S32(3))): 
-            dsp.rec2[l7] = F64(0.0)
-            l7 = (l7) + (S32(1))
-        var l8 = S32(0)
-        while ((l8) < (S32(3))): 
-            dsp.rec1[l8] = F64(0.0)
-            l8 = (l8) + (S32(1))
-        var l9 = S32(0)
-        while ((l9) < (S32(3))): 
-            dsp.rec0[l9] = F64(0.0)
-            l9 = (l9) + (S32(1))
+        var l0 = 0
+        while ((l0) < (3)): 
+            dsp.rec9[l0] = 0.0
+            l0 = (l0) + (1)
+        var l1 = 0
+        while ((l1) < (3)): 
+            dsp.rec8[l1] = 0.0
+            l1 = (l1) + (1)
+        var l2 = 0
+        while ((l2) < (3)): 
+            dsp.rec7[l2] = 0.0
+            l2 = (l2) + (1)
+        var l3 = 0
+        while ((l3) < (3)): 
+            dsp.rec6[l3] = 0.0
+            l3 = (l3) + (1)
+        var l4 = 0
+        while ((l4) < (3)): 
+            dsp.rec5[l4] = 0.0
+            l4 = (l4) + (1)
+        var l5 = 0
+        while ((l5) < (3)): 
+            dsp.rec4[l5] = 0.0
+            l5 = (l5) + (1)
+        var l6 = 0
+        while ((l6) < (3)): 
+            dsp.rec3[l6] = 0.0
+            l6 = (l6) + (1)
+        var l7 = 0
+        while ((l7) < (3)): 
+            dsp.rec2[l7] = 0.0
+            l7 = (l7) + (1)
+        var l8 = 0
+        while ((l8) < (3)): 
+            dsp.rec1[l8] = 0.0
+            l8 = (l8) + (1)
+        var l9 = 0
+        while ((l9) < (3)): 
+            dsp.rec0[l9] = 0.0
+            l9 = (l9) + (1)
 
     @always_inline
     def instance_init(mut dsp, read sample_rate: S32) -> None:
@@ -231,7 +239,7 @@ struct mydsp(FaustDsp):
 
     @always_inline
     def get_json(read dsp) -> String:
-        return "{\"name\": \"multibandfilter\",\"filename\": \"multibandfilter.dsp\",\"version\": \"2.85.5\",\"compile_options\": \"-a bench.mojo -lang mojo -fpga-mem-th 4 -ct 1 -es 1 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0\",\"library_list\": [\"/Users/manuelfarzini/Personal/dev/repo/faust/tests/impulse-tests/dsp/bandfilter.dsp\",\"/usr/local/share/faust/music.lib\",\"/usr/local/share/faust/math.lib\"],\"include_pathnames\": [\"/Users/manuelfarzini/Personal/dev/repo/faust/build/share/faust\",\"/usr/local/share/faust\",\"/usr/share/faust\",\"../../tests/impulse-tests/dsp\",\"/Users/manuelfarzini/Personal/dev/repo/faust/architecture/mojo/../../tests/impulse-tests/dsp\"],\"size\": 248,\"inputs\": 1,\"outputs\": 1,\"meta\": [ { \"author\": \"Grame\" },{ \"bandfilter.dsp/author\": \"Grame\" },{ \"bandfilter.dsp/copyright\": \"(c)GRAME 2006\" },{ \"bandfilter.dsp/license\": \"BSD\" },{ \"bandfilter.dsp/name\": \"bandfilter\" },{ \"bandfilter.dsp/version\": \"1.0\" },{ \"compile_options\": \"-a bench.mojo -lang mojo -fpga-mem-th 4 -ct 1 -es 1 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0\" },{ \"copyright\": \"(c)GRAME 2006\" },{ \"filename\": \"multibandfilter.dsp\" },{ \"license\": \"BSD\" },{ \"math.lib/author\": \"GRAME\" },{ \"math.lib/copyright\": \"GRAME\" },{ \"math.lib/deprecated\": \"This library is deprecated and is not maintained anymore. It will be removed in August 2017.\" },{ \"math.lib/license\": \"LGPL with exception\" },{ \"math.lib/name\": \"Math Library\" },{ \"math.lib/version\": \"1.0\" },{ \"music.lib/author\": \"GRAME\" },{ \"music.lib/copyright\": \"GRAME\" },{ \"music.lib/deprecated\": \"This library is deprecated and is not maintained anymore. It will be removed in August 2017.\" },{ \"music.lib/license\": \"LGPL with exception\" },{ \"music.lib/name\": \"Music Library\" },{ \"music.lib/version\": \"1.0\" },{ \"name\": \"multibandfilter\" },{ \"version\": \"1.0\" }],\"ui\": [ {\"type\": \"hgroup\",\"label\": \"Multi Band Filter\",\"items\": [ {\"type\": \"vgroup\",\"label\": \"peak 0\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry19\",\"shortname\": \"peak_0_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_0/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry18\",\"shortname\": \"peak_0_freq\",\"address\": \"/Multi_Band_Filter/peak_0/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 1000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider9\",\"shortname\": \"peak_0_gain\",\"address\": \"/Multi_Band_Filter/peak_0/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]},{\"type\": \"vgroup\",\"label\": \"peak 1\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry17\",\"shortname\": \"peak_1_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_1/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry16\",\"shortname\": \"peak_1_freq\",\"address\": \"/Multi_Band_Filter/peak_1/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 2000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider8\",\"shortname\": \"peak_1_gain\",\"address\": \"/Multi_Band_Filter/peak_1/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]},{\"type\": \"vgroup\",\"label\": \"peak 2\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry15\",\"shortname\": \"peak_2_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_2/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry14\",\"shortname\": \"peak_2_freq\",\"address\": \"/Multi_Band_Filter/peak_2/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 3000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider7\",\"shortname\": \"peak_2_gain\",\"address\": \"/Multi_Band_Filter/peak_2/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]},{\"type\": \"vgroup\",\"label\": \"peak 3\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry13\",\"shortname\": \"peak_3_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_3/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry12\",\"shortname\": \"peak_3_freq\",\"address\": \"/Multi_Band_Filter/peak_3/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 4000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider6\",\"shortname\": \"peak_3_gain\",\"address\": \"/Multi_Band_Filter/peak_3/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]},{\"type\": \"vgroup\",\"label\": \"peak 4\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry11\",\"shortname\": \"peak_4_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_4/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry10\",\"shortname\": \"peak_4_freq\",\"address\": \"/Multi_Band_Filter/peak_4/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 5000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider5\",\"shortname\": \"peak_4_gain\",\"address\": \"/Multi_Band_Filter/peak_4/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]},{\"type\": \"vgroup\",\"label\": \"peak 5\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry9\",\"shortname\": \"peak_5_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_5/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry8\",\"shortname\": \"peak_5_freq\",\"address\": \"/Multi_Band_Filter/peak_5/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 6000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider4\",\"shortname\": \"peak_5_gain\",\"address\": \"/Multi_Band_Filter/peak_5/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]},{\"type\": \"vgroup\",\"label\": \"peak 6\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry7\",\"shortname\": \"peak_6_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_6/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry6\",\"shortname\": \"peak_6_freq\",\"address\": \"/Multi_Band_Filter/peak_6/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 7000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider3\",\"shortname\": \"peak_6_gain\",\"address\": \"/Multi_Band_Filter/peak_6/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]},{\"type\": \"vgroup\",\"label\": \"peak 7\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry5\",\"shortname\": \"peak_7_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_7/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry4\",\"shortname\": \"peak_7_freq\",\"address\": \"/Multi_Band_Filter/peak_7/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 8000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider2\",\"shortname\": \"peak_7_gain\",\"address\": \"/Multi_Band_Filter/peak_7/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]},{\"type\": \"vgroup\",\"label\": \"peak 8\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry3\",\"shortname\": \"peak_8_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_8/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry2\",\"shortname\": \"peak_8_freq\",\"address\": \"/Multi_Band_Filter/peak_8/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 9000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider1\",\"shortname\": \"peak_8_gain\",\"address\": \"/Multi_Band_Filter/peak_8/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]},{\"type\": \"vgroup\",\"label\": \"peak 9\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry1\",\"shortname\": \"peak_9_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_9/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry0\",\"shortname\": \"peak_9_freq\",\"address\": \"/Multi_Band_Filter/peak_9/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 10000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider0\",\"shortname\": \"peak_9_gain\",\"address\": \"/Multi_Band_Filter/peak_9/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]}]}]}"
+        return "{\"name\": \"multibandfilter\",\"filename\": \"multibandfilter.dsp\",\"version\": \"2.85.5\",\"compile_options\": \"-a inspect.mojo -lang mojo -fpga-mem-th 4 -ct 1 -es 1 -mcd 16 -mdd 1024 -mdy 33 -double -ftz 0\",\"library_list\": [\"/Users/manuelfarzini/Personal/dev/repo/faust/tests/impulse-tests/dsp/bandfilter.dsp\",\"/usr/local/share/faust/music.lib\",\"/usr/local/share/faust/math.lib\"],\"include_pathnames\": [\"/Users/manuelfarzini/Personal/dev/repo/faust/build/share/faust\",\"/usr/local/share/faust\",\"/usr/share/faust\",\"../../tests/impulse-tests/dsp\",\"/Users/manuelfarzini/Personal/dev/repo/faust/architecture/mojo/../../tests/impulse-tests/dsp\"],\"size\": 492,\"inputs\": 1,\"outputs\": 1,\"meta\": [ { \"author\": \"Grame\" },{ \"bandfilter.dsp/author\": \"Grame\" },{ \"bandfilter.dsp/copyright\": \"(c)GRAME 2006\" },{ \"bandfilter.dsp/license\": \"BSD\" },{ \"bandfilter.dsp/name\": \"bandfilter\" },{ \"bandfilter.dsp/version\": \"1.0\" },{ \"compile_options\": \"-a inspect.mojo -lang mojo -fpga-mem-th 4 -ct 1 -es 1 -mcd 16 -mdd 1024 -mdy 33 -double -ftz 0\" },{ \"copyright\": \"(c)GRAME 2006\" },{ \"filename\": \"multibandfilter.dsp\" },{ \"license\": \"BSD\" },{ \"math.lib/author\": \"GRAME\" },{ \"math.lib/copyright\": \"GRAME\" },{ \"math.lib/deprecated\": \"This library is deprecated and is not maintained anymore. It will be removed in August 2017.\" },{ \"math.lib/license\": \"LGPL with exception\" },{ \"math.lib/name\": \"Math Library\" },{ \"math.lib/version\": \"1.0\" },{ \"music.lib/author\": \"GRAME\" },{ \"music.lib/copyright\": \"GRAME\" },{ \"music.lib/deprecated\": \"This library is deprecated and is not maintained anymore. It will be removed in August 2017.\" },{ \"music.lib/license\": \"LGPL with exception\" },{ \"music.lib/name\": \"Music Library\" },{ \"music.lib/version\": \"1.0\" },{ \"name\": \"multibandfilter\" },{ \"version\": \"1.0\" }],\"ui\": [ {\"type\": \"hgroup\",\"label\": \"Multi Band Filter\",\"items\": [ {\"type\": \"vgroup\",\"label\": \"peak 0\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry19\",\"shortname\": \"peak_0_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_0/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry18\",\"shortname\": \"peak_0_freq\",\"address\": \"/Multi_Band_Filter/peak_0/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 1000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider9\",\"shortname\": \"peak_0_gain\",\"address\": \"/Multi_Band_Filter/peak_0/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]},{\"type\": \"vgroup\",\"label\": \"peak 1\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry17\",\"shortname\": \"peak_1_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_1/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry16\",\"shortname\": \"peak_1_freq\",\"address\": \"/Multi_Band_Filter/peak_1/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 2000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider8\",\"shortname\": \"peak_1_gain\",\"address\": \"/Multi_Band_Filter/peak_1/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]},{\"type\": \"vgroup\",\"label\": \"peak 2\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry15\",\"shortname\": \"peak_2_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_2/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry14\",\"shortname\": \"peak_2_freq\",\"address\": \"/Multi_Band_Filter/peak_2/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 3000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider7\",\"shortname\": \"peak_2_gain\",\"address\": \"/Multi_Band_Filter/peak_2/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]},{\"type\": \"vgroup\",\"label\": \"peak 3\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry13\",\"shortname\": \"peak_3_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_3/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry12\",\"shortname\": \"peak_3_freq\",\"address\": \"/Multi_Band_Filter/peak_3/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 4000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider6\",\"shortname\": \"peak_3_gain\",\"address\": \"/Multi_Band_Filter/peak_3/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]},{\"type\": \"vgroup\",\"label\": \"peak 4\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry11\",\"shortname\": \"peak_4_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_4/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry10\",\"shortname\": \"peak_4_freq\",\"address\": \"/Multi_Band_Filter/peak_4/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 5000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider5\",\"shortname\": \"peak_4_gain\",\"address\": \"/Multi_Band_Filter/peak_4/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]},{\"type\": \"vgroup\",\"label\": \"peak 5\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry9\",\"shortname\": \"peak_5_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_5/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry8\",\"shortname\": \"peak_5_freq\",\"address\": \"/Multi_Band_Filter/peak_5/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 6000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider4\",\"shortname\": \"peak_5_gain\",\"address\": \"/Multi_Band_Filter/peak_5/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]},{\"type\": \"vgroup\",\"label\": \"peak 6\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry7\",\"shortname\": \"peak_6_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_6/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry6\",\"shortname\": \"peak_6_freq\",\"address\": \"/Multi_Band_Filter/peak_6/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 7000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider3\",\"shortname\": \"peak_6_gain\",\"address\": \"/Multi_Band_Filter/peak_6/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]},{\"type\": \"vgroup\",\"label\": \"peak 7\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry5\",\"shortname\": \"peak_7_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_7/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry4\",\"shortname\": \"peak_7_freq\",\"address\": \"/Multi_Band_Filter/peak_7/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 8000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider2\",\"shortname\": \"peak_7_gain\",\"address\": \"/Multi_Band_Filter/peak_7/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]},{\"type\": \"vgroup\",\"label\": \"peak 8\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry3\",\"shortname\": \"peak_8_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_8/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry2\",\"shortname\": \"peak_8_freq\",\"address\": \"/Multi_Band_Filter/peak_8/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 9000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider1\",\"shortname\": \"peak_8_gain\",\"address\": \"/Multi_Band_Filter/peak_8/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]},{\"type\": \"vgroup\",\"label\": \"peak 9\",\"items\": [ {\"type\": \"nentry\",\"label\": \"Q factor\",\"varname\": \"fEntry1\",\"shortname\": \"peak_9_Q_factor\",\"address\": \"/Multi_Band_Filter/peak_9/Q_factor\",\"meta\": [{ \"style\": \"knob\" }],\"init\": 50,\"min\": 0.1,\"max\": 100,\"step\": 0.1},{\"type\": \"nentry\",\"label\": \"freq\",\"varname\": \"fEntry0\",\"shortname\": \"peak_9_freq\",\"address\": \"/Multi_Band_Filter/peak_9/freq\",\"meta\": [{ \"style\": \"knob\" },{ \"unit\": \"Hz\" }],\"init\": 10000,\"min\": 20,\"max\": 20000,\"step\": 1},{\"type\": \"vslider\",\"label\": \"gain\",\"varname\": \"fVslider0\",\"shortname\": \"peak_9_gain\",\"address\": \"/Multi_Band_Filter/peak_9/gain\",\"meta\": [{ \"unit\": \"dB\" }],\"init\": 0,\"min\": -50,\"max\": 50,\"step\": 0.1}]}]}]}"
 
     @always_inline
     def metadata(read dsp, mut meta: Some[FaustMeta]) -> None:
@@ -241,7 +249,7 @@ struct mydsp(FaustDsp):
         meta.declare("bandfilter.dsp/license", "BSD")
         meta.declare("bandfilter.dsp/name", "bandfilter")
         meta.declare("bandfilter.dsp/version", "1.0")
-        meta.declare("compile_options", "-a bench.mojo -lang mojo -fpga-mem-th 4 -ct 1 -es 1 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0")
+        meta.declare("compile_options", "-a inspect.mojo -lang mojo -fpga-mem-th 4 -ct 1 -es 1 -mcd 16 -mdd 1024 -mdy 33 -double -ftz 0")
         meta.declare("copyright", "(c)GRAME 2006")
         meta.declare("filename", "multibandfilter.dsp")
         meta.declare("license", "BSD")
@@ -357,10 +365,13 @@ struct mydsp(FaustDsp):
 
     @always_inline
     def compute(
-        mut dsp, var count: S32, read inputs: Ptr[FaustFloat, READ_EXT], mut outputs: Ptr[FaustFloat, MUTA_EXT]
+        mut dsp,
+        var count:    S32,
+        var inputs:   Span[Ptr[FaustFloat, READ_EXT], READ_EXT],
+        var outputs:  Span[Ptr[FaustFloat, MUTA_EXT], MUTA_EXT],
     ) -> None:
-        var input0 = Ptr(to=inputs[S32(0)]).as_noalias_ptr()
-        var output0 = Ptr(to=outputs[S32(0)]).as_noalias_ptr()
+        var input0 = inputs.unsafe_get(0).as_noalias_ptr()
+        var output0 = outputs.unsafe_get(0).as_noalias_ptr()
         var slow0 = tan((dsp.const0) * (F64(dsp.entry0)))
         var slow1 = F64(dsp.entry1)
         var slow2 = (pow(1e+01, -((0.05) * (F64(dsp.vslider0))))) / (slow1)
@@ -371,7 +382,6 @@ struct mydsp(FaustDsp):
         var slow7 = (pow(1e+01, -((0.05) * (F64(dsp.vslider1))))) / (slow6)
         var slow8 = (1.0) / (((slow5) * ((slow5) + (slow7))) + (1.0))
         var slow9 = (2.0) * ((pow_unrolled[2](slow5)) + (-1.0))
-
         var slow10 = tan((dsp.const0) * (F64(dsp.entry4)))
         var slow11 = F64(dsp.entry5)
         var slow12 = (pow(1e+01, -((0.05) * (F64(dsp.vslider2))))) / (slow11)
@@ -382,7 +392,6 @@ struct mydsp(FaustDsp):
         var slow17 = (pow(1e+01, -((0.05) * (F64(dsp.vslider3))))) / (slow16)
         var slow18 = (1.0) / (((slow15) * ((slow15) + (slow17))) + (1.0))
         var slow19 = (2.0) * ((pow_unrolled[2](slow15)) + (-1.0))
-
         var slow20 = tan((dsp.const0) * (F64(dsp.entry8)))
         var slow21 = F64(dsp.entry9)
         var slow22 = (pow(1e+01, -((0.05) * (F64(dsp.vslider4))))) / (slow21)
@@ -393,7 +402,6 @@ struct mydsp(FaustDsp):
         var slow27 = (pow(1e+01, -((0.05) * (F64(dsp.vslider5))))) / (slow26)
         var slow28 = (1.0) / (((slow25) * ((slow25) + (slow27))) + (1.0))
         var slow29 = (2.0) * ((pow_unrolled[2](slow25)) + (-1.0))
-
         var slow30 = tan((dsp.const0) * (F64(dsp.entry12)))
         var slow31 = F64(dsp.entry13)
         var slow32 = (pow(1e+01, -((0.05) * (F64(dsp.vslider6))))) / (slow31)
@@ -404,7 +412,6 @@ struct mydsp(FaustDsp):
         var slow37 = (pow(1e+01, -((0.05) * (F64(dsp.vslider7))))) / (slow36)
         var slow38 = (1.0) / (((slow35) * ((slow35) + (slow37))) + (1.0))
         var slow39 = (2.0) * ((pow_unrolled[2](slow35)) + (-1.0))
-
         var slow40 = tan((dsp.const0) * (F64(dsp.entry16)))
         var slow41 = F64(dsp.entry17)
         var slow42 = (pow(1e+01, -((0.05) * (F64(dsp.vslider8))))) / (slow41)
@@ -415,7 +422,6 @@ struct mydsp(FaustDsp):
         var slow47 = (pow(1e+01, -((0.05) * (F64(dsp.vslider9))))) / (slow46)
         var slow48 = (1.0) / (((slow45) * ((slow45) + (slow47))) + (1.0))
         var slow49 = (2.0) * ((pow_unrolled[2](slow45)) + (-1.0))
-
         var slow50 = ((slow45) * ((slow45) - (slow47))) + (1.0)
         var slow51 = (1.0) / (slow46)
         var slow52 = ((slow45) * ((slow45) + (slow51))) + (1.0)
@@ -426,7 +432,6 @@ struct mydsp(FaustDsp):
         var slow57 = (1.0) - ((slow40) * ((slow55) - (slow40)))
         var slow58 = ((slow35) * ((slow35) - (slow37))) + (1.0)
         var slow59 = (1.0) / (slow36)
-
         var slow60 = ((slow35) * ((slow35) + (slow59))) + (1.0)
         var slow61 = (1.0) - ((slow35) * ((slow59) - (slow35)))
         var slow62 = ((slow30) * ((slow30) - (slow32))) + (1.0)
@@ -437,7 +442,6 @@ struct mydsp(FaustDsp):
         var slow67 = (1.0) / (slow26)
         var slow68 = ((slow25) * ((slow25) + (slow67))) + (1.0)
         var slow69 = (1.0) - ((slow25) * ((slow67) - (slow25)))
-
         var slow70 = ((slow20) * ((slow20) - (slow22))) + (1.0)
         var slow71 = (1.0) / (slow21)
         var slow72 = ((slow20) * ((slow20) + (slow71))) + (1.0)
@@ -448,7 +452,6 @@ struct mydsp(FaustDsp):
         var slow77 = (1.0) - ((slow15) * ((slow75) - (slow15)))
         var slow78 = ((slow10) * ((slow10) - (slow12))) + (1.0)
         var slow79 = (1.0) / (slow11)
-
         var slow80 = ((slow10) * ((slow10) + (slow79))) + (1.0)
         var slow81 = (1.0) - ((slow10) * ((slow79) - (slow10)))
         var slow82 = ((slow5) * ((slow5) - (slow7))) + (1.0)
@@ -459,153 +462,93 @@ struct mydsp(FaustDsp):
         var slow87 = (1.0) / (slow1)
         var slow88 = ((slow0) * ((slow0) + (slow87))) + (1.0)
         var slow89 = (1.0) - ((slow0) * ((slow87) - (slow0)))
-
-        var rec9_0 = dsp.rec9[S32(0)]
-        var rec9_1 = dsp.rec9[S32(1)]
-        var rec9_2 = dsp.rec9[S32(2)]
-        var rec8_0 = dsp.rec8[S32(0)]
-        var rec8_1 = dsp.rec8[S32(1)]
-        var rec8_2 = dsp.rec8[S32(2)]
-        var rec7_0 = dsp.rec7[S32(0)]
-        var rec7_1 = dsp.rec7[S32(1)]
-        var rec7_2 = dsp.rec7[S32(2)]
-        var rec6_0 = dsp.rec6[S32(0)]
-        var rec6_1 = dsp.rec6[S32(1)]
-        var rec6_2 = dsp.rec6[S32(2)]
-        var rec5_0 = dsp.rec5[S32(0)]
-        var rec5_1 = dsp.rec5[S32(1)]
-        var rec5_2 = dsp.rec5[S32(2)]
-        var rec4_0 = dsp.rec4[S32(0)]
-        var rec4_1 = dsp.rec4[S32(1)]
-        var rec4_2 = dsp.rec4[S32(2)]
-        var rec3_0 = dsp.rec3[S32(0)]
-        var rec3_1 = dsp.rec3[S32(1)]
-        var rec3_2 = dsp.rec3[S32(2)]
-        var rec2_0 = dsp.rec2[S32(0)]
-        var rec2_1 = dsp.rec2[S32(1)]
-        var rec2_2 = dsp.rec2[S32(2)]
-        var rec1_0 = dsp.rec1[S32(0)]
-        var rec1_1 = dsp.rec1[S32(1)]
-        var rec1_2 = dsp.rec1[S32(2)]
-        var rec0_0 = dsp.rec0[S32(0)]
-        var rec0_1 = dsp.rec0[S32(1)]
-        var rec0_2 = dsp.rec0[S32(2)]
-
-        for var i0 in range(S32(0), count):
-            var temp0 = (slow49) * (rec9_1)
-            rec9_0 = (F64(input0[i0])) - ((slow48) * (((slow50) * (rec9_2)) + (temp0)))
-            var temp1 = (slow44) * (rec8_1)
-            rec8_0 = ((slow48) * (((temp0) + ((slow52) * (rec9_0))) + ((slow53) * (rec9_2)))) - ((slow43) * (((slow54) * (rec8_2)) + (temp1)))
-            var temp2 = (slow39) * (rec7_1)
-            rec7_0 = ((slow43) * (((temp1) + ((slow56) * (rec8_0))) + ((slow57) * (rec8_2)))) - ((slow38) * (((slow58) * (rec7_2)) + (temp2)))
-            var temp3 = (slow34) * (rec6_1)
-            rec6_0 = ((slow38) * (((temp2) + ((slow60) * (rec7_0))) + ((slow61) * (rec7_2)))) - ((slow33) * (((slow62) * (rec6_2)) + (temp3)))
-            var temp4 = (slow29) * (rec5_1)
-            rec5_0 = ((slow33) * (((temp3) + ((slow64) * (rec6_0))) + ((slow65) * (rec6_2)))) - ((slow28) * (((slow66) * (rec5_2)) + (temp4)))
-            var temp5 = (slow24) * (rec4_1)
-            rec4_0 = ((slow28) * (((temp4) + ((slow68) * (rec5_0))) + ((slow69) * (rec5_2)))) - ((slow23) * (((slow70) * (rec4_2)) + (temp5)))
-            var temp6 = (slow19) * (rec3_1)
-            rec3_0 = ((slow23) * (((temp5) + ((slow72) * (rec4_0))) + ((slow73) * (rec4_2)))) - ((slow18) * (((slow74) * (rec3_2)) + (temp6)))
-            var temp7 = (slow14) * (rec2_1)
-            rec2_0 = ((slow18) * (((temp6) + ((slow76) * (rec3_0))) + ((slow77) * (rec3_2)))) - ((slow13) * (((slow78) * (rec2_2)) + (temp7)))
-            var temp8 = (slow9) * (rec1_1)
-            rec1_0 = ((slow13) * (((temp7) + ((slow80) * (rec2_0))) + ((slow81) * (rec2_2)))) - ((slow8) * (((slow82) * (rec1_2)) + (temp8)))
-            var temp9 = (slow4) * (rec0_1)
-            rec0_0 = ((slow8) * (((temp8) + ((slow84) * (rec1_0))) + ((slow85) * (rec1_2)))) - ((slow3) * (((slow86) * (rec0_2)) + (temp9)))
-            output0[i0] = FaustFloat((slow3) * (((temp9) + ((slow88) * (rec0_0))) + ((slow89) * (rec0_2))))
-            rec9_2 = rec9_1
-            rec9_1 = rec9_0
-            rec8_2 = rec8_1
-            rec8_1 = rec8_0
-            rec7_2 = rec7_1
-            rec7_1 = rec7_0
-            rec6_2 = rec6_1
-            rec6_1 = rec6_0
-            rec5_2 = rec5_1
-            rec5_1 = rec5_0
-            rec4_2 = rec4_1
-            rec4_1 = rec4_0
-            rec3_2 = rec3_1
-            rec3_1 = rec3_0
-            rec2_2 = rec2_1
-            rec2_1 = rec2_0
-            rec1_2 = rec1_1
-            rec1_1 = rec1_0
-            rec0_2 = rec0_1
-            rec0_1 = rec0_0
-
-        dsp.rec9[S32(0)] = rec9_0
-        dsp.rec9[S32(1)] = rec9_1
-        dsp.rec9[S32(2)] = rec9_2
-        dsp.rec8[S32(0)] = rec8_0
-        dsp.rec8[S32(1)] = rec8_1
-        dsp.rec8[S32(2)] = rec8_2
-        dsp.rec7[S32(0)] = rec7_0
-        dsp.rec7[S32(1)] = rec7_1
-        dsp.rec7[S32(2)] = rec7_2
-        dsp.rec6[S32(0)] = rec6_0
-        dsp.rec6[S32(1)] = rec6_1
-        dsp.rec6[S32(2)] = rec6_2
-        dsp.rec5[S32(0)] = rec5_0
-        dsp.rec5[S32(1)] = rec5_1
-        dsp.rec5[S32(2)] = rec5_2
-        dsp.rec4[S32(0)] = rec4_0
-        dsp.rec4[S32(1)] = rec4_1
-        dsp.rec4[S32(2)] = rec4_2
-        dsp.rec3[S32(0)] = rec3_0
-        dsp.rec3[S32(1)] = rec3_1
-        dsp.rec3[S32(2)] = rec3_2
-        dsp.rec2[S32(0)] = rec2_0
-        dsp.rec2[S32(1)] = rec2_1
-        dsp.rec2[S32(2)] = rec2_2
-        dsp.rec1[S32(0)] = rec1_0
-        dsp.rec1[S32(1)] = rec1_1
-        dsp.rec1[S32(2)] = rec1_2
-        dsp.rec0[S32(0)] = rec0_0
-        dsp.rec0[S32(1)] = rec0_1
-        dsp.rec0[S32(2)] = rec0_2
+        for i0 in range(S32(0), count):
+            var temp0 = (slow49) * (dsp.rec9[S32(1)])
+            dsp.rec9[0] = (F64(input0[i0])) - ((slow48) * (((slow50) * (dsp.rec9[S32(2)])) + (temp0)))
+            var temp1 = (slow44) * (dsp.rec8[S32(1)])
+            dsp.rec8[0] = ((slow48) * (((temp0) + ((slow52) * (dsp.rec9[0]))) + ((slow53) * (dsp.rec9[S32(2)])))) - ((slow43) * (((slow54) * (dsp.rec8[S32(2)])) + (temp1)))
+            var temp2 = (slow39) * (dsp.rec7[S32(1)])
+            dsp.rec7[0] = ((slow43) * (((temp1) + ((slow56) * (dsp.rec8[0]))) + ((slow57) * (dsp.rec8[S32(2)])))) - ((slow38) * (((slow58) * (dsp.rec7[S32(2)])) + (temp2)))
+            var temp3 = (slow34) * (dsp.rec6[S32(1)])
+            dsp.rec6[0] = ((slow38) * (((temp2) + ((slow60) * (dsp.rec7[0]))) + ((slow61) * (dsp.rec7[S32(2)])))) - ((slow33) * (((slow62) * (dsp.rec6[S32(2)])) + (temp3)))
+            var temp4 = (slow29) * (dsp.rec5[S32(1)])
+            dsp.rec5[0] = ((slow33) * (((temp3) + ((slow64) * (dsp.rec6[0]))) + ((slow65) * (dsp.rec6[S32(2)])))) - ((slow28) * (((slow66) * (dsp.rec5[S32(2)])) + (temp4)))
+            var temp5 = (slow24) * (dsp.rec4[S32(1)])
+            dsp.rec4[0] = ((slow28) * (((temp4) + ((slow68) * (dsp.rec5[0]))) + ((slow69) * (dsp.rec5[S32(2)])))) - ((slow23) * (((slow70) * (dsp.rec4[S32(2)])) + (temp5)))
+            var temp6 = (slow19) * (dsp.rec3[S32(1)])
+            dsp.rec3[0] = ((slow23) * (((temp5) + ((slow72) * (dsp.rec4[0]))) + ((slow73) * (dsp.rec4[S32(2)])))) - ((slow18) * (((slow74) * (dsp.rec3[S32(2)])) + (temp6)))
+            var temp7 = (slow14) * (dsp.rec2[S32(1)])
+            dsp.rec2[0] = ((slow18) * (((temp6) + ((slow76) * (dsp.rec3[0]))) + ((slow77) * (dsp.rec3[S32(2)])))) - ((slow13) * (((slow78) * (dsp.rec2[S32(2)])) + (temp7)))
+            var temp8 = (slow9) * (dsp.rec1[S32(1)])
+            dsp.rec1[0] = ((slow13) * (((temp7) + ((slow80) * (dsp.rec2[0]))) + ((slow81) * (dsp.rec2[S32(2)])))) - ((slow8) * (((slow82) * (dsp.rec1[S32(2)])) + (temp8)))
+            var temp9 = (slow4) * (dsp.rec0[S32(1)])
+            dsp.rec0[0] = ((slow8) * (((temp8) + ((slow84) * (dsp.rec1[0]))) + ((slow85) * (dsp.rec1[S32(2)])))) - ((slow3) * (((slow86) * (dsp.rec0[S32(2)])) + (temp9)))
+            output0[i0] = SIMD[dfaust, 1]((slow3) * (((temp9) + ((slow88) * (dsp.rec0[0]))) + ((slow89) * (dsp.rec0[S32(2)]))))
+            dsp.rec9[S32(2)] = dsp.rec9[1]
+            dsp.rec9[1] = dsp.rec9[0]
+            dsp.rec8[2] = dsp.rec8[1]
+            dsp.rec8[1] = dsp.rec8[0]
+            dsp.rec7[2] = dsp.rec7[1]
+            dsp.rec7[1] = dsp.rec7[0]
+            dsp.rec6[2] = dsp.rec6[1]
+            dsp.rec6[1] = dsp.rec6[0]
+            dsp.rec5[2] = dsp.rec5[1]
+            dsp.rec5[1] = dsp.rec5[0]
+            dsp.rec4[2] = dsp.rec4[1]
+            dsp.rec4[1] = dsp.rec4[0]
+            dsp.rec3[2] = dsp.rec3[1]
+            dsp.rec3[1] = dsp.rec3[0]
+            dsp.rec2[2] = dsp.rec2[1]
+            dsp.rec2[1] = dsp.rec2[0]
+            dsp.rec1[2] = dsp.rec1[1]
+            dsp.rec1[1] = dsp.rec1[0]
+            dsp.rec0[2] = dsp.rec0[1]
+            dsp.rec0[1] = dsp.rec0[0]
 
 # ==============================================================================
 # Faust generated DSP code end.
 # ==============================================================================
 # Second section of architecture provided code start.
-# Defines the main entry point of the application, initializes the dsp object
-# and the user interface, allocates the buffers and runs the benchmark.
+# Defines the main entry point of the application.
+# Initializes the dsp object, allocates and intializes the audio buffers and
+# calls the inspect function to run the dsp code.
 # ==============================================================================
 
-def main() raises -> None:
-    comptime dreal = dfaust
-    comptime Real = SIMD[dreal, 1]
-
+def main() -> None:
     var dsp = alloc[mydsp](1)
     dsp[] = mydsp()
     dsp[].init(SAMP_RATE)
-
     var n_ins = dsp[].get_num_inputs()
     var n_outs = dsp[].get_num_outputs()
-
-    var base, err = make_streams[dreal](BUFF_SIZE, n_ins, n_outs)
+    var base, err = make_streams[dfaust](BUFF_SIZE, n_ins, n_outs)
     if err:
-        print("Panic in main - Critical allocation error: ", err)
         dsp.free()
         return
-
-    var inputs = base.unsafe_value()
-    var outputs = inputs + n_ins
-
-    comptime if FILL_INPUTS:
-        fill_inputs[dreal](inputs, n_ins)
-
-    warmup[dreal](dsp[], inputs, outputs)
-    var report = measure[dreal](dsp[], inputs, outputs)
-    report.checksum = checksum_outputs[dreal](outputs, n_outs)
-    print_report(report) # the output will be redirected via script
-
-    comptime if WRITE_CSV:
-        write_csv(report)
-
-    free_streams[dreal](base)
+    var ptr = base.unsafe_value()
+    var inputs = Span(
+        ptr=ptr.bitcast[Ptr[FaustFloat, READ_EXT]]().as_immutable(),
+        length=SInt(n_ins)
+    )
+    var outputs = Span(
+        ptr=(ptr.bitcast[Ptr[FaustFloat, MUTA_EXT]]()+n_ins), 
+        length=SInt(n_outs)
+    )
+    inspect_compute(dsp[], inputs, outputs)
+    ptr.free()
     dsp.free()
+
+@no_inline
+@export("inspect_compute")
+def inspect_compute(
+    mut dsp:    mydsp,
+    inputs:     Span[Ptr[FaustFloat, READ_EXT], READ_EXT],
+    outputs:    Span[Ptr[FaustFloat, MUTA_EXT], MUTA_EXT]
+) abi("Mojo") -> None:
+    for _ in range(COMPUTE_ITERS):
+        keep(inputs)
+        keep(outputs)
+        dsp.compute(BUFF_SIZE, inputs, outputs)
+        clobber_memory()
 
 # ==============================================================================
 # Second section of architecture provided code end.
