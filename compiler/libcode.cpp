@@ -632,7 +632,6 @@ static void compileJulia(Tree signals, int numInputs, int numOutputs, ostream* o
 static void compileMojo(Tree signals, int numInputs, int numOutputs, ostream* out)
 {
 #ifdef MOJO_BUILD
-    // gGlobal->gAllowForeignFunction = false;
     gGlobal->gNeedManualPow = false;
     gGlobal->gBool2Int = true;
     gContainer = MojoCodeContainer::createContainer(
