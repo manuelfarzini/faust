@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_spectral_level_run_scalar_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            spectral_level
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        2
+  warm-up iters:  50
+  run iters:      108250
+  batches:        1000
+------------------------------------
+Timing
+  elapsed:        4.121947253 s
+  ns/compute:     38078.035
+  fast ns/cmp:    37247.182
+  slow ns/cmp:    38399.944
+  spread ns/cmp:  1152.762
+  spread %:       3.027
+  ns/frame:       297.485
+  ns/out_samp:    148.742
+------------------------------------
+Throughput
+  frames/s:       3361518.028
+  fast frames/s:  3436501.572
+  slow frames/s:  3333338.156
+  out_samp/s: 6723036.055
+  fast out_samp/s: 6873003.144
+  slow out_samp/s: 6666676.312
+------------------------------------
+Validation
+  checksum:       16.512000057147816

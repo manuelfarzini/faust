@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_parametric_eq_run_vec_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            parametric_eq
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        2
+  warm-up iters:  50
+  run iters:      122950
+  batches:        1000
+------------------------------------
+Timing
+  elapsed:        2.163427999 s
+  ns/compute:     17595.998
+  fast ns/cmp:    17334.652
+  slow ns/cmp:    20762.144
+  spread ns/cmp:  3427.493
+  spread %:       19.479
+  ns/frame:       137.469
+  ns/out_samp:    68.734
+------------------------------------
+Throughput
+  frames/s:       7274381.217
+  fast frames/s:  7384053.672
+  slow frames/s:  6165066.427
+  out_samp/s: 14548762.434
+  fast out_samp/s: 14768107.343
+  slow out_samp/s: 12330132.854
+------------------------------------
+Validation
+  checksum:       -0.0943570281524444

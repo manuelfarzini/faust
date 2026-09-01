@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_highShelf_run_scalar_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            highShelf
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      280000
+  batches:        283
+------------------------------------
+Timing
+  elapsed:        0.100549084 s
+  ns/compute:     359.104
+  fast ns/cmp:    357.254
+  slow ns/cmp:    361.754
+  spread ns/cmp:  4.500
+  spread %:       1.253
+  ns/frame:       2.805
+  ns/out_samp:    2.805
+------------------------------------
+Throughput
+  frames/s:       356442829.454
+  fast frames/s:  358288400.329
+  slow frames/s:  353831511.516
+  out_samp/s: 356442829.454
+  fast out_samp/s: 358288400.329
+  slow out_samp/s: 353831511.516
+------------------------------------
+Validation
+  checksum:       8.2560000285739079

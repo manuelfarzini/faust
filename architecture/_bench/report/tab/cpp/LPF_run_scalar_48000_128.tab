@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_LPF_run_scalar_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            LPF
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      260000
+  batches:        261
+------------------------------------
+Timing
+  elapsed:        0.101196290 s
+  ns/compute:     389.216
+  fast ns/cmp:    375.575
+  slow ns/cmp:    397.113
+  spread ns/cmp:  21.538
+  spread %:       5.534
+  ns/frame:       3.041
+  ns/out_samp:    3.041
+------------------------------------
+Throughput
+  frames/s:       328865811.187
+  fast frames/s:  340810756.840
+  slow frames/s:  322326796.563
+  out_samp/s: 328865811.187
+  fast out_samp/s: 340810756.840
+  slow out_samp/s: 322326796.563
+------------------------------------
+Validation
+  checksum:       8.2560000480734743

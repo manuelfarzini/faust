@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_highShelf_run_scalar_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             highShelf
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         1
+  warm-up iters:   50
+  run iters:       340000
+  batches:         348
+------------------------------------
+Timing
+  elapsed:         0.09833200000139186 s
+  ns/compute:      289.2117647099761
+  fast ns/cmp:     286.79999995802063
+  slow ns/cmp:     292.59999973874073
+  spread ns/cmp:   5.7999997807201
+  spread %:        2.0054508455201976
+  ns/frame:        2.259466911796688
+  ns/out_samp:     2.259466911796688
+------------------------------------
+Throughput
+  frames/s:        442582272.2957327
+  fast frames/s:   446304044.6957307
+  slow frames/s:   437457279.9531434
+  out_samp/s:      442582272.2957327
+  fast out_samp/s: 446304044.6957307
+  slow out_samp/s: 437457279.9531434
+------------------------------------
+Validation
+  checksum:        8.256000028573908

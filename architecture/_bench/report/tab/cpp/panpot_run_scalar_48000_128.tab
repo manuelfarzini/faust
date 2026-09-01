@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_panpot_run_scalar_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            panpot
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        2
+  warm-up iters:  50
+  run iters:      1000000
+  batches:        1000
+------------------------------------
+Timing
+  elapsed:        0.020691997 s
+  ns/compute:     20.692
+  fast ns/cmp:    20.579
+  slow ns/cmp:    21.587
+  spread ns/cmp:  1.008
+  spread %:       4.873
+  ns/frame:       0.162
+  ns/out_samp:    0.081
+------------------------------------
+Throughput
+  frames/s:       6185966487.430
+  fast frames/s:  6219872492.614
+  slow frames/s:  5929357266.937
+  out_samp/s: 12371932974.860
+  fast out_samp/s: 12439744985.228
+  slow out_samp/s: 11858714533.874
+------------------------------------
+Validation
+  checksum:       11.675747242406942

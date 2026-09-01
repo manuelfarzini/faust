@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_stereoecho_run_vec_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             stereoecho
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          2
+  outputs:         2
+  warm-up iters:   50
+  run iters:       930000
+  batches:         932
+------------------------------------
+Timing
+  elapsed:         0.09920799999963492 s
+  ns/compute:      106.67526881681174
+  fast ns/cmp:     106.19999993650708
+  slow ns/cmp:     108.29999991983641
+  spread ns/cmp:   2.099999983329326
+  spread %:        1.96859122702147
+  ns/frame:        0.8334005376313417
+  ns/out_samp:     0.41670026881567085
+------------------------------------
+Throughput
+  frames/s:        1199903233.6146083
+  fast frames/s:   1205273070.400436
+  slow frames/s:   1181902124.6052217
+  out_samp/s:      2399806467.2292166
+  fast out_samp/s: 2410546140.800872
+  slow out_samp/s: 2363804249.2104435
+------------------------------------
+Validation
+  checksum:        1588.0442246198654

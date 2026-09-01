@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_noiseabs_run_vec_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            noiseabs
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         0
+  outputs:        1
+  warm-up iters:  50
+  run iters:      380000
+  batches:        386
+------------------------------------
+Timing
+  elapsed:        0.099537751 s
+  ns/compute:     261.941
+  fast ns/cmp:    261.000
+  slow ns/cmp:    265.725
+  spread ns/cmp:  4.725
+  spread %:       1.804
+  ns/frame:       2.046
+  ns/out_samp:    2.046
+------------------------------------
+Throughput
+  frames/s:       488658820.511
+  fast frames/s:  490421455.939
+  slow frames/s:  481701006.680
+  out_samp/s: 488658820.511
+  fast out_samp/s: 490421455.939
+  slow out_samp/s: 481701006.680
+------------------------------------
+Validation
+  checksum:       70.375485923606902

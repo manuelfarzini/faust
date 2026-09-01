@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_HPF_run_scalar_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            HPF
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      250000
+  batches:        258
+------------------------------------
+Timing
+  elapsed:        0.098579417 s
+  ns/compute:     394.318
+  fast ns/cmp:    387.550
+  slow ns/cmp:    421.467
+  spread ns/cmp:  33.917
+  spread %:       8.601
+  ns/frame:       3.081
+  ns/out_samp:    3.081
+------------------------------------
+Throughput
+  frames/s:       324611373.995
+  fast frames/s:  330279963.876
+  slow frames/s:  303701408.368
+  out_samp/s: 324611373.995
+  fast out_samp/s: 330279963.876
+  slow out_samp/s: 303701408.368
+------------------------------------
+Validation
+  checksum:       -1.8953869584947824e-09

@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_bells_run_vec_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             bells
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          0
+  outputs:         1
+  warm-up iters:   50
+  run iters:       129750
+  batches:         1000
+------------------------------------
+Timing
+  elapsed:         1.8586079999986396 s
+  ns/compute:      14324.531791897038
+  fast ns/cmp:     14090.361443766553
+  slow ns/cmp:     20550.544324286988
+  spread ns/cmp:   6460.182880520435
+  spread %:        45.0987367292156
+  ns/frame:        111.9104046241956
+  ns/out_samp:     111.9104046241956
+------------------------------------
+Throughput
+  frames/s:        8935719.635346537
+  fast frames/s:   9084224.028662233
+  slow frames/s:   6228545.481821004
+  out_samp/s:      8935719.635346537
+  fast out_samp/s: 9084224.028662233
+  slow out_samp/s: 6228545.481821004
+------------------------------------
+Validation
+  checksum:        0.0

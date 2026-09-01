@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_dbmeter_run_vec_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             dbmeter
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          8
+  outputs:         8
+  warm-up iters:   50
+  run iters:       104876
+  batches:         428
+------------------------------------
+Timing
+  elapsed:         0.24547600000005332 s
+  ns/compute:      2340.6308402308755
+  fast ns/cmp:     2314.5890676402173
+  slow ns/cmp:     2395.2848726836874
+  spread ns/cmp:   80.69580504347005
+  spread %:        3.4476092366411084
+  ns/frame:        18.286178439303715
+  ns/out_samp:     2.2857723049129643
+------------------------------------
+Throughput
+  frames/s:        54686111.8805793
+  fast frames/s:   55301393.14556569
+  slow frames/s:   53438320.201383084
+  out_samp/s:      437488895.0446344
+  fast out_samp/s: 442411145.1645255
+  slow out_samp/s: 427506561.6110647
+------------------------------------
+Validation
+  checksum:        2516.4789701104164

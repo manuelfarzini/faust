@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_echo_1_run_scalar_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            echo_1
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      1000000
+  batches:        1000
+------------------------------------
+Timing
+  elapsed:        0.056604664 s
+  ns/compute:     56.605
+  fast ns/cmp:    51.654
+  slow ns/cmp:    66.308
+  spread ns/cmp:  14.654
+  spread %:       25.889
+  ns/frame:       0.442
+  ns/out_samp:    0.442
+------------------------------------
+Throughput
+  frames/s:       2261297761.612
+  fast frames/s:  2478017276.427
+  slow frames/s:  1930376740.167
+  out_samp/s: 2261297761.612
+  fast out_samp/s: 2478017276.427
+  slow out_samp/s: 1930376740.167
+------------------------------------
+Validation
+  checksum:       516.00049471855164

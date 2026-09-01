@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_dbmeter_run_vec_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            dbmeter
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         8
+  outputs:        8
+  warm-up iters:  50
+  run iters:      106516
+  batches:        426
+------------------------------------
+Timing
+  elapsed:        0.247253707 s
+  ns/compute:     2321.282
+  fast ns/cmp:    2297.521
+  slow ns/cmp:    2380.208
+  spread ns/cmp:  82.687
+  spread %:       3.562
+  ns/frame:       18.135
+  ns/out_samp:    2.267
+------------------------------------
+Throughput
+  frames/s:       55141935.648
+  fast frames/s:  55712226.834
+  slow frames/s:  53776808.193
+  out_samp/s: 441135485.180
+  fast out_samp/s: 445697814.671
+  slow out_samp/s: 430214465.548
+------------------------------------
+Validation
+  checksum:       0

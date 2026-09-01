@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_harpe_run_scalar_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             harpe
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          0
+  outputs:         2
+  warm-up iters:   50
+  run iters:       106120
+  batches:         426
+------------------------------------
+Timing
+  elapsed:         0.24614300000030198 s
+  ns/compute:      2319.477949493988
+  fast ns/cmp:     2310.7366767613585
+  slow ns/cmp:     2331.6326528409127
+  spread ns/cmp:   20.895976079554202
+  spread %:        0.9008913442834332
+  ns/frame:        18.12092148042178
+  ns/out_samp:     9.06046074021089
+------------------------------------
+Throughput
+  frames/s:        55184831.58157386
+  fast frames/s:   55393589.96949837
+  slow frames/s:   54897155.36623746
+  out_samp/s:      110369663.16314772
+  fast out_samp/s: 110787179.93899675
+  slow out_samp/s: 109794310.73247492
+------------------------------------
+Validation
+  checksum:        1.5185174942016602

@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_LPF_run_scalar_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             LPF
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         1
+  warm-up iters:   50
+  run iters:       310000
+  batches:         312
+------------------------------------
+Timing
+  elapsed:         0.09851100000014412 s
+  ns/compute:      317.77741935530355
+  fast ns/cmp:     309.8000001045875
+  slow ns/cmp:     326.2999998696614
+  spread ns/cmp:   16.49999976507388
+  spread %:        5.192313474805271
+  ns/frame:        2.482636088713309
+  ns/out_samp:     2.482636088713309
+------------------------------------
+Throughput
+  frames/s:        402797657.11384463
+  fast frames/s:   413169786.81984377
+  slow frames/s:   392277045.8201926
+  out_samp/s:      402797657.11384463
+  fast out_samp/s: 413169786.81984377
+  slow out_samp/s: 392277045.8201926
+------------------------------------
+Validation
+  checksum:        8.256000048073474

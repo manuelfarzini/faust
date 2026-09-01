@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_peakNotch_run_scalar_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             peakNotch
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         1
+  warm-up iters:   50
+  run iters:       340000
+  batches:         343
+------------------------------------
+Timing
+  elapsed:         0.1001410000026226 s
+  ns/compute:      294.53235294889004
+  fast ns/cmp:     293.70000011113007
+  slow ns/cmp:     296.7000000353437
+  spread ns/cmp:   2.9999999242136255
+  spread %:        1.0185637992489787
+  ns/frame:        2.3010340074132034
+  ns/out_samp:     2.3010340074132034
+------------------------------------
+Throughput
+  frames/s:        434587231.9914945
+  fast frames/s:   435818862.62025
+  slow frames/s:   431412200.82491505
+  out_samp/s:      434587231.9914945
+  fast out_samp/s: 435818862.62025
+  slow out_samp/s: 431412200.82491505
+------------------------------------
+Validation
+  checksum:        8.256000028573908

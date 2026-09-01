@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_phasor_sine_run_vec_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            phasor_sine
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         0
+  outputs:        1
+  warm-up iters:  50
+  run iters:      182230
+  batches:        200
+------------------------------------
+Timing
+  elapsed:        0.103924456 s
+  ns/compute:     570.293
+  fast ns/cmp:    565.228
+  slow ns/cmp:    575.842
+  spread ns/cmp:  10.614
+  spread %:       1.861
+  ns/frame:       4.455
+  ns/out_samp:    4.455
+------------------------------------
+Throughput
+  frames/s:       224446111.125
+  fast frames/s:  226457167.248
+  slow frames/s:  222283045.840
+  out_samp/s: 224446111.125
+  fast out_samp/s: 226457167.248
+  slow out_samp/s: 222283045.840
+------------------------------------
+Validation
+  checksum:       14.011091548404334

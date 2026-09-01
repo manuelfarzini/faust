@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_freeverb_run_scalar_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             freeverb
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          2
+  outputs:         2
+  warm-up iters:   50
+  run iters:       107180
+  batches:         448
+------------------------------------
+Timing
+  elapsed:         0.26487799999813433 s
+  ns/compute:      2471.337936164716
+  fast ns/cmp:     2442.2764228831984
+  slow ns/cmp:     2504.4934633483745
+  spread ns/cmp:   62.21704046517607
+  spread %:        2.5175448308672452
+  ns/frame:        19.307327626286845
+  ns/out_samp:     9.653663813143423
+------------------------------------
+Throughput
+  frames/s:        51793806.960550256
+  fast frames/s:   52410119.83765999
+  slow frames/s:   51108138.9802754
+  out_samp/s:      103587613.92110051
+  fast out_samp/s: 104820239.67531998
+  slow out_samp/s: 102216277.9605508
+------------------------------------
+Validation
+  checksum:        1622.8697748184204

@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_karplus_run_scalar_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             karplus
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          0
+  outputs:         1
+  warm-up iters:   50
+  run iters:       400000
+  batches:         406
+------------------------------------
+Timing
+  elapsed:         0.09896899999876041 s
+  ns/compute:      247.42249999690094
+  fast ns/cmp:     232.20000002766028
+  slow ns/cmp:     252.80000008933712
+  spread ns/cmp:   20.600000061676838
+  spread %:        8.325839429289923
+  ns/frame:        1.9329882812257886
+  ns/out_samp:     1.9329882812257886
+------------------------------------
+Throughput
+  frames/s:        517333710.5623102
+  fast frames/s:   551248923.2762804
+  slow frames/s:   506329113.74511874
+  out_samp/s:      517333710.5623102
+  fast out_samp/s: 551248923.2762804
+  slow out_samp/s: 506329113.74511874
+------------------------------------
+Validation
+  checksum:        0.0

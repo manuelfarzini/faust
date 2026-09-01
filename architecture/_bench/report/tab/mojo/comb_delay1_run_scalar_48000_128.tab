@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_comb_delay1_run_scalar_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             comb_delay1
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          0
+  outputs:         1
+  warm-up iters:   50
+  run iters:       111938
+  batches:         198
+------------------------------------
+Timing
+  elapsed:         0.09634799999912502 s
+  ns/compute:      860.7264735757741
+  fast ns/cmp:     848.4539583736696
+  slow ns/cmp:     872.3223390127666
+  spread ns/cmp:   23.86838063909704
+  spread %:        2.773050599912306
+  ns/frame:        6.724425574810735
+  ns/out_samp:     6.724425574810735
+------------------------------------
+Throughput
+  frames/s:        148711587.16455057
+  fast frames/s:   150862635.19278347
+  slow frames/s:   146734749.61659408
+  out_samp/s:      148711587.16455057
+  fast out_samp/s: 150862635.19278347
+  slow out_samp/s: 146734749.61659408
+------------------------------------
+Validation
+  checksum:        -16.96170776942745

@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_bells_run_vec_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            bells
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         0
+  outputs:        1
+  warm-up iters:  50
+  run iters:      115350
+  batches:        1000
+------------------------------------
+Timing
+  elapsed:        2.752620827 s
+  ns/compute:     23863.206
+  fast ns/cmp:    23575.219
+  slow ns/cmp:    27249.581
+  spread ns/cmp:  3674.362
+  spread %:       15.398
+  ns/frame:       186.431
+  ns/out_samp:    186.431
+------------------------------------
+Throughput
+  frames/s:       5363906.229
+  fast frames/s:  5429429.898
+  slow frames/s:  4697319.952
+  out_samp/s: 5363906.229
+  fast out_samp/s: 5429429.898
+  slow out_samp/s: 4697319.952
+------------------------------------
+Validation
+  checksum:       0

@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_spat_run_vec_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            spat
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        8
+  warm-up iters:  50
+  run iters:      146718
+  batches:        198
+------------------------------------
+Timing
+  elapsed:        0.096798210 s
+  ns/compute:     659.757
+  fast ns/cmp:    656.984
+  slow ns/cmp:    663.667
+  spread ns/cmp:  6.683
+  spread %:       1.013
+  ns/frame:       5.154
+  ns/out_samp:    0.644
+------------------------------------
+Throughput
+  frames/s:       194010860.325
+  fast frames/s:  194829686.685
+  slow frames/s:  192867692.371
+  out_samp/s: 1552086882.598
+  fast out_samp/s: 1558637493.476
+  slow out_samp/s: 1542941538.971
+------------------------------------
+Validation
+  checksum:       14.948810350266285

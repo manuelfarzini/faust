@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_pitch_shifter_run_scalar_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            pitch_shifter
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      137237
+  batches:        195
+------------------------------------
+Timing
+  elapsed:        0.100253040 s
+  ns/compute:     730.510
+  fast ns/cmp:    725.915
+  slow ns/cmp:    742.043
+  spread ns/cmp:  16.128
+  spread %:       2.208
+  ns/frame:       5.707
+  ns/out_samp:    5.707
+------------------------------------
+Throughput
+  frames/s:       175219983.354
+  fast frames/s:  176329211.820
+  slow frames/s:  172496719.166
+  out_samp/s: 175219983.354
+  fast out_samp/s: 176329211.820
+  slow out_samp/s: 172496719.166
+------------------------------------
+Validation
+  checksum:       8.2560000285739079

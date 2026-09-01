@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_panpot_run_vec_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             panpot
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         2
+  warm-up iters:   50
+  run iters:       1000000
+  batches:         1000
+------------------------------------
+Timing
+  elapsed:         0.02401599999939208 s
+  ns/compute:      24.015999999392072
+  fast ns/cmp:     23.89999972365331
+  slow ns/cmp:     24.699999994481914
+  spread ns/cmp:   0.8000002708286047
+  spread %:        3.3311137193906375
+  ns/frame:        0.18762499999525056
+  ns/out_samp:     0.09381249999762528
+------------------------------------
+Throughput
+  frames/s:        5329780146.703868
+  fast frames/s:   5355648597.490199
+  slow frames/s:   5182186235.975536
+  out_samp/s:      10659560293.407736
+  fast out_samp/s: 10711297194.980398
+  slow out_samp/s: 10364372471.951073
+------------------------------------
+Validation
+  checksum:        11.675747242406942

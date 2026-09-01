@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_gate_compressor_run_scalar_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            gate_compressor
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        2
+  warm-up iters:  50
+  run iters:      119050
+  batches:        1000
+------------------------------------
+Timing
+  elapsed:        2.497034662 s
+  ns/compute:     20974.672
+  fast ns/cmp:    20690.108
+  slow ns/cmp:    21358.957
+  spread ns/cmp:  668.850
+  spread %:       3.189
+  ns/frame:       163.865
+  ns/out_samp:    81.932
+------------------------------------
+Throughput
+  frames/s:       6102598.507
+  fast frames/s:  6186531.292
+  slow frames/s:  5992801.874
+  out_samp/s: 12205197.014
+  fast out_samp/s: 12373062.583
+  slow out_samp/s: 11985603.748
+------------------------------------
+Validation
+  checksum:       0

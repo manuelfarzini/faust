@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_vcf_wah_pedals_run_scalar_48000_128_417cbea1ca36
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             vcf_wah_pedals
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         2
+  warm-up iters:   50
+  run iters:       115950
+  batches:         1000
+------------------------------------
+Timing
+  elapsed:         2.8129769999977725 s
+  ns/compute:      24260.25873219296
+  fast ns/cmp:     23768.07760185483
+  slow ns/cmp:     24543.243243651643
+  spread ns/cmp:   775.1656417968115
+  spread %:        3.1952076453668634
+  ns/frame:        189.5332713452575
+  ns/out_samp:     94.76663567262875
+------------------------------------
+Throughput
+  frames/s:        5276118.503639295
+  fast frames/s:   5385374.540766858
+  slow frames/s:   5215284.660192923
+  out_samp/s:      10552237.00727859
+  fast out_samp/s: 10770749.081533715
+  slow out_samp/s: 10430569.320385845
+------------------------------------
+Validation
+  checksum:        5.2585243184744e-05
