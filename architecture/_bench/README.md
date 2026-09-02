@@ -1,52 +1,115 @@
-<!-- TODO: rivedere tutto -->
-
 ## Faust benchmark framework
 
-Il contenuto di questa cartella implementa il framework utilizzato per misurare e confrontare le
-prestazioni del codice DSP generato dai backend FAUST, con particolare riferimento alle
-implementazioni `C++` e `Mojo`.
+This directory contains the framework used to measure and compare the performance of DSP code generated
+by the FAUST backends, with particular reference to the `C++` and `Mojo` implementations.
 
-Il framework non costituisce un backend aggiuntivo: orchestra invece le diverse fasi necessarie per
-trasformare uno stesso programma FAUST in programmi eseguibili confrontabili, eseguirli in
-condizioni omogenee e raccogliere i risultati in una rappresentazione comune.
+The framework orchestrates the steps required to transform the same FAUST program into comparable executable
+programs, run them under homogeneous conditions, and collect the results in a common representation.
 
-Il flusso generale può essere riassunto come segue:
+The general flow can be summarized as follows:
 
-```text
-programma FAUST
+```
+FAUST program
       |
-      v
 FAUST compiler + bench architecture
       |
       +---------------------+
       |                     |
-      v                     v
- sorgente C++          sorgente Mojo
+   C++ file             Mojo file
       |                     |
-      v                     v
    clang++              mojo build
       |                     |
       +----------+----------+
                  |
-                 v
           benchmark runtime
                  |
-                 v
-        report testuale / CSV
+          text / CSV report
                  |
-                 v
-          plot e snapshot
+          plot and snapshot
 ```
 
-Lo stesso framework comprende inoltre un percorso di ispezione separato dal benchmark, utilizzato
-per produrre `LLVM IR` e assembly del kernel generato senza introdurre nel codice osservato la
-logica di misurazione e reporting.
+The same framework also includes an inspection path separate from the benchmark, used to produce `LLVM IR`
+and assembly for the generated kernel without introducing measurement and reporting logic into the code
+being inspected.
 
-## Organizzazione della directory
+## Quick start
 
-Le componenti principali sono organizzate secondo la seguente struttura concettuale:
+The workspace already contains `pixi.toml` and `pixi.lock`, so using the framework does not require
+initializing a new Pixi project or adding the dependencies manually.
 
-```text
+Pixi must first be installed.
+
+On macOS with Homebrew:
+
+```
+brew install pixi
+```
+
+On Linux, including distributions such as Ubuntu, Debian, and Fedora:
+
+```
+curl -fsSL https://pixi.sh/install.sh | sh
+```
+
+On Windows from PowerShell:
+
+```powershell
+iwr -useb https://pixi.sh/install.ps1 | iex
+```
+
+From the `architecture/_bench` directory, the environment declared by the project can then be installed with:
+
+```
+pixi install
+```
+
+and activated with:
+
+```
+pixi shell
+```
+
+On `bash` or `zsh`, the framework aliases can be loaded with:
+
+```
+source script/source.sh
+```
+
+The following command runs the entire available matrix, using both modes, both languages, and all DSPs
+available in `src`:
+
+```
+bench_run all all all
+```
+
+The main aliases are:
+
+```
+bench_run <modes> <langs> <sources...>
+bench_run_transpiled <mode> <lang> <path>
+
+inspect_llvm <modes> <langs> <sources...>
+inspect_asm <modes> <langs> <sources...>
+
+bench_plot <name>
+bench_snapshot <name>
+bench_clean
+```
+
+The complete help is printed with:
+
+```
+bench_help
+```
+
+`source.sh` only provides the `bash/zsh` aliases. The Python CLI remains directly available through
+`bench` or `python3 script/bench.py`.
+
+## Directory organization
+
+The main components are organized according to the following structure:
+
+```
 architecture/_bench/
 ├── arch/
 │   └── cpp/
@@ -55,7 +118,7 @@ architecture/_bench/
 │       ├── bench.cpp
 │       └── inspect.cpp
 ├── script/
-│   └── implementazione Python del framework
+│   └── Python implementation of the framework
 ├── src/
 │   └── *.dsp
 ├── report/
@@ -71,414 +134,329 @@ architecture/_bench/
 └── pixi.lock
 ```
 
-La directory `src` contiene i programmi FAUST utilizzati come casi di benchmark. Il framework
-accetta sia questi sorgenti sia path espliciti forniti dall'utente e ricava dal nome del file
-l'identità del DSP utilizzata nei report.
+The `src` directory contains the FAUST sources used as benchmark cases. An explicit path to another DSP
+source can also be provided to the framework.
 
-`arch/cpp` contiene le architetture dedicate al backend C++. Le corrispondenti architetture Mojo non
-sono copiate all'interno di `_bench`: il framework utilizza direttamente
-`architecture/mojo/bench.mojo` e `architecture/mojo/inspect.mojo`, insieme ai package dai quali esse
-dipendono.
+The `arch/cpp` directory contains the architectures dedicated to the C++ backend. The corresponding Mojo
+architectures are not duplicated inside `_bench`: they are used directly from `architecture/mojo`.
 
-`script` contiene il codice Python che implementa la CLI, la generazione dei casi, la compilazione,
-la gestione dei report e la produzione dei grafici. Il passaggio da una implementazione shell a
-Python permette di mantenere la stessa logica su macOS, Linux e Windows senza dipendere da utility o
-semantiche specifiche di una shell POSIX.
+The `script` directory contains the Python code that coordinates generation, compilation, execution,
+reporting, plotting, and inspection of the produced code.
 
-## Ambiente Pixi
+The files transpiled to the target language by the framework are kept under `report/tmp/<run-id>`.
+The C++ and Mojo architectures depend on local headers or packages outside this directory. Their respective
+paths are therefore passed to the compilers through the `-I` option. This way, the physical location of the
+generated file does not need to match the architecture location.
 
-La directory costituisce un workspace Pixi autonomo. `pixi.toml` descrive la toolchain e le
-dipendenze necessarie al framework, mentre `pixi.lock` memorizza la risoluzione concreta
-dell'ambiente.
+Persistent artifacts produced by the framework are instead organized into the `report` subdirectories,
+separating binaries, text outputs, plots, snapshots, and inspection results.
 
-L'ambiente può essere attivato con:
+## Pixi environment
 
-```sh
-pixi shell
+The directory is an independent Pixi workspace. `pixi.toml` describes the toolchain and dependencies used
+by the framework, while `pixi.lock` stores the concrete environment resolution.
+
+The main dependencies include Mojo and the Python tools used for orchestration and report generation.
+Once the environment has been installed with:
+
+```
+pixi install
 ```
 
-All'interno della shell il framework viene esposto attraverso il comando `bench`:
+it can be entered with:
 
-```sh
-bench --help
+```
+    pixi shell
 ```
 
-Gli stessi comandi possono essere eseguiti senza entrare esplicitamente nella shell tramite
-`pixi run`:
+or a command can be executed without opening an interactive shell through `pixi run`.
 
-```sh
-pixi run bench --help
+Pixi makes the benchmark toolchain reproducible, the logic is implemented in Python, and `source.sh`
+provides an optional alias layer for `bash/zsh`.
+
+## Numerical configuration
+
+The framework assumes a fixed numerical configuration, chosen to compare the backends under the same
+conditions used during the development of the Mojo backend.
+
+The internal DSP precision is selected during FAUST transpilation through:
+
+```
+    -double
 ```
 
-Pixi viene utilizzato soprattutto per rendere riproducibile l'ambiente Mojo e le dipendenze Python
-del framework. La logica di benchmark rimane tuttavia indipendente dalla shell dalla quale il
-comando viene invocato.
+The internal computation produced by the generator therefore uses `f64` precision, while the external
+architecture interface uses `f32` samples.
 
-## Configurazione numerica
+For C++, the type is resolved through the `FAUSTFLOAT` macro in the source code and by passing the
+corresponding option to the compiler:
 
-Il framework assume una configurazione numerica fissa, scelta per confrontare i backend nelle stesse
-condizioni utilizzate durante lo sviluppo del backend Mojo.
-
-La precisione interna del DSP viene selezionata durante la transpilazione FAUST tramite:
-
-```text
--double
+```
+    -DFAUSTFLOAT=float
 ```
 
-Il calcolo interno prodotto dal generatore usa quindi precisione `f64`. Questa proprietà appartiene
-alla fase di generazione FAUST e non viene propagata come dimensione configurabile alle compilazioni
-successive.
+For Mojo, an equivalent mechanism is used through the `get_defined_dtype` function call in the source code:
 
-L'interfaccia esterna delle architetture utilizza invece campioni `f32`. Per C++ il tipo viene
-definito con:
-
-```text
--DFAUSTFLOAT=float
+```
+    dfaust = get_defined_dtype("DFAUST", DType.float32)
 ```
 
-mentre per Mojo viene utilizzata la define:
+and by passing the option:
 
-```text
--D DFAUST=DType.float32
+```
+    -D DFAUST=DType.float32
 ```
 
-Si ottiene quindi il profilo fisso:
+The numerical configuration therefore uses:
 
-```text
-calcolo interno DSP    f64
-buffer esterni C++     f32
-buffer esterni Mojo    f32
+```
+    internal DSP computation    f64
+    external C++ buffers        f32
+    external Mojo buffers       f32
 ```
 
-La precisione non costituisce pertanto un asse del benchmark e non viene selezionata dall'utente.
+The execution configuration uses:
 
-## Modalità scalare e vettoriale
-
-Il framework espone due modalità di generazione:
-
-- `scalar`, corrispondente alla generazione FAUST ordinaria;
-- `vec`, corrispondente alla generazione attraverso il vector code container di FAUST.
-
-La modalità vettoriale aggiunge alle opzioni di FAUST:
-
-```text
--vec -vs 4 -dfs
+```
+    sample rate    48000 Hz
+    buffer size    128 frames
 ```
 
-La `-vec` mode riorganizza il kernel in sottocicli secondo le dipendenze del DSP. Nel backend C++
-questi cicli possono successivamente essere autovettorizzati dal compilatore, mentre il backend Mojo
-utilizza questa struttura come base per l'emissione SIMD esplicita descritta nella documentazione
-del generator.
+## Scalar and vector modes
 
-Il valore `-vs 4` corrisponde alla configurazione SIMD utilizzata nello sviluppo corrente e deve
-rimanere coerente con la larghezza vettoriale assunta dal codice Mojo generato.
+The framework exposes two generation modes:
 
-## Comando `run`
+- `scalar`, corresponding to ordinary FAUST generation;
+- `vec`, corresponding to generation through the FAUST vector code container.
 
-Il comando principale del framework genera, compila ed esegue una matrice di benchmark:
+Vector mode adds the following FAUST options:
 
-```sh
-bench run <modes> <langs> <sample-rates> <buffer-sizes> <sources...>
+```
+    -vec -vs 4 -dfs
 ```
 
-Ad esempio:
+The `-vec` mode reorganizes the kernel into subloops according to the DSP dependencies. In the C++ backend,
+these loops can subsequently be auto-vectorized by the compiler, while the Mojo backend uses this structure
+as the basis for the explicit SIMD emission described in the generator documentation.
 
-```sh
-bench run all all 48 64 all
-bench run scalar cpp,mojo 48 64 carre_volterra
-bench run vec mojo 48,192 64,512 multibandfilter
+The `-vs 4` value corresponds to the SIMD configuration used during development on Apple silicon M1 and M4
+and must remain consistent with the vector width assumed by the generated Mojo code.
+
+## Running benchmarks
+
+The main command generates, compiles, and executes a benchmark matrix:
+
+```
+    bench_run <modes> <langs> <sources...>
 ```
 
-Le dimensioni principali sono:
+For example:
 
-- modalità: `scalar`, `vec` oppure `all`;
-- linguaggio: `cpp`, `mojo` oppure `all`;
-- sample rate: valore singolo, lista separata da virgole oppure `all`;
-- buffer size: valore singolo, lista separata da virgole oppure `all`;
-- sorgente: nome del DSP, path esplicito, più sorgenti oppure `all`.
+```
+    bench_run all all all
+    bench_run scalar cpp,mojo carre_volterra
+    bench_run vec mojo multibandfilter
+```
 
-I sample rate espressi in kHz vengono normalizzati dal framework, per cui un valore come `48`
-identifica `48000 Hz`.
+The available selections are:
 
-Il comando risolve innanzitutto la matrice richiesta e genera i sorgenti target per ogni
-combinazione di DSP, linguaggio e modalità. Le compilazioni vengono quindi specializzate per sample
-rate e buffer size.
+- mode: `scalar`, `vec`, or `all`;
+- language: `cpp`, `mojo`, or `all`;
+- source: DSP name, explicit path, glob, or `all`.
 
-## Generazione dei sorgenti
+The framework resolves the requested combinations and applies the same generation, compilation, and
+measurement path to each DSP.
 
-La generazione utilizza sempre il compilatore FAUST costruito nel repository e combina il sorgente
-DSP con l'architettura di benchmark del linguaggio selezionato.
+## Generation and compilation
 
-Per C++ la relazione è concettualmente:
+Generation combines the DSP source with the benchmark architecture of the selected language.
 
-```text
+For C++:
+
+```
 src/<dsp>.dsp + arch/cpp/bench.cpp
         |
-        v
-sorgente benchmark C++
+benchmark C++ file
+        |
+      clang++
+        |
+     binary
 ```
 
-Per Mojo viene utilizzata direttamente l'architettura reale:
+For Mojo:
 
-```text
-src/<dsp>.dsp + ../mojo/bench.mojo
+```
+src/<dsp>.dsp + architecture/mojo/bench.mojo
         |
-        v
-architecture/mojo/<generated>.mojo
+benchmark Mojo file
+        |
+    mojo build
+        |
+     binary
 ```
 
-I sorgenti Mojo vengono generati all'interno di `architecture/mojo` perché il programma risultante
-importa package locali quali `conf`, `dsp`, `mem`, `meta` e `bench`. La posizione del file fa quindi
-parte dell'ambiente necessario alla risoluzione dei package da parte del compilatore Mojo.
+The same pipeline is used for scalar and vec modes; what changes is the form of the code produced by FAUST
+and, subsequently, the code generated by the target compiler.
 
-Il framework non richiede più un symlink da `_bench` verso `architecture/mojo`: i path reali vengono
-risolti direttamente dal codice Python.
+## Benchmark architecture
 
-## Compilazione
+The `bench` architectures transform the generated DSP into a standalone measurable program. They initialize
+the DSP, prepare the buffers, and call `compute` in a controlled environment.
 
-Una volta prodotto il sorgente target, il framework costruisce un eseguibile specifico per la
-configurazione richiesta.
+The general behavior is equivalent for C++ and Mojo:
 
-La compilazione C++ utilizza il compilatore C++ con ottimizzazione `-O3` e definisce almeno il tipo
-esterno, il sample rate, la dimensione del buffer e i parametri richiesti dall'architettura di
-benchmark.
-
-La compilazione Mojo utilizza `mojo build` con ottimizzazione equivalente e passa le corrispondenti
-define a compile time. In particolare l'architettura riceve `DFAUST=DType.float32`, mentre il DSP
-contenuto nel sorgente è già stato generato da FAUST con `-double`.
-
-I binari possono essere riutilizzati quando il sorgente corrispondente non è cambiato. Se il file
-generato è più recente, il binario non esiste oppure è richiesta una ricompilazione, il framework
-esegue una nuova build.
-
-Prima di una generazione o compilazione effettiva vengono rimossi gli artifact precedenti associati
-allo stesso caso. In questo modo un errore di FAUST o del compilatore target non può causare
-l'esecuzione accidentale di un sorgente o binario obsoleto.
-
-## Architettura di benchmark
-
-Le architetture `bench` hanno il compito di trasformare il DSP generato in un programma misurabile.
-Non utilizzano un driver audio reale: inizializzano il DSP, allocano direttamente i buffer e
-richiamano `compute` in un ambiente controllato.
-
-Il comportamento generale è equivalente per C++ e Mojo:
-
-```text
-inizializzazione DSP
+```
+DSP initialization
         |
-        v
-allocazione buffer
+buffer allocation
         |
-        v
-inizializzazione ingressi
+input initialization
         |
-        v
-warmup
+      warmup
         |
-        v
-misurazione compute
+compute measurement
         |
-        v
-checksum output
+output checksum
         |
-        +--> report testuale
+        +--> text report
         |
-        +--> CSV temporaneo
+        +--> CSV
 ```
 
-Il warmup permette di evitare che le prime esecuzioni influenzino direttamente la misura. La fase di
-benchmark richiama quindi `compute` ripetutamente e raccoglie il tempo medio insieme ai valori più
-veloci e più lenti osservati durante le misurazioni.
+The warmup prevents the first executions from directly affecting the measurement. The benchmark then calls
+`compute` repeatedly and collects the timings needed to compare the different implementations.
 
-Il checksum degli output non viene utilizzato come misura prestazionale; serve a mantenere
-osservabile il risultato del calcolo e a verificare che le diverse implementazioni producano un
-risultato coerente.
-
-## Parallelismo ed esecuzione
-
-Le fasi di generazione e build sono indipendenti per gran parte della matrice dei casi e vengono
-quindi eseguite in parallelo. L'esecuzione dei benchmark rimane invece controllata per evitare che
-più programmi misurati contemporaneamente competano per le stesse risorse della macchina.
-
-Un errore in un singolo DSP non interrompe l'intero batch. Se una generazione FAUST o una
-compilazione fallisce, il relativo caso viene marcato come non disponibile e il framework continua
-con gli altri casi risolti dalla stessa invocazione.
-
-Questa separazione permette, ad esempio, di eseguire `all` su una collezione di DSP anche quando una
-sola sorgente non è momentaneamente supportata dal backend Mojo.
+The output checksum is not a performance metric; it keeps the computation result observable and allows the
+backend executions to be compared.
 
 ## Report
 
-Ogni benchmark produce due forme principali di output.
+Each benchmark produces a text output and updates the global structured report:
 
-Il report testuale viene salvato sotto `report/tab` e contiene le informazioni utili alla lettura
-diretta della singola esecuzione. Il report strutturato viene invece raccolto nel file globale:
-
-```text
-report/report.csv
+```
+    report/report.csv
 ```
 
-Il CSV mantiene l'identità completa del caso di benchmark, includendo informazioni quali linguaggio,
-DSP, modalità, configurazione, tempi e throughput. I frammenti prodotti dagli eseguibili vengono
-prima scritti nell'area temporanea e successivamente integrati nel report globale.
+The readable outputs of individual executions are stored under:
 
-La procedura di merge sostituisce una misura precedente solamente quando questa appartiene alla
-stessa identità di benchmark. Esecuzioni appartenenti a DSP, modalità o configurazioni differenti
-rimangono quindi contemporaneamente disponibili nel report.
+```
+    report/tab/
+```
 
-Fra le metriche principali sono presenti:
+The CSV keeps the different DSPs, languages, modes, and benchmark cases separate, allowing multiple
+executions to be accumulated and compared in the same report.
 
-- tempo medio per invocazione di `compute`;
-- tempo per frame;
-- throughput in frame al secondo;
-- throughput in campioni di uscita al secondo;
-- valori fast e slow della misura;
-- checksum del risultato.
+The collected metrics include:
 
-Per DSP privi di uscite, per i quali il throughput in campioni di output non è significativo, il
-framework può utilizzare il throughput in frame al secondo come riferimento.
+- average time per `compute` invocation;
+- time per frame;
+- throughput in frames per second;
+- throughput in output samples per second;
+- fast and slow measurement values;
+- result checksum.
 
 ## Plot
 
-Il comando:
+The command:
 
-```sh
-bench plot <name>
+```
+    bench_plot <name>
 ```
 
-produce un grafico SVG a partire dal contenuto accumulato in `report/report.csv`.
+produces an SVG plot from the contents of `report/report.csv`.
 
-Il plot raggruppa i risultati per DSP e configurazione e normalizza il throughput rispetto al valore
-migliore del gruppo, posto al `100%`. In questo modo è possibile confrontare direttamente C++ e
-Mojo, nonché le rispettive modalità scalar e vec, senza perdere la separazione fra casi distinti.
+The plot compares results as relative percentages of the average throughput value. Columns are grouped by
+DSP; for each DSP, the highest average value is set to 100%, and the height of the other columns represents
+their respective average value as a percentage of that maximum.
 
-La barra rappresenta il valore medio misurato; sopra di essa viene riportato il throughput assoluto.
-I valori fast e slow vengono visualizzati come estremi della misura, rendendo immediatamente
-leggibile anche la variazione osservata durante il benchmark.
+Above each column, the average throughput value is shown in `frame/s`.
 
-Per i DSP con almeno una uscita viene utilizzato normalmente `out_samp_per_s`; per sink privi di
-output il plot utilizza invece `frames_per_s`.
+The error bars associated with each column show the fast and slow extremes.
 
 ## Snapshot
 
-Il comando:
+The command:
 
-```sh
-bench snapshot <name>
+```
+    bench_snapshot <name>
 ```
 
-salva lo stato corrente dei report in una directory dedicata sotto `report/snap`.
+saves the current report state under:
 
-Lo snapshot permette di conservare un insieme di risultati prima di successive modifiche al
-generator o alle architetture. In questo modo il report corrente può essere rigenerato o pulito
-senza perdere le misure selezionate come riferimento.
-
-Gli snapshot sono considerati artifact persistenti e non vengono rimossi dal normale comando di
-cleanup.
-
-## Ispezione LLVM e assembly
-
-Il benchmark e l'ispezione del codice sono mantenuti volutamente separati. Le architetture di
-benchmark contengono warmup, misurazione, report e logica di batching, elementi utili all'esecuzione
-ma indesiderati quando si vuole analizzare il codice generato dal compilatore target.
-
-Per questo motivo il framework espone:
-
-```sh
-bench inspect llvm <mode> <lang> <sources...>
-bench inspect asm <mode> <lang> <sources...>
+```
+    report/snap/
 ```
 
-La generazione utilizza `inspect.cpp` per C++ e `inspect.mojo` per Mojo. Entrambe le architetture
-espongono un percorso di calcolo riconoscibile, concettualmente identificato dal simbolo:
+A snapshot stores a set of results persistently, allowing changes to the generator and architectures and
+subsequent comparison of new results with previous ones. For this reason, the normal `cleanup` does not
+remove the `report/snap` directory.
 
-```text
-inspect_compute
+## LLVM and assembly inspection
+
+Benchmarking and code inspection are kept separate. The benchmark architectures contain the logic required
+for measurement, while the `inspect` architectures keep the computation path minimal in order to inspect
+the code produced by the target compiler.
+
+The framework exposes:
+
+```
+    inspect_llvm <modes> <langs> <sources...>
+    inspect_asm <modes> <langs> <sources...>
 ```
 
-L'entry point richiama il `compute` generato mantenendo il codice circostante minimale e
-introducendo le barriere necessarie ad impedire che il compilatore elimini il calcolo durante
-l'ottimizzazione.
+Generation uses `inspect.cpp` for C++ and `inspect.mojo` for Mojo.
 
-Gli artifact risultanti vengono salvati rispettivamente sotto:
+The resulting artifacts are stored respectively under:
 
-```text
+```
 report/llvm/<lang>/
 report/asm/<lang>/
 ```
 
-L'ispezione serve quindi ad analizzare la forma del codice prodotto, l'effettiva presenza di
-istruzioni SIMD, il trattamento dello stato e le trasformazioni operate dal compilatore target. I
-suoi risultati non sono utilizzati come misure di performance.
+This mode allows the generated code to be analyzed, the presence of SIMD instructions to be verified, and
+the transformations performed by the compilers to be compared without using these outputs as performance
+measurements.
 
-## Sorgenti già transpilati
+## Already transpiled files
 
-Il framework permette inoltre di compilare ed eseguire un sorgente target già prodotto, evitando la
-fase di generazione FAUST:
+The framework can directly compile and execute an already transpiled C++ or Mojo file, skipping the FAUST
+generation phase:
 
-```sh
-bench run-transpiled <mode> <lang> <sample-rate> <buffer-size> <path>
+```
+bench_run_transpiled <mode> <lang> <path>
 ```
 
-Questa modalità è utile durante l'analisi del backend quando si vuole modificare manualmente il
-codice transpilato e confrontarne il comportamento senza rigenerarlo ad ogni esecuzione.
+The specified mode must match the one used when the file was transpiled. For an already transpiled file,
+`scalar` or `vec` do not modify the compiled code, but identify the case in the report. Passing the wrong
+mode places the result in the wrong column.
 
-Lo stesso principio è disponibile per l'ispezione:
+This command is useful during optimization when, for example, the code produced by the backend is modified
+manually and its performance needs to be measured.
 
-```sh
-bench inspect-transpiled llvm <mode> <lang> <sample-rate> <buffer-size> <path>
-bench inspect-transpiled asm <mode> <lang> <sample-rate> <buffer-size> <path>
+The same principle is available for inspection:
+
+```
+    inspect_llvm_transpiled <mode> <lang> <path>
+    inspect_asm_transpiled <mode> <lang> <path>
 ```
 
-Un sorgente C++ può essere compilato direttamente dal proprio path. Un sorgente Mojo esterno deve
-invece essere reso temporaneamente disponibile nel contesto di `architecture/mojo`, perché gli
-import del programma dipendono dai package locali dell'architettura.
-
-Il framework esegue questo staging con un nome temporaneo dedicato e lo rimuove al termine
-dell'operazione, evitando di sovrascrivere o cancellare file appartenenti all'architettura reale.
+The file is compiled directly from its own path using the framework configuration and the compiler of the
+target language.
 
 ## Cleanup
 
-I sorgenti generati per benchmark e ispezione sono artifact temporanei. Durante una normale
-esecuzione il framework ne tiene traccia e li rimuove al termine del comando, compresi i percorsi
-temporanei creati per i sorgenti Mojo già transpilati.
+Files generated during benchmarking and inspection are temporary artifacts and are kept in the
+`report/tmp` area. Already transpiled files provided by the user are instead used directly and are not
+copied or modified by the framework.
 
-La gestione centralizzata in Python permette di eseguire il cleanup anche quando una singola
-generazione o build fallisce e di applicare la stessa logica in caso di interruzione del comando.
+The command:
 
-Il comando:
-
-```sh
-bench clean
+```
+bench_clean
 ```
 
-rimuove gli artifact rigenerabili del framework, fra cui binari, file temporanei, report di
-esecuzione, plot e output di ispezione. I sorgenti DSP e le architetture non vengono modificati e
-gli snapshot rimangono disponibili.
+removes the regenerable artifacts produced by the framework. Snapshots remain available unless their
+removal is explicitly requested with the `--snapshots` option.
 
-Durante lo sviluppo è possibile mantenere i sorgenti intermedi attraverso l'opzione di
-configurazione `BENCH_KEEP_TMP`, utile quando si vuole osservare direttamente il codice prodotto da
-FAUST prima della compilazione target.
-
-## Workflow essenziale
-
-Una normale sessione di confronto può quindi essere ridotta a pochi comandi:
-
-```sh
-pixi shell
-
-bench run all cpp,mojo 48 64 all
-bench plot compare_backends
-bench snapshot compare_backends
-```
-
-Per analizzare il codice generato anziché il runtime:
-
-```sh
-bench inspect llvm vec mojo multibandfilter
-bench inspect asm vec cpp multibandfilter
-```
-
-Il framework mantiene volutamente separate le responsabilità: FAUST genera il DSP, le architetture
-costruiscono il programma eseguibile, i compilatori target producono il codice macchina e il layer
-Python coordina i casi, raccoglie le misure e organizza gli artifact risultanti.
+During development, intermediate files can also be preserved with the `--keep-tmp` option, which is useful
+when inspecting the code produced by FAUST before target compilation.

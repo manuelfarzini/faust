@@ -5,7 +5,6 @@ import argparse
 import fcntl
 import glob
 import itertools
-import json
 import os
 import platform
 import re
@@ -222,69 +221,66 @@ class Runner:
         config = self.config
         sources = list(dict.fromkeys(case.source for case in cases))
         check_architectures(config, sources)
+
         # Reject an incompatible report before spending time compiling.
         if emit is None:
             report.read_csv(config.report / "report.csv")
+
         print(f"{'Inspecting' if emit else 'Benchmarking'} {len(cases)} cases "
               f"at {SAMP_RATE} Hz / {BUFF_SIZE} frames "
               f"({config.jobs} build jobs; serial measurements)", flush=True)
+
         generated: dict[Source, Path] = {}
         generation = {}
         builds = {}
         fragments = {}
         inspection_outputs = {}
-        staging = []
+
         for source in sources:
-            if source.transpiled and source.lang == "cpp":
+            if source.transpiled:
                 generated[source] = source.path
                 continue
-            parent = config.arch("mojo") if source.lang == "mojo" else self.work
+
             name = f"_bench_{self.run_id}_{source.dsp}_{source.mode}_{source.purpose}"
-            output = self.own(parent / f"{name}.{source.lang}")
+            output = self.own(self.work / f"{name}.{source.lang}")
             generated[source] = output
-            if source.transpiled:
-                staging.append((source.path, output))
-            else:
-                generation[source] = self.task(
-                    "generate", f"{source.lang}/{source.dsp}/{source.mode}",
-                    backends.generate(config, source, output),
-                    self.work / f"{name}.{source.lang}.generate.log", output,
-                    config.generate_timeout)
+
+            generation[source] = self.task(
+                "generate", f"{source.lang}/{source.dsp}/{source.mode}",
+                backends.generate(config, source, output),
+                self.work / f"{name}.{source.lang}.generate.log", output,
+                config.generate_timeout)
+
         for case in cases:
             lang = case.source.lang
             stem = f"{lang}_{case.stem}"
             fragment = self.own(self.work / f"{stem}.csv") if emit is None else None
             fragments[case] = fragment
+
             if emit:
                 suffix = ".ll" if emit == "llvm" else ".s"
                 output = self.own(self.work / f"{stem}{suffix}")
                 inspection_outputs[case] = config.report / emit / lang / f"{case.stem}{suffix}"
             else:
                 output = self.own(config.report / "bin" / lang / f"{stem}_{self.run_id}")
+
             builds[case] = self.task(
                 emit or "build", f"{lang}/{case.stem}",
                 backends.compile_source(config, case, generated[case.source], output,
                                         fragment, emit),
-                self.work / f"{stem}.{emit or 'build'}.log", output, config.build_timeout,
-                config.arch("mojo") if lang == "mojo" else config.root)
+                self.work / f"{stem}.{emit or 'build'}.log", output,
+                config.build_timeout)
+
         self.metadata("running")
         status = "interrupted"
+
         try:
-            staged = set()
-            for original, target in staging:
-                try:
-                    if self.dry_run:
-                        print(f"stage {shlex.quote(str(original))} -> {shlex.quote(str(target))}")
-                    else:
-                        shutil.copyfile(original, target)
-                    staged.add(target)
-                except OSError as error:
-                    self.failed(f"stage {original}", error)
             good_sources = self.parallel(generation)
-            good_sources.update(source for source in sources if source.transpiled
-                                and (source.lang == "cpp" or generated[source] in staged))
+            good_sources.update(source for source in sources if source.transpiled)
+
             ready = {case: task for case, task in builds.items() if case.source in good_sources}
             built = self.parallel(ready)
+
             if emit:
                 for case in cases:
                     if case in built:
@@ -301,16 +297,20 @@ class Runner:
                 for case in cases:
                     if case not in built:
                         continue
+
                     fragment = fragments[case]
                     label = f"{case.source.lang}/{case.stem}"
                     tab = config.report / "tab" / case.source.lang / f"{case.stem}.tab"
                     temporary_tab = self.work / f"{case.source.lang}_{case.stem}.run.log"
+
                     try:
                         if not self.dry_run:
                             fragment.unlink(missing_ok=True)
+
                         print(f"RUN {label}", flush=True)
                         self.command([str(builds[case]["output"])], temporary_tab,
                                      config.run_timeout)
+
                         if not self.dry_run:
                             row = report.read_fragment(fragment, config, case)
                             report.merge_row(config.report / "report.csv", row)
@@ -318,18 +318,23 @@ class Runner:
                             shutil.copyfile(temporary_tab, tab)
                             print(f"OK {label}: {float(row['ns_per_compute']):.3f} ns/compute",
                                   flush=True)
+
                     except (OSError, RuntimeError, ValueError) as error:
                         self.failed(f"run {label}", error)
+
             status = "failed" if self.failures else "complete"
+
         finally:
             self.cancel.set()
+
             if not self.dry_run and not config.keep_tmp:
                 for path in self.owned:
                     path.unlink(missing_ok=True)
+
             self.metadata(status)
+
         print(f"{status}: {len(self.failures)} failure(s)", flush=True)
         return int(bool(self.failures))
-
 
 def remove(path: Path) -> None:
     if path.is_symlink() or path.is_file():
@@ -337,17 +342,7 @@ def remove(path: Path) -> None:
     elif path.is_dir():
         shutil.rmtree(path)
 
-
 def clean(config: Config, artifacts_only: bool, snapshots: bool) -> None:
-    # Only generated sources recorded by this runner may be removed from architecture trees.
-    for manifest in (config.report / "tmp").glob("*/context.json"):
-        context = json.loads(manifest.read_text())
-        run_id = context["run_id"]
-        for name in context.get("owned", []):
-            path = Path(name)
-            if (path.parent.resolve() == config.arch("mojo").resolve()
-                    and path.name.startswith(f"_bench_{run_id}_")):
-                path.unlink(missing_ok=True)
     directories = ["tmp", "bin"]
     if not artifacts_only:
         directories += ["tab", "plot", "llvm", "asm", "report.csv", "context.json"]
@@ -355,7 +350,8 @@ def clean(config: Config, artifacts_only: bool, snapshots: bool) -> None:
         directories += ["snap"]
     for name in directories:
         remove(config.report / name)
-    print("cleaned generated artifacts" if artifacts_only else "cleaned current reports and artifacts")
+    print("cleaned generated artifacts" if artifacts_only
+          else "cleaned current reports and artifacts")
 
 
 def snapshot(config: Config, name: str) -> None:
