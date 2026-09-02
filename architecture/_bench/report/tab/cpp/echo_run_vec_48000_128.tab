@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_echo_run_vec_48000_128_417cbea1ca36
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_echo_run_vec_48000_128_22939a0fc5ac
 
 Faust compute benchmark
 ------------------------------------
@@ -21,22 +21,22 @@ Configuration
   batches:        1000
 ------------------------------------
 Timing
-  elapsed:        0.052065044 s
-  ns/compute:     52.065
-  fast ns/cmp:    50.529
-  slow ns/cmp:    55.683
-  spread ns/cmp:  5.154
-  spread %:       9.900
-  ns/frame:       0.407
-  ns/out_samp:    0.407
+  elapsed:        0.051847250 s
+  ns/compute:     51.847
+  fast ns/cmp:    51.437
+  slow ns/cmp:    52.871
+  spread ns/cmp:  1.433
+  spread %:       2.764
+  ns/frame:       0.405
+  ns/out_samp:    0.405
 ------------------------------------
 Throughput
-  frames/s:       2458463302.173
-  fast frames/s:  2533188730.477
-  slow frames/s:  2298710208.069
-  out_samp/s: 2458463302.173
-  fast out_samp/s: 2533188730.477
-  slow out_samp/s: 2298710208.069
+  frames/s:       2468790533.731
+  fast frames/s:  2488456865.128
+  slow frames/s:  2420996088.578
+  out_samp/s: 2468790533.731
+  fast out_samp/s: 2488456865.128
+  slow out_samp/s: 2420996088.578
 ------------------------------------
 Validation
   checksum:       516.00049471855164

@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_vcf_wah_pedals_run_scalar_48000_128_417cbea1ca36
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_vcf_wah_pedals_run_scalar_48000_128_22939a0fc5ac
 
 Faust compute benchmark
 ------------------------------------
@@ -17,26 +17,26 @@ Configuration
   inputs:         1
   outputs:        2
   warm-up iters:  50
-  run iters:      115850
+  run iters:      114950
   batches:        1000
 ------------------------------------
 Timing
-  elapsed:        2.778968795 s
-  ns/compute:     23987.646
-  fast ns/cmp:    23453.366
-  slow ns/cmp:    24382.602
-  spread ns/cmp:  929.236
-  spread %:       3.874
-  ns/frame:       187.403
-  ns/out_samp:    93.702
+  elapsed:        2.812462082 s
+  ns/compute:     24466.830
+  fast ns/cmp:    24435.356
+  slow ns/cmp:    24507.237
+  spread ns/cmp:  71.881
+  spread %:       0.294
+  ns/frame:       191.147
+  ns/out_samp:    95.574
 ------------------------------------
 Throughput
-  frames/s:       5336080.069
-  fast frames/s:  5457638.770
-  slow frames/s:  5249644.790
-  out_samp/s: 10672160.138
-  fast out_samp/s: 10915277.540
-  slow out_samp/s: 10499289.580
+  frames/s:       5231572.754
+  fast frames/s:  5238311.258
+  slow frames/s:  5222947.035
+  out_samp/s: 10463145.508
+  fast out_samp/s: 10476622.516
+  slow out_samp/s: 10445894.070
 ------------------------------------
 Validation
-  checksum:       7.7843104238084493e-06
+  checksum:       4.5117644148717773e-05

@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_bargraph_run_vec_48000_128_417cbea1ca36
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_bargraph_run_vec_48000_128_22939a0fc5ac
 
 Faust compute benchmark
 ------------------------------------
@@ -17,26 +17,26 @@ Configuration
   inputs:         0
   outputs:        10
   warm-up iters:  50
-  run iters:      250000
-  batches:        259
+  run iters:      300000
+  batches:        306
 ------------------------------------
 Timing
-  elapsed:        0.094087918 s
-  ns/compute:     376.352
-  fast ns/cmp:    331.392
-  slow ns/cmp:    398.896
-  spread ns/cmp:  67.504
-  spread %:       17.936
-  ns/frame:       2.940
-  ns/out_samp:    0.294
+  elapsed:        0.099621625 s
+  ns/compute:     332.072
+  fast ns/cmp:    331.117
+  slow ns/cmp:    333.429
+  spread ns/cmp:  2.313
+  spread %:       0.696
+  ns/frame:       2.594
+  ns/out_samp:    0.259
 ------------------------------------
 Throughput
-  frames/s:       340107430.159
-  fast frames/s:  386249866.849
-  slow frames/s:  320885724.822
-  out_samp/s: 3401074301.591
-  fast out_samp/s: 3862498668.494
-  slow out_samp/s: 3208857248.219
+  frames/s:       385458478.518
+  fast frames/s:  386570772.954
+  slow frames/s:  383889593.353
+  out_samp/s: 3854584785.181
+  fast out_samp/s: 3865707729.543
+  slow out_samp/s: 3838895933.530
 ------------------------------------
 Validation
   checksum:       26240
