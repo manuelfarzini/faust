@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_spectral_tilt_run_vec_48000_128_c54964c01bfe
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_spectral_tilt_run_vec_48000_128_4e259c16133a
 
 Faust compute benchmark
 ------------------------------------
@@ -17,26 +17,26 @@ Configuration
   inputs:         1
   outputs:        1
   warm-up iters:  50
-  run iters:      126250
+  run iters:      125450
   batches:        1000
 ------------------------------------
 Timing
-  elapsed:        2.087510919 s
-  ns/compute:     16534.740
-  fast ns/cmp:    16181.938
-  slow ns/cmp:    16986.251
-  spread ns/cmp:  804.313
-  spread %:       4.864
-  ns/frame:       129.178
-  ns/out_samp:    129.178
+  elapsed:        2.087351213 s
+  ns/compute:     16638.910
+  fast ns/cmp:    16278.946
+  slow ns/cmp:    16983.642
+  spread ns/cmp:  704.696
+  spread %:       4.235
+  ns/frame:       129.991
+  ns/out_samp:    129.991
 ------------------------------------
 Throughput
-  frames/s:       7741276.873
-  fast frames/s:  7910053.986
-  slow frames/s:  7535506.230
-  out_samp/s: 7741276.873
-  fast out_samp/s: 7910053.986
-  slow out_samp/s: 7535506.230
+  frames/s:       7692811.780
+  fast frames/s:  7862916.772
+  slow frames/s:  7536663.722
+  out_samp/s: 7692811.780
+  fast out_samp/s: 7862916.772
+  slow out_samp/s: 7536663.722
 ------------------------------------
 Validation
-  checksum:       -0.0033757644014258403
+  checksum:       0.0011406979169805709

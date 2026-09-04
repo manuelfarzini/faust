@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_virtual_analog_oscillators_run_scalar_48000_128_f0a028399bf3
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             virtual_analog_oscillators
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         2
+  warm-up iters:   50
+  run iters:       115250
+  batches:         1000
+------------------------------------
+Timing
+  elapsed:         2.846572999998898 s
+  ns/compute:      24699.11496745248
+  fast ns/cmp:     23913.082438532565
+  slow ns/cmp:     25300.089046893972
+  spread ns/cmp:   1387.0066083614074
+  spread %:        5.615612584455557
+  ns/frame:        192.9618356832225
+  ns/out_samp:     96.48091784161124
+------------------------------------
+Throughput
+  frames/s:        5182371.925822984
+  fast frames/s:   5352718.551822747
+  slow frames/s:   5059270.730737378
+  out_samp/s:      10364743.851645969
+  fast out_samp/s: 10705437.103645494
+  slow out_samp/s: 10118541.461474756
+------------------------------------
+Validation
+  checksum:        0.0017908362619891705

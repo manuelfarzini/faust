@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_APF_run_scalar_48000_128_f0a028399bf3
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            APF
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      260000
+  batches:        261
+------------------------------------
+Timing
+  elapsed:        0.101173373 s
+  ns/compute:     389.128
+  fast ns/cmp:    388.179
+  slow ns/cmp:    391.292
+  spread ns/cmp:  3.113
+  spread %:       0.800
+  ns/frame:       3.040
+  ns/out_samp:    3.040
+------------------------------------
+Throughput
+  frames/s:       328940303.295
+  fast frames/s:  329744697.744
+  slow frames/s:  327121768.011
+  out_samp/s: 328940303.295
+  fast out_samp/s: 329744697.744
+  slow out_samp/s: 327121768.011
+------------------------------------
+Validation
+  checksum:       8.2560000250014127

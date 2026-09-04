@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_pitch_shifter_run_vec_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             pitch_shifter
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         1
+  warm-up iters:   50
+  run iters:       102070
+  batches:         241
+------------------------------------
+Timing
+  elapsed:         0.12433899999996356 s
+  ns/compute:      1218.1738022921875
+  fast ns/cmp:     1215.2103560462517
+  slow ns/cmp:     1237.7147423637157
+  spread ns/cmp:   22.50438631746397
+  spread %:        1.847387152401274
+  ns/frame:        9.516982830407715
+  ns/out_samp:     9.516982830407715
+------------------------------------
+Throughput
+  frames/s:        105075318.28311172
+  fast frames/s:   105331557.91763861
+  slow frames/s:   103416397.67136735
+  out_samp/s:      105075318.28311172
+  fast out_samp/s: 105331557.91763861
+  slow out_samp/s: 103416397.67136735
+------------------------------------
+Validation
+  checksum:        8.256000028573908

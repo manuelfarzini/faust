@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_stereoecho_run_scalar_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            stereoecho
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         2
+  outputs:        2
+  warm-up iters:  50
+  run iters:      1000000
+  batches:        1000
+------------------------------------
+Timing
+  elapsed:        0.054002250 s
+  ns/compute:     54.002
+  fast ns/cmp:    53.796
+  slow ns/cmp:    54.717
+  spread ns/cmp:  0.921
+  spread %:       1.705
+  ns/frame:       0.422
+  ns/out_samp:    0.211
+------------------------------------
+Throughput
+  frames/s:       2370271609.053
+  fast frames/s:  2379367906.045
+  slow frames/s:  2339322364.105
+  out_samp/s: 4740543218.107
+  fast out_samp/s: 4758735812.089
+  slow out_samp/s: 4678644728.209
+------------------------------------
+Validation
+  checksum:       1588.0442246198654

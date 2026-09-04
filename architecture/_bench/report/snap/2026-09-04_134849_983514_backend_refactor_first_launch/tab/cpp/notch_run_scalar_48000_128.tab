@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_notch_run_scalar_48000_128_f0a028399bf3
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            notch
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      280000
+  batches:        284
+------------------------------------
+Timing
+  elapsed:        0.100241210 s
+  ns/compute:     358.004
+  fast ns/cmp:    357.446
+  slow ns/cmp:    359.542
+  spread ns/cmp:  2.096
+  spread %:       0.585
+  ns/frame:       2.797
+  ns/out_samp:    2.797
+------------------------------------
+Throughput
+  frames/s:       357537583.595
+  fast frames/s:  358096148.256
+  slow frames/s:  356008774.504
+  out_samp/s: 357537583.595
+  fast out_samp/s: 358096148.256
+  slow out_samp/s: 356008774.504
+------------------------------------
+Validation
+  checksum:       8.2560000478988513

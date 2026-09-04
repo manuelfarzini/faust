@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_cubic_distortion_run_vec_48000_128_f0a028399bf3
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            cubic_distortion
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         0
+  outputs:        2
+  warm-up iters:  50
+  run iters:      136750
+  batches:        1000
+------------------------------------
+Timing
+  elapsed:        1.591094167 s
+  ns/compute:     11635.058
+  fast ns/cmp:    11350.310
+  slow ns/cmp:    11899.856
+  spread ns/cmp:  549.547
+  spread %:       4.723
+  ns/frame:       90.899
+  ns/out_samp:    45.449
+------------------------------------
+Throughput
+  frames/s:       11001234.473
+  fast frames/s:  11277225.517
+  slow frames/s:  10756432.299
+  out_samp/s: 22002468.946
+  fast out_samp/s: 22554451.035
+  slow out_samp/s: 21512864.597
+------------------------------------
+Validation
+  checksum:       3.0699814176186919

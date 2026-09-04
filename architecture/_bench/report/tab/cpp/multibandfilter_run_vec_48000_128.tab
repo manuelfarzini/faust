@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_multibandfilter_run_vec_48000_128_c54964c01bfe
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_multibandfilter_run_vec_48000_128_4e259c16133a
 
 Faust compute benchmark
 ------------------------------------
@@ -17,26 +17,26 @@ Configuration
   inputs:         1
   outputs:        1
   warm-up iters:  50
-  run iters:      98895
+  run iters:      101245
   batches:        198
 ------------------------------------
 Timing
-  elapsed:        0.095989791 s
-  ns/compute:     970.623
-  fast ns/cmp:    965.189
-  slow ns/cmp:    974.798
-  spread ns/cmp:  9.609
-  spread %:       0.990
-  ns/frame:       7.583
-  ns/out_samp:    7.583
+  elapsed:        0.097978336 s
+  ns/compute:     967.735
+  fast ns/cmp:    927.077
+  slow ns/cmp:    978.855
+  spread ns/cmp:  51.777
+  spread %:       5.350
+  ns/frame:       7.560
+  ns/out_samp:    7.560
 ------------------------------------
 Throughput
-  frames/s:       131874023.978
-  fast frames/s:  132616500.379
-  slow frames/s:  131309195.302
-  out_samp/s: 131874023.978
-  fast out_samp/s: 132616500.379
-  slow out_samp/s: 131309195.302
+  frames/s:       132267606.586
+  fast frames/s:  138068317.142
+  slow frames/s:  130765068.348
+  out_samp/s: 132267606.586
+  fast out_samp/s: 138068317.142
+  slow out_samp/s: 130765068.348
 ------------------------------------
 Validation
   checksum:       8.2560000285739079

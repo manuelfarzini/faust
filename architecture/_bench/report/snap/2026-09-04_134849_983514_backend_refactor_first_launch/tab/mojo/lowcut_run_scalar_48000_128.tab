@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_lowcut_run_scalar_48000_128_f0a028399bf3
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             lowcut
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         1
+  warm-up iters:   50
+  run iters:       390000
+  batches:         390
+------------------------------------
+Timing
+  elapsed:         0.10094000000026426 s
+  ns/compute:      258.8205128211904
+  fast ns/cmp:     258.1000000645872
+  slow ns/cmp:     261.09999998880085
+  spread ns/cmp:   2.9999999242136255
+  spread %:        1.1591043891819408
+  ns/frame:        2.02203525641555
+  ns/out_samp:     2.02203525641555
+------------------------------------
+Throughput
+  frames/s:        494551218.54437596
+  fast frames/s:   495931809.2521083
+  slow frames/s:   490233626.9838767
+  out_samp/s:      494551218.54437596
+  fast out_samp/s: 495931809.2521083
+  slow out_samp/s: 490233626.9838767
+------------------------------------
+Validation
+  checksum:        8.256000028573908

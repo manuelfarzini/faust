@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_lowShelf_run_vec_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             lowShelf
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         1
+  warm-up iters:   50
+  run iters:       300000
+  batches:         303
+------------------------------------
+Timing
+  elapsed:         0.10000499999978274 s
+  ns/compute:      333.3499999992758
+  fast ns/cmp:     332.6000000015483
+  slow ns/cmp:     336.10000000408036
+  spread ns/cmp:   3.5000000025320332
+  spread %:        1.0499475033867218
+  ns/frame:        2.604296874994342
+  ns/out_samp:     2.604296874994342
+------------------------------------
+Throughput
+  frames/s:        383980800.9607862
+  fast frames/s:   384846662.65605575
+  slow frames/s:   380839035.9965666
+  out_samp/s:      383980800.9607862
+  fast out_samp/s: 384846662.65605575
+  slow out_samp/s: 380839035.9965666
+------------------------------------
+Validation
+  checksum:        8.256000028573908

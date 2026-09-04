@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_virtual_analog_oscillators_run_scalar_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            virtual_analog_oscillators
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        2
+  warm-up iters:  50
+  run iters:      114750
+  batches:        1000
+------------------------------------
+Timing
+  elapsed:        2.966175787 s
+  ns/compute:     25849.026
+  fast ns/cmp:    25274.849
+  slow ns/cmp:    26593.741
+  spread ns/cmp:  1318.892
+  spread %:       5.102
+  ns/frame:       201.946
+  ns/out_samp:    100.973
+------------------------------------
+Throughput
+  frames/s:       4951830.591
+  fast frames/s:  5064323.086
+  slow frames/s:  4813162.663
+  out_samp/s: 9903661.182
+  fast out_samp/s: 10128646.172
+  slow out_samp/s: 9626325.326
+------------------------------------
+Validation
+  checksum:       0.0021757333630603171

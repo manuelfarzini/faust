@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_pitch_shifter_run_vec_48000_128_c54964c01bfe
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_pitch_shifter_run_vec_48000_128_4e259c16133a
 
 Faust compute benchmark
 ------------------------------------
@@ -17,26 +17,26 @@ Configuration
   inputs:         1
   outputs:        1
   warm-up iters:  50
-  run iters:      105577
-  batches:        199
+  run iters:      107920
+  batches:        195
 ------------------------------------
 Timing
-  elapsed:        0.095034206 s
-  ns/compute:     900.141
-  fast ns/cmp:    859.522
-  slow ns/cmp:    905.278
-  spread ns/cmp:  45.755
-  spread %:       5.083
-  ns/frame:       7.032
-  ns/out_samp:    7.032
+  elapsed:        0.096291749 s
+  ns/compute:     892.251
+  fast ns/cmp:    890.217
+  slow ns/cmp:    895.363
+  spread ns/cmp:  5.146
+  spread %:       0.577
+  ns/frame:       6.971
+  ns/out_samp:    6.971
 ------------------------------------
 Throughput
-  frames/s:       142199914.839
-  fast frames/s:  148919910.162
-  slow frames/s:  141393057.556
-  out_samp/s: 142199914.839
-  fast out_samp/s: 148919910.162
-  slow out_samp/s: 141393057.556
+  frames/s:       143457358.948
+  fast frames/s:  143785112.429
+  slow frames/s:  142958747.662
+  out_samp/s: 143457358.948
+  fast out_samp/s: 143785112.429
+  slow out_samp/s: 142958747.662
 ------------------------------------
 Validation
   checksum:       8.2560000285739079

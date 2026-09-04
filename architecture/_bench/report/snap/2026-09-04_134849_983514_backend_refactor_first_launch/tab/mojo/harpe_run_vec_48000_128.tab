@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_harpe_run_vec_48000_128_f0a028399bf3
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             harpe
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          0
+  outputs:         2
+  warm-up iters:   50
+  run iters:       102794
+  batches:         312
+------------------------------------
+Timing
+  elapsed:         0.18014499999844702 s
+  ns/compute:      1752.4855536164273
+  fast ns/cmp:     1747.787611002369
+  slow ns/cmp:     1758.19309085361
+  spread ns/cmp:   10.405479851241125
+  spread %:        0.5937555279567577
+  ns/frame:        13.691293387628338
+  ns/out_samp:     6.845646693814169
+------------------------------------
+Throughput
+  frames/s:        73039118.48851441
+  fast frames/s:   73235443.02193049
+  slow frames/s:   72802015.1289842
+  out_samp/s:      146078236.97702882
+  fast out_samp/s: 146470886.04386097
+  slow out_samp/s: 145604030.2579684
+------------------------------------
+Validation
+  checksum:        1.5185174942016602

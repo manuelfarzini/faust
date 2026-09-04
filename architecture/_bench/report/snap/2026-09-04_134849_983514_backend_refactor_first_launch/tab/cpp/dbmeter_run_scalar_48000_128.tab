@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_dbmeter_run_scalar_48000_128_f0a028399bf3
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            dbmeter
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         8
+  outputs:        8
+  warm-up iters:  50
+  run iters:      106086
+  batches:        426
+------------------------------------
+Timing
+  elapsed:        0.249997456 s
+  ns/compute:     2356.555
+  fast ns/cmp:    2349.188
+  slow ns/cmp:    2366.774
+  spread ns/cmp:  17.586
+  spread %:       0.746
+  ns/frame:       18.411
+  ns/out_samp:    2.301
+------------------------------------
+Throughput
+  frames/s:       54316584.726
+  fast frames/s:  54486923.670
+  slow frames/s:  54082059.930
+  out_samp/s: 434532677.805
+  fast out_samp/s: 435895389.363
+  slow out_samp/s: 432656479.444
+------------------------------------
+Validation
+  checksum:       0

@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_spat_run_scalar_48000_128_f0a028399bf3
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            spat
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        8
+  warm-up iters:  50
+  run iters:      470000
+  batches:        478
+------------------------------------
+Timing
+  elapsed:        0.099937000 s
+  ns/compute:     212.632
+  fast ns/cmp:    200.325
+  slow ns/cmp:    223.096
+  spread ns/cmp:  22.771
+  spread %:       10.709
+  ns/frame:       1.661
+  ns/out_samp:    0.208
+------------------------------------
+Throughput
+  frames/s:       601979246.926
+  fast frames/s:  638961687.258
+  slow frames/s:  573744552.789
+  out_samp/s: 4815833975.405
+  fast out_samp/s: 5111693498.066
+  slow out_samp/s: 4589956422.308
+------------------------------------
+Validation
+  checksum:       14.948810350266285

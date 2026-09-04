@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_karplus32_run_vec_48000_128_c54964c01bfe
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_karplus32_run_vec_48000_128_4e259c16133a
 
 Faust compute benchmark
 ------------------------------------
@@ -17,26 +17,26 @@ Configuration
   inputs:         0
   outputs:        2
   warm-up iters:  50
-  run iters:      120639
-  batches:        690
+  run iters:      120686
+  batches:        694
 ------------------------------------
 Timing
-  elapsed:        0.543292336 s
-  ns/compute:     4503.455
-  fast ns/cmp:    4415.778
-  slow ns/cmp:    4531.500
-  spread ns/cmp:  115.723
-  spread %:       2.570
-  ns/frame:       35.183
-  ns/out_samp:    17.592
+  elapsed:        0.546204914 s
+  ns/compute:     4525.835
+  fast ns/cmp:    4448.988
+  slow ns/cmp:    4666.136
+  spread ns/cmp:  217.148
+  spread %:       4.798
+  ns/frame:       35.358
+  ns/out_samp:    17.679
 ------------------------------------
 Throughput
-  frames/s:       28422620.709
-  fast frames/s:  28986966.749
-  slow frames/s:  28246715.678
-  out_samp/s: 56845241.417
-  fast out_samp/s: 57973933.499
-  slow out_samp/s: 56493431.357
+  frames/s:       28282074.372
+  fast frames/s:  28770586.563
+  slow frames/s:  27431690.368
+  out_samp/s: 56564148.744
+  fast out_samp/s: 57541173.126
+  slow out_samp/s: 54863380.736
 ------------------------------------
 Validation
   checksum:       0.062972593084850814

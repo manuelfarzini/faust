@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_APF_run_scalar_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             APF
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         1
+  warm-up iters:   50
+  run iters:       310000
+  batches:         316
+------------------------------------
+Timing
+  elapsed:         0.0994300000002113 s
+  ns/compute:      320.7419354845525
+  fast ns/cmp:     319.70000000001164
+  slow ns/cmp:     323.2999999909225
+  spread ns/cmp:   3.5999999909108737
+  spread %:        1.1223976638640243
+  ns/frame:        2.5057963709730666
+  ns/out_samp:     2.5057963709730666
+------------------------------------
+Throughput
+  frames/s:        399074725.93699765
+  fast frames/s:   400375351.8923845
+  slow frames/s:   395917104.86728716
+  out_samp/s:      399074725.93699765
+  fast out_samp/s: 400375351.8923845
+  slow out_samp/s: 395917104.86728716
+------------------------------------
+Validation
+  checksum:        8.256000025001413

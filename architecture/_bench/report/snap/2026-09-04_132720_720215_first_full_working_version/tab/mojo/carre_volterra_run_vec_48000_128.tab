@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_carre_volterra_run_vec_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             carre_volterra
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          0
+  outputs:         1
+  warm-up iters:   50
+  run iters:       97604
+  batches:         160
+------------------------------------
+Timing
+  elapsed:         0.09488399999963804 s
+  ns/compute:      972.1322896565513
+  fast ns/cmp:     817.7895784660097
+  slow ns/cmp:     1075.07360158926
+  spread ns/cmp:   257.28402312325034
+  spread %:        26.465947676128245
+  ns/frame:        7.594783512941807
+  ns/out_samp:     7.594783512941807
+------------------------------------
+Throughput
+  frames/s:        131669322.54171051
+  fast frames/s:   156519480.5246838
+  slow frames/s:   119061615.6984788
+  out_samp/s:      131669322.54171051
+  fast out_samp/s: 156519480.5246838
+  slow out_samp/s: 119061615.6984788
+------------------------------------
+Validation
+  checksum:        2.5996692680055276

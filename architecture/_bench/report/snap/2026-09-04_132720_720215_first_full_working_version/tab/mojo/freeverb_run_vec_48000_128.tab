@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_freeverb_run_vec_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             freeverb
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          2
+  outputs:         2
+  warm-up iters:   50
+  run iters:       102789
+  batches:         336
+------------------------------------
+Timing
+  elapsed:         0.18502699999999095 s
+  ns/compute:      1800.0661549386696
+  fast ns/cmp:     1795.7635157165014
+  slow ns/cmp:     1809.8547062089965
+  spread ns/cmp:   14.091190492495116
+  spread %:        0.7828151456453122
+  ns/frame:        14.063016835458356
+  ns/out_samp:     7.031508417729178
+------------------------------------
+Throughput
+  frames/s:        71108497.67872064
+  fast frames/s:   71278873.23678507
+  slow frames/s:   70723909.25132029
+  out_samp/s:      142216995.35744128
+  fast out_samp/s: 142557746.47357014
+  slow out_samp/s: 141447818.50264058
+------------------------------------
+Validation
+  checksum:        1622.8697748184204

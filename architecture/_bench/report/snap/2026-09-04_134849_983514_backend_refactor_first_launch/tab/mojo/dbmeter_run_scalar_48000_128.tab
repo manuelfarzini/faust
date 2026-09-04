@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_dbmeter_run_scalar_48000_128_f0a028399bf3
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             dbmeter
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          8
+  outputs:         8
+  warm-up iters:   50
+  run iters:       107602
+  batches:         412
+------------------------------------
+Timing
+  elapsed:         0.23954200000116543 s
+  ns/compute:      2226.1853868995504
+  fast ns/cmp:     2221.798780510653
+  slow ns/cmp:     2239.575436315349
+  spread ns/cmp:   17.77665580469602
+  spread %:        0.7985254017615261
+  ns/frame:        17.392073335152737
+  ns/out_samp:     2.174009166894092
+------------------------------------
+Throughput
+  frames/s:        57497457.64806585
+  fast frames/s:   57610977.700951286
+  slow frames/s:   57153689.902310856
+  out_samp/s:      459979661.1845268
+  fast out_samp/s: 460887821.6076103
+  slow out_samp/s: 457229519.21848685
+------------------------------------
+Validation
+  checksum:        0.0

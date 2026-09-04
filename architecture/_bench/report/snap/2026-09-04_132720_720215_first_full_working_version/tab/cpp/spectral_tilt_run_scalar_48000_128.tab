@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_spectral_tilt_run_scalar_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            spectral_tilt
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      116850
+  batches:        1000
+------------------------------------
+Timing
+  elapsed:        2.795545331 s
+  ns/compute:     23924.222
+  fast ns/cmp:    23306.200
+  slow ns/cmp:    24624.854
+  spread ns/cmp:  1318.654
+  spread %:       5.512
+  ns/frame:       186.908
+  ns/out_samp:    186.908
+------------------------------------
+Throughput
+  frames/s:       5350226.245
+  fast frames/s:  5492100.774
+  slow frames/s:  5198000.416
+  out_samp/s: 5350226.245
+  fast out_samp/s: 5492100.774
+  slow out_samp/s: 5198000.416
+------------------------------------
+Validation
+  checksum:       0.013957830996332632

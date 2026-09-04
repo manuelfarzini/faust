@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_lowcut_run_scalar_48000_128_c54964c01bfe
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_lowcut_run_scalar_48000_128_4e259c16133a
 
 Faust compute benchmark
 ------------------------------------
@@ -18,25 +18,25 @@ Configuration
   outputs:        1
   warm-up iters:  50
   run iters:      280000
-  batches:        285
+  batches:        282
 ------------------------------------
 Timing
-  elapsed:        0.100589207 s
-  ns/compute:     359.247
-  fast ns/cmp:    355.075
-  slow ns/cmp:    392.221
-  spread ns/cmp:  37.146
-  spread %:       10.340
-  ns/frame:       2.807
-  ns/out_samp:    2.807
+  elapsed:        0.100519626 s
+  ns/compute:     358.999
+  fast ns/cmp:    355.079
+  slow ns/cmp:    367.917
+  spread ns/cmp:  12.837
+  spread %:       3.576
+  ns/frame:       2.805
+  ns/out_samp:    2.805
 ------------------------------------
 Throughput
-  frames/s:       356300651.620
-  fast frames/s:  360487221.010
-  slow frames/s:  326346792.419
-  out_samp/s: 356300651.620
-  fast out_samp/s: 360487221.010
-  slow out_samp/s: 326346792.419
+  frames/s:       356547287.591
+  fast frames/s:  360482957.042
+  slow frames/s:  347904932.803
+  out_samp/s: 356547287.591
+  fast out_samp/s: 360482957.042
+  slow out_samp/s: 347904932.803
 ------------------------------------
 Validation
   checksum:       8.2560000285739079

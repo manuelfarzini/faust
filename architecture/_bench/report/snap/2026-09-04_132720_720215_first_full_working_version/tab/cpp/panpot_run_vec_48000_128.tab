@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_panpot_run_vec_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            panpot
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        2
+  warm-up iters:  50
+  run iters:      1000000
+  batches:        1000
+------------------------------------
+Timing
+  elapsed:        0.040714663 s
+  ns/compute:     40.715
+  fast ns/cmp:    40.025
+  slow ns/cmp:    41.850
+  spread ns/cmp:  1.825
+  spread %:       4.482
+  ns/frame:       0.318
+  ns/out_samp:    0.159
+------------------------------------
+Throughput
+  frames/s:       3143830516.293
+  fast frames/s:  3198001249.219
+  slow frames/s:  3058542413.381
+  out_samp/s: 6287661032.587
+  fast out_samp/s: 6396002498.438
+  slow out_samp/s: 6117084826.762
+------------------------------------
+Validation
+  checksum:       11.675747242406942

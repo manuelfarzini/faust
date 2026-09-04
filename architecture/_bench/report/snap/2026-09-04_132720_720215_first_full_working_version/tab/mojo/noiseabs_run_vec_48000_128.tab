@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_noiseabs_run_vec_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             noiseabs
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          0
+  outputs:         1
+  warm-up iters:   50
+  run iters:       490000
+  batches:         497
+------------------------------------
+Timing
+  elapsed:         0.0995069999999032 s
+  ns/compute:      203.07551020388416
+  fast ns/cmp:     202.3999999892112
+  slow ns/cmp:     207.30000001094595
+  spread ns/cmp:   4.900000021734741
+  spread %:        2.412895585890799
+  ns/frame:        1.586527423467845
+  ns/out_samp:     1.586527423467845
+------------------------------------
+Throughput
+  frames/s:        630307415.5593176
+  fast frames/s:   632411067.2273861
+  slow frames/s:   617462614.535655
+  out_samp/s:      630307415.5593176
+  fast out_samp/s: 632411067.2273861
+  slow out_samp/s: 617462614.535655
+------------------------------------
+Validation
+  checksum:        62.206794363912195

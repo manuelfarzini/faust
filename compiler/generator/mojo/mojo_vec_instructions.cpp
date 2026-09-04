@@ -32,18 +32,10 @@ using VecVisitor  = MojoVecInstVisitor;
 using BaseVisitor = MojoInstVisitor;
 using MojoDType   = VecVisitor::MojoDType;
 
-MojoVecInstVisitor::MojoVecInstVisitor(OStream* out, String const& structName, int tab)
+MojoVecInstVisitor::MojoVecInstVisitor(OStream* out, String const& structName, s32 tab)
     : BaseVisitor(out, structName, tab)
 {
-    gSIMDSize = gGlobal->gVecSize;
-    gSIMDEmit = false;
-    gSIMDHigh = false;
-    gSIMDHalf = false;
-    gSIMDJoin = false;
-    gCurLhsDT = MojoDType_none;
-    gCurAddrs = "";
-    gCurIndex = nullptr;
-    gCurGraph = "";
+    resetLoopContext();
 }
 
 MojoVecInstVisitor::~MojoVecInstVisitor()
@@ -75,7 +67,8 @@ void VecVisitor::visit(FloatNumInst* inst)
 
 void VecVisitor::visit(DoubleNumInst* inst)
 {
-    mj_simd_emit_check(); *fOut << "F64Vec(" << checkDouble(inst->fNum) << ")";
+    mj_simd_emit_check();
+    *fOut << "F64Vec(" << checkDouble(inst->fNum) << ")";
 }
 
 void VecVisitor::visit(DeclareVarInst* inst)
@@ -89,7 +82,8 @@ void VecVisitor::visit(DeclareVarInst* inst)
 void VecVisitor::visit(NamedAddress* inst)
 {
     if (inst->isLoop()) {
-        mj_scalar_visit(inst); return; // NOTE:(manu) #1 Here using `visit(inst)`
+        mj_scalar_visit(inst);
+        return;
     }
     BaseVisitor::visit(inst);
 }
@@ -113,26 +107,22 @@ void VecVisitor::visit(Select2Inst* inst)
     *fOut << ")";
 }
 
-void MojoVecInstVisitor::visit(LoadVarInst* inst)
+void VecVisitor::visit(LoadVarInst* inst)
 {
-    if (inst->getName() == gCurGraph) {
+    if (not gCurGraph.empty() && inst->getName() == gCurGraph) {
         IB::genLoadArrayStackVar(
             gCurGraph + "_vec", IB::genLoadLoopVar(gCurIndex->getName())
-        ) ->accept(this);
+        )->accept(this);
         return;
     }
 
     MojoDType cur_load_dtype = getMojoDType(inst);
-    if (gCurLhsDT == MojoDType_faust && cur_load_dtype == MojoDType_f64) {
-        gSIMDHalf = true;
-    }
-    if (gCurLhsDT == MojoDType_f64 && cur_load_dtype == MojoDType_s32) {
-        gSIMDHalf = true;
-    }
-    if (gCurLhsDT == MojoDType_f64 && cur_load_dtype == MojoDType_faust) {
-        gSIMDHalf = true;
-    }
-    if (gCurLhsDT == MojoDType_faust && gSIMDJoin) {
+    b32 join_load_f64 = gCurLhsDT == MojoDType_faust
+                        && cur_load_dtype == MojoDType_f64;
+    b32 split_load_f64 = gCurLhsDT == MojoDType_f64
+                         && (cur_load_dtype == MojoDType_s32 || cur_load_dtype == MojoDType_faust);
+
+    if (join_load_f64 || split_load_f64) {
         gSIMDHalf = true;
     }
 
@@ -143,11 +133,10 @@ void VecVisitor::visit(CastInst* inst)
 {
     mj_simd_emit_check();
     Typed::VarType type = inst->fType->getType();
-    if (auto* binop = dycast(BinopInst*, inst->fInst)) {
-        if (type == Typed::kInt32 && isBoolOpcode(binop->fOpcode)) {
-            inst->fInst->accept(this);
-            return;
-        }
+    if (auto* binop = dycast(BinopInst*, inst->fInst);
+        binop && type == Typed::kInt32 && isBoolOpcode(binop->fOpcode)) {
+        inst->fInst->accept(this);
+        return;
     }
     *fOut << "(";
     inst->fInst->accept(this);
@@ -228,17 +217,16 @@ void VecVisitor::visit(ForLoopInst* inst)
     mj_panic(ini_inst, "Expected `inst` to be `DeclareVarInst`");
     gCurIndex = ini_inst->fAddress;
 
-    if (inst->fCode->size() == 2) {
-        auto* store = dycast(StoreVarInst*, inst->fCode->front());
-        if (store && store->getName().find("bargraph") != String::npos) {
-            visitBargraphUpdate(inst);
-        } else {  // NOTE:(manu) Table case, typically with wrapped index
-            visitScalar(inst);
-            gCurIndex = nullptr;
-        }
+    auto* first_store = dycast(StoreVarInst*, inst->fCode->front());
+    if (inst->fCode->size() == 2 && not isBargraphStore(first_store)) {
+        visitScalar(inst);  // Table case, typically with wrapped index
+        resetLoopContext();
         return;
     }
 
+    if (inst->fCode->size() == 2) {
+        visitBargraphUpdate(inst);
+    }
     if (inst->fCode->size() > 2) {
         visitBargraphMulti(inst);
     }
@@ -246,52 +234,9 @@ void VecVisitor::visit(ForLoopInst* inst)
     auto* store = dycast(StoreVarInst*, inst->fCode->back());
     mj_panic(store, "Expected final instruction to be a `StoreVarInst`");
 
-    Address* lhs = store->fAddress;
-    ValueInst* rhs = store->fValue;
-    gCurAddrs = snakeCase(lhs->getName());
-    gCurAddrs = lhs->isStruct() || lhs->isStaticStruct() ? "dsp." + gCurAddrs : gCurAddrs;
-    gCurLhsDT = getMojoDType(rhs);
-    MojoDType cur_rhs_dtype = gCurLhsDT;
-    if (auto* cast_inst = dycast(CastInst*, rhs)) {
-        cur_rhs_dtype = getMojoDType(cast_inst->fInst);
-    }
-
-    if (not isVectorizable(lhs)) {
-        visitScalar(inst);
-        goto End_Loop;
-    }
-
-    if (isScalarValue(rhs)) {
-        visitBroadcast(store);
-        goto End_Loop;
-    }
-
-    if (not isVectorizable(rhs)) {
-        visitScalar(inst);
-        goto End_Loop;
-    }
-
-    if (gCurLhsDT == MojoDType_f64 || (gCurLhsDT == MojoDType_s32 && hasF64Value(rhs))) {
-        visitSplit(store);
-        goto End_Loop;
-    }
-
-    if (cur_rhs_dtype == MojoDType_f64 || (gCurLhsDT == MojoDType_faust && hasF64Value(rhs))) {
-        visitJoin(store);
-        goto End_Loop;
-    }
-
-    visitStore(store);
-
-End_Loop:
-    *fOut << wnextl(fTab);
-    gSIMDHigh = false;
-    gSIMDHalf = false;
-    gSIMDJoin = false;
-    gCurLhsDT = MojoDType_none;
-    gCurAddrs.clear();
-    gCurIndex = nullptr;
-    gCurGraph.clear();
+    prepareLoop(store);
+    visitLoopStore(inst, store);
+    finishLoop();
 }
 
 void VecVisitor::visitMain(ForLoopInst* inst)
@@ -309,6 +254,56 @@ void VecVisitor::visitScalar(ForLoopInst* inst)
     wrewind(fOut);
 }
 
+void VecVisitor::prepareLoop(StoreVarInst* inst)
+{
+    Address* lhs = inst->fAddress;
+    gCurAddrs = snakeCase(lhs->getName());
+    gCurAddrs = lhs->isStruct() || lhs->isStaticStruct() ? "dsp." + gCurAddrs : gCurAddrs;
+    gCurLhsDT = getMojoDType(inst->fValue);
+}
+
+void VecVisitor::visitLoopStore(ForLoopInst* loop, StoreVarInst* store)
+{
+    Address*   lhs = store->fAddress;
+    ValueInst* rhs = store->fValue;
+
+    if (not isVectorizable(lhs)) {
+        return visitScalar(loop);
+    }
+    if (isScalarValue(rhs)) {
+        return visitBroadcast(store);
+    }
+    if (not isVectorizable(rhs)) {
+        return visitScalar(loop);
+    }
+    if (gCurLhsDT == MojoDType_f64 || (gCurLhsDT == MojoDType_s32 && hasF64Value(rhs))) {
+        return visitSplit(store);
+    }
+
+    MojoDType rhs_dtype = getMojoDType(stripCasts(rhs));
+    if (rhs_dtype == MojoDType_f64 || (gCurLhsDT == MojoDType_faust && hasF64Value(rhs))) {
+        return visitJoin(store);
+    }
+    visitStore(store);
+}
+
+void VecVisitor::finishLoop()
+{
+    *fOut << wnextl(fTab);
+    resetLoopContext();
+}
+
+void VecVisitor::resetLoopContext()
+{
+    gSIMDEmit = false;
+    gSIMDHigh = false;
+    gSIMDHalf = false;
+    gCurLhsDT = MojoDType_none;
+    gCurAddrs.clear();
+    gCurIndex = nullptr;
+    gCurGraph.clear();
+}
+
 void VecVisitor::visitBargraphUpdate(ForLoopInst* inst)
 {
     auto* store_1 = dycast(StoreVarInst*, inst->fCode->front());
@@ -318,7 +313,7 @@ void VecVisitor::visitBargraphUpdate(ForLoopInst* inst)
     String tmp = store_1->getName() + "_vec";
     String index = gCurIndex->getName();
 
-    IB::genDecStackVar(tmp, IB::genArrayTyped(IB::genFloatMacroTyped(), gSIMDSize))
+    IB::genDecStackVar(tmp, IB::genArrayTyped(IB::genFloatMacroTyped(), gGlobal->gVecSize))
         ->accept(this);
 
     auto* code = IB::genBlockInst();
@@ -333,10 +328,6 @@ void VecVisitor::visitBargraphUpdate(ForLoopInst* inst)
 
     // Redirect bargraph loads only while lowering the final store.
     gCurGraph = store_1->getName();
-
-    auto* output = IB::genBlockInst();
-    output->pushBackInst(store_2);
-    visit(IB::genForLoopInst(inst->fInit, inst->fEnd, inst->fIncrement, output));
 }
 
 void VecVisitor::visitBargraphMulti(ForLoopInst* inst)
@@ -347,11 +338,11 @@ void VecVisitor::visitBargraphMulti(ForLoopInst* inst)
     for (auto* line : *inst->fCode) {
         auto* sv_inst = dycast(StoreVarInst*, line);
         mj_panic(sv_inst, "Expected each loop instruction to be a `StoreVarInst`");
-        if (sv_inst->fAddress->getName().find("bargraph") != String::npos) {
+        if (isBargraphStore(sv_inst)) {
             bars.push_back(sv_inst);
         }
     }
-    mj_panic(bars.size() > 1, "Expected at least two bargraph instruction");
+    mj_panic(bars.size() > 1, "Expected at least two bargraph instructions");
     *fOut << "comptime for i in range(S32(0), vsize):" << wnextl(fTab += 1);
     for (auto* bar : bars) {
         mj_scalar_visit(bar);
@@ -382,14 +373,12 @@ void VecVisitor::visitSplit(StoreVarInst* inst)
 void VecVisitor::visitJoin(StoreVarInst* inst)
 {
     mj_simd_emit_set(true);
-    gSIMDJoin = true;
     gSIMDHalf = true;
     *fOut << "vstore(" << gCurAddrs << ", (";
     inst->fValue->accept(this);
     *fOut << ").join(";
     mj_simd_high_accept(inst->fValue);
     *fOut << "))";
-    gSIMDJoin = false;
     mj_simd_emit_restore();
 }
 
@@ -409,7 +398,7 @@ void VecVisitor::visitBinopOperand(ValueInst* inst)
     }
 
     MojoDType dtype = getMojoDType(inst);
-    b32       wec   = gSIMDHalf || gSIMDJoin || gCurLhsDT == MojoDType_f64;
+    b32       wec   = gSIMDHalf || gCurLhsDT == MojoDType_f64;
 
     switch (dtype) {
         case MojoDType_s32:
@@ -433,10 +422,9 @@ void VecVisitor::visitBinopOperand(ValueInst* inst)
 
 b32 VecVisitor::visitIndex(ValueInst* inst)
 {
-    if (auto* load = dycast(LoadVarInst*, inst)) {
-        if (load->fAddress->getName() == gCurIndex->getName()) {
-            return false;
-        }
+    if (auto* load = dycast(LoadVarInst*, inst);
+        load && load->fAddress->getName() == gCurIndex->getName()) {
+        return false;
     }
     if (auto* binop = dycast(BinopInst*, inst)) {
         String opc = gBinOpTable[binop->fOpcode]->fName;
@@ -456,6 +444,11 @@ b32 VecVisitor::visitIndex(ValueInst* inst)
     *fOut << ", ";
     mj_scalar_accept(inst);
     return true;
+}
+
+b32 VecVisitor::isBargraphStore(StoreVarInst* inst)
+{
+    return inst && inst->getName().find("bargraph") != String::npos;
 }
 
 b32 VecVisitor::hasWrappedIndex(Address* addr)
@@ -524,10 +517,7 @@ b32 VecVisitor::isWrappedIndexExpr(ValueInst* inst)
 
 b32 VecVisitor::isScalarValue(ValueInst* inst)
 {
-    ValueInst* value = inst;
-    while (auto cast_inst = dycast(CastInst*, value)) {
-       value = cast_inst->fInst;
-    }
+    ValueInst* value = stripCasts(inst);
     if (auto* neg_inst = dycast(NegInst*, value)) {
         return isScalarValue(neg_inst->fInst);
     }
@@ -553,7 +543,15 @@ b32 VecVisitor::isVectorizable(ValueInst* inst)
     return not hasWrappedIndex(inst);
 }
 
-b32 MojoVecInstVisitor::hasF64Value(ValueInst* inst)
+ValueInst* VecVisitor::stripCasts(ValueInst* inst)
+{
+    while (auto* cast_inst = dycast(CastInst*, inst)) {
+        inst = cast_inst->fInst;
+    }
+    return inst;
+}
+
+b32 VecVisitor::hasF64Value(ValueInst* inst)
 {
     if (getMojoDType(inst) == MojoDType_f64) {
         return true;
@@ -599,24 +597,6 @@ MojoDType VecVisitor::getMojoDType(ValueInst* inst)
         case Typed::kBool:       return MojoDType_bool;
         default:
             mj_panic(false, "Unexpected `rhs` type " << Typed::gTypeString[type]);
-    }
-}
-
-String MojoVecInstVisitor::getMojoDTypeName(MojoDType dtype)
-{
-    switch (dtype) {
-        case MojoDType_s32:
-            return "s32";
-        case MojoDType_f32:
-            return "f32";
-        case MojoDType_f64:
-            return "f64";
-        case MojoDType_faust:
-            return "dfaust";
-        case MojoDType_bool:
-            return "bool";
-        default:
-            mj_unreachable();
     }
 }
 

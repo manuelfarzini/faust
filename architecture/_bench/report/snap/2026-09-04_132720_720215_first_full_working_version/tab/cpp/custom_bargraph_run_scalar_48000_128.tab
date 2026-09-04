@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_custom_bargraph_run_scalar_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            custom_bargraph
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        8
+  warm-up iters:  50
+  run iters:      460000
+  batches:        469
+------------------------------------
+Timing
+  elapsed:        0.099741631 s
+  ns/compute:     216.830
+  fast ns/cmp:    195.425
+  slow ns/cmp:    240.742
+  spread ns/cmp:  45.317
+  spread %:       20.900
+  ns/frame:       1.694
+  ns/out_samp:    0.212
+------------------------------------
+Throughput
+  frames/s:       590325217.361
+  fast frames/s:  654982729.948
+  slow frames/s:  531690189.111
+  out_samp/s: 4722601738.887
+  fast out_samp/s: 5239861839.580
+  slow out_samp/s: 4253521512.891
+------------------------------------
+Validation
+  checksum:       29.928000086176326

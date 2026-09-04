@@ -132,7 +132,6 @@ public:
     };
 
     static MojoDType getMojoDType(ValueInst* value);
-    static String    getMojoDTypeName(MojoDType dtype);
 
     // Enable base class operations
     using MojoInstVisitor::visit;
@@ -155,11 +154,9 @@ public:
     void visit(ForLoopInst* inst)    override;
 
     // Global state
-    static inline s32        gSIMDSize;
     static inline b32        gSIMDEmit;
     static inline b32        gSIMDHigh;
     static inline b32        gSIMDHalf;
-    static inline b32        gSIMDJoin;
     static inline MojoDType  gCurLhsDT;
     static inline String     gCurAddrs;
     static inline Address*   gCurIndex;
@@ -179,6 +176,12 @@ protected:
     b32  visitIndex(ValueInst* inst);
 
     // Helpers
+    void prepareLoop(StoreVarInst* inst);
+    void visitLoopStore(ForLoopInst* loop, StoreVarInst* store);
+    void finishLoop();
+    void resetLoopContext();
+
+    static b32 isBargraphStore(StoreVarInst* inst);
     static b32 isVectorizable(Address* addr);
     static b32 isVectorizable(ValueInst* inst);
     static b32 hasWrappedIndex(Address* addr);
@@ -187,6 +190,8 @@ protected:
     static b32 isScalarAddress(Address* addr);
     static b32 isScalarValue(ValueInst* inst);
     static b32 hasF64Value(ValueInst* inst);
+
+    static ValueInst* stripCasts(ValueInst* inst);
 };
 
 /**
@@ -208,8 +213,8 @@ class MojoInitFieldsVisitor : public DispatchVisitor
 {
 public:
     using DispatchVisitor::visit;
-    OStream* fOut;
-    s32      fTab;
+    OStream*  fOut;
+    s32       fTab;
 
     MojoInitFieldsVisitor(OStream* out, s32 tab = 0);
 

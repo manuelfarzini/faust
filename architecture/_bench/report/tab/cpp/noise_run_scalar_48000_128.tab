@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_noise_run_scalar_48000_128_c54964c01bfe
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_noise_run_scalar_48000_128_4e259c16133a
 
 Faust compute benchmark
 ------------------------------------
@@ -21,22 +21,22 @@ Configuration
   batches:        832
 ------------------------------------
 Timing
-  elapsed:        0.100188209 s
-  ns/compute:     120.709
-  fast ns/cmp:    117.483
-  slow ns/cmp:    124.775
-  spread ns/cmp:  7.292
-  spread %:       6.041
+  elapsed:        0.100134949 s
+  ns/compute:     120.645
+  fast ns/cmp:    117.479
+  slow ns/cmp:    125.683
+  spread ns/cmp:  8.204
+  spread %:       6.800
   ns/frame:       0.943
   ns/out_samp:    0.943
 ------------------------------------
 Throughput
-  frames/s:       1060404223.814
-  fast frames/s:  1089516552.565
-  slow frames/s:  1025846523.743
-  out_samp/s: 1060404223.814
-  fast out_samp/s: 1089516552.565
-  slow out_samp/s: 1025846523.743
+  frames/s:       1060968233.978
+  fast frames/s:  1089555503.915
+  slow frames/s:  1018432028.414
+  out_samp/s: 1060968233.978
+  fast out_samp/s: 1089555503.915
+  slow out_samp/s: 1018432028.414
 ------------------------------------
 Validation
   checksum:       0.96484251413494349

@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_bargraph_run_scalar_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             bargraph
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          0
+  outputs:         10
+  warm-up iters:   50
+  run iters:       510000
+  batches:         512
+------------------------------------
+Timing
+  elapsed:         0.10078299999986484 s
+  ns/compute:      197.61372548993094
+  fast ns/cmp:     196.99999998010753
+  slow ns/cmp:     199.40000001952285
+  spread ns/cmp:   2.4000000394153176
+  spread %:        1.2144905590262784
+  ns/frame:        1.5438572303900855
+  ns/out_samp:     0.15438572303900855
+------------------------------------
+Throughput
+  frames/s:        647728287.5096747
+  fast frames/s:   649746192.9590105
+  slow frames/s:   641925777.2691463
+  out_samp/s:      6477282875.096747
+  fast out_samp/s: 6497461929.590105
+  slow out_samp/s: 6419257772.691463
+------------------------------------
+Validation
+  checksum:        26240.0

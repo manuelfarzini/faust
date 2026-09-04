@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_thru_zero_flanger_run_vec_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            thru_zero_flanger
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         2
+  outputs:        2
+  warm-up iters:  50
+  run iters:      120206
+  batches:        196
+------------------------------------
+Timing
+  elapsed:        0.095943749 s
+  ns/compute:     798.161
+  fast ns/cmp:    782.544
+  slow ns/cmp:    802.907
+  spread ns/cmp:  20.363
+  spread %:       2.551
+  ns/frame:       6.236
+  ns/out_samp:    3.118
+------------------------------------
+Throughput
+  frames/s:       160368634.334
+  fast frames/s:  163569041.931
+  slow frames/s:  159420631.729
+  out_samp/s: 320737268.668
+  fast out_samp/s: 327138083.862
+  slow out_samp/s: 318841263.457
+------------------------------------
+Validation
+  checksum:       -0.0095231644809246063

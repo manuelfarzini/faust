@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_gate_compressor_run_vec_48000_128_c54964c01bfe
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_gate_compressor_run_vec_48000_128_4e259c16133a
 
 Faust compute benchmark
 ------------------------------------
@@ -17,26 +17,26 @@ Configuration
   inputs:         1
   outputs:        2
   warm-up iters:  50
-  run iters:      133550
+  run iters:      130950
   batches:        1000
 ------------------------------------
 Timing
-  elapsed:        1.823399207 s
-  ns/compute:     13653.307
-  fast ns/cmp:    13215.193
-  slow ns/cmp:    22577.709
-  spread ns/cmp:  9362.516
-  spread %:       68.573
-  ns/frame:       106.666
-  ns/out_samp:    53.333
+  elapsed:        1.781324175 s
+  ns/compute:     13603.086
+  fast ns/cmp:    13107.320
+  slow ns/cmp:    21824.928
+  spread ns/cmp:  8717.607
+  spread %:       64.086
+  ns/frame:       106.274
+  ns/out_samp:    53.137
 ------------------------------------
 Throughput
-  frames/s:       9375017.788
-  fast frames/s:  9685821.584
-  slow frames/s:  5669308.589
-  out_samp/s: 18750035.576
-  fast out_samp/s: 19371643.168
-  slow out_samp/s: 11338617.179
+  frames/s:       9409629.216
+  fast frames/s:  9765535.343
+  slow frames/s:  5864853.388
+  out_samp/s: 18819258.432
+  fast out_samp/s: 19531070.686
+  slow out_samp/s: 11729706.776
 ------------------------------------
 Validation
   checksum:       0

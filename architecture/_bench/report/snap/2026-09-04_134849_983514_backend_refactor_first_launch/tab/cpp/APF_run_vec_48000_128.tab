@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_APF_run_vec_48000_128_f0a028399bf3
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            APF
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      200000
+  batches:        204
+------------------------------------
+Timing
+  elapsed:        0.100113208 s
+  ns/compute:     500.566
+  fast ns/cmp:    499.258
+  slow ns/cmp:    503.025
+  spread ns/cmp:  3.767
+  spread %:       0.752
+  ns/frame:       3.911
+  ns/out_samp:    3.911
+------------------------------------
+Throughput
+  frames/s:       255710515.240
+  fast frames/s:  256380314.559
+  slow frames/s:  254460513.891
+  out_samp/s: 255710515.240
+  fast out_samp/s: 256380314.559
+  slow out_samp/s: 254460513.891
+------------------------------------
+Validation
+  checksum:       8.2560000250014127

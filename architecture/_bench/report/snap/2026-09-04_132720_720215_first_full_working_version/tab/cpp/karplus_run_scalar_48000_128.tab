@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_karplus_run_scalar_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            karplus
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         0
+  outputs:        1
+  warm-up iters:  50
+  run iters:      410000
+  batches:        413
+------------------------------------
+Timing
+  elapsed:        0.100161330 s
+  ns/compute:     244.296
+  fast ns/cmp:    235.750
+  slow ns/cmp:    250.171
+  spread ns/cmp:  14.421
+  spread %:       5.903
+  ns/frame:       1.909
+  ns/out_samp:    1.909
+------------------------------------
+Throughput
+  frames/s:       523954703.876
+  fast frames/s:  542948038.176
+  slow frames/s:  511650440.419
+  out_samp/s: 523954703.876
+  fast out_samp/s: 542948038.176
+  slow out_samp/s: 511650440.419
+------------------------------------
+Validation
+  checksum:       0

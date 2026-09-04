@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_noise_run_scalar_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             noise
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          0
+  outputs:         1
+  warm-up iters:   50
+  run iters:       830000
+  batches:         839
+------------------------------------
+Timing
+  elapsed:         0.09820499999977983 s
+  ns/compute:      118.31927710816848
+  fast ns/cmp:     116.20000000220898
+  slow ns/cmp:     121.20000001232256
+  spread ns/cmp:   5.000000010113581
+  spread %:        4.22585408930663
+  ns/frame:        0.9243693524075662
+  ns/out_samp:     0.9243693524075662
+------------------------------------
+Throughput
+  frames/s:        1081818644.6742852
+  fast frames/s:   1101549053.3353417
+  slow frames/s:   1056105610.4536805
+  out_samp/s:      1081818644.6742852
+  fast out_samp/s: 1101549053.3353417
+  slow out_samp/s: 1056105610.4536805
+------------------------------------
+Validation
+  checksum:        1.4586778823286295

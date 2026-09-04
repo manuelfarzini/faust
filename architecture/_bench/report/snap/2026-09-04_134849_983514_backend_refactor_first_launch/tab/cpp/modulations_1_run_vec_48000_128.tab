@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_modulations_1_run_vec_48000_128_f0a028399bf3
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            modulations_1
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         0
+  outputs:        2
+  warm-up iters:  50
+  run iters:      134881
+  batches:        899
+------------------------------------
+Timing
+  elapsed:        1.038265794 s
+  ns/compute:     7697.643
+  fast ns/cmp:    7524.322
+  slow ns/cmp:    7762.289
+  spread ns/cmp:  237.967
+  spread %:       3.091
+  ns/frame:       60.138
+  ns/out_samp:    30.069
+------------------------------------
+Throughput
+  frames/s:       16628466.525
+  fast frames/s:  17011499.022
+  slow frames/s:  16489980.843
+  out_samp/s: 33256933.051
+  fast out_samp/s: 34022998.044
+  slow out_samp/s: 32979961.686
+------------------------------------
+Validation
+  checksum:       -3.653209408512339

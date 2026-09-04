@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_HPF_run_vec_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            HPF
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      200000
+  batches:        206
+------------------------------------
+Timing
+  elapsed:        0.099555372 s
+  ns/compute:     497.777
+  fast ns/cmp:    496.017
+  slow ns/cmp:    499.913
+  spread ns/cmp:  3.896
+  spread %:       0.783
+  ns/frame:       3.889
+  ns/out_samp:    3.889
+------------------------------------
+Throughput
+  frames/s:       257143331.251
+  fast frames/s:  258055827.556
+  slow frames/s:  256044807.841
+  out_samp/s: 257143331.251
+  fast out_samp/s: 258055827.556
+  slow out_samp/s: 256044807.841
+------------------------------------
+Validation
+  checksum:       -1.8953869584947824e-09

@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_freeverb_run_scalar_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            freeverb
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         2
+  outputs:        2
+  warm-up iters:  50
+  run iters:      99424
+  batches:        256
+------------------------------------
+Timing
+  elapsed:        0.129176831 s
+  ns/compute:     1299.252
+  fast ns/cmp:    1296.743
+  slow ns/cmp:    1303.779
+  spread ns/cmp:  7.036
+  spread %:       0.542
+  ns/frame:       10.150
+  ns/out_samp:    5.075
+------------------------------------
+Throughput
+  frames/s:       98518224.216
+  fast frames/s:  98708867.847
+  slow frames/s:  98176139.920
+  out_samp/s: 197036448.432
+  fast out_samp/s: 197417735.693
+  slow out_samp/s: 196352279.839
+------------------------------------
+Validation
+  checksum:       1622.8697748184204

@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_comb_delay2_run_scalar_48000_128_f0a028399bf3
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            comb_delay2
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         0
+  outputs:        1
+  warm-up iters:  50
+  run iters:      290000
+  batches:        299
+------------------------------------
+Timing
+  elapsed:        0.098359624 s
+  ns/compute:     339.171
+  fast ns/cmp:    337.542
+  slow ns/cmp:    343.304
+  spread ns/cmp:  5.762
+  spread %:       1.699
+  ns/frame:       2.650
+  ns/out_samp:    2.650
+------------------------------------
+Throughput
+  frames/s:       377390625.243
+  fast frames/s:  379212517.805
+  slow frames/s:  372847280.298
+  out_samp/s: 377390625.243
+  fast out_samp/s: 379212517.805
+  slow out_samp/s: 372847280.298
+------------------------------------
+Validation
+  checksum:       -0.24282970326021314

@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_multibandfilter_run_vec_48000_128_f0a028399bf3
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            multibandfilter
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      100293
+  batches:        195
+------------------------------------
+Timing
+  elapsed:        0.096936793 s
+  ns/compute:     966.536
+  fast ns/cmp:    964.582
+  slow ns/cmp:    970.955
+  spread ns/cmp:  6.374
+  spread %:       0.659
+  ns/frame:       7.551
+  ns/out_samp:    7.551
+------------------------------------
+Throughput
+  frames/s:       132431697.013
+  fast frames/s:  132699974.813
+  slow frames/s:  131828906.905
+  out_samp/s: 132431697.013
+  fast out_samp/s: 132699974.813
+  slow out_samp/s: 131828906.905
+------------------------------------
+Validation
+  checksum:       8.2560000285739079

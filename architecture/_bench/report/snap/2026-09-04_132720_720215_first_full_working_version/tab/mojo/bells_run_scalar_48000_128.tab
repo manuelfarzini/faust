@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_bells_run_scalar_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             bells
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          0
+  outputs:         1
+  warm-up iters:   50
+  run iters:       116350
+  batches:         1000
+------------------------------------
+Timing
+  elapsed:         2.6655390000000807 s
+  ns/compute:      22909.660507091372
+  fast ns/cmp:     22562.809917421084
+  slow ns/cmp:     23397.87798421653
+  spread ns/cmp:   835.0680667954475
+  spread %:        3.6450477585076553
+  ns/frame:        178.98172271165134
+  ns/out_samp:     178.98172271165134
+------------------------------------
+Throughput
+  frames/s:        5587162.671414506
+  fast frames/s:   5673052.269131128
+  slow frames/s:   5470581.566685011
+  out_samp/s:      5587162.671414506
+  fast out_samp/s: 5673052.269131128
+  slow out_samp/s: 5470581.566685011
+------------------------------------
+Validation
+  checksum:        0.0

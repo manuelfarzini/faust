@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_bandfilter_run_scalar_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            bandfilter
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      260000
+  batches:        264
+------------------------------------
+Timing
+  elapsed:        0.100225874 s
+  ns/compute:     385.484
+  fast ns/cmp:    383.650
+  slow ns/cmp:    387.979
+  spread ns/cmp:  4.329
+  spread %:       1.123
+  ns/frame:       3.012
+  ns/out_samp:    3.012
+------------------------------------
+Throughput
+  frames/s:       332049985.416
+  fast frames/s:  333637429.949
+  slow frames/s:  329914678.394
+  out_samp/s: 332049985.416
+  fast out_samp/s: 333637429.949
+  slow out_samp/s: 329914678.394
+------------------------------------
+Validation
+  checksum:       8.2560000285739079

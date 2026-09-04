@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_phasor_sine_run_vec_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             phasor_sine
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          0
+  outputs:         1
+  warm-up iters:   50
+  run iters:       190000
+  batches:         199
+------------------------------------
+Timing
+  elapsed:         0.0996540000001005 s
+  ns/compute:      524.4947368426342
+  fast ns/cmp:     523.1999999978143
+  slow ns/cmp:     525.6000000372296
+  spread ns/cmp:   2.4000000394153176
+  spread %:        0.45758324551794255
+  ns/frame:        4.09761513158308
+  ns/out_samp:     4.09761513158308
+------------------------------------
+Throughput
+  frames/s:        244044393.60161635
+  fast frames/s:   244648318.0438355
+  slow frames/s:   243531202.41806206
+  out_samp/s:      244044393.60161635
+  fast out_samp/s: 244648318.0438355
+  slow out_samp/s: 243531202.41806206
+------------------------------------
+Validation
+  checksum:        -15.315039522945881

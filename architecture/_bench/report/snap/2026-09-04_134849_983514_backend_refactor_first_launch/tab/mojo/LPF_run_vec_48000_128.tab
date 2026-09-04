@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_LPF_run_vec_48000_128_f0a028399bf3
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             LPF
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         1
+  warm-up iters:   50
+  run iters:       290000
+  batches:         291
+------------------------------------
+Timing
+  elapsed:         0.10145399999964866 s
+  ns/compute:      349.8413793091333
+  fast ns/cmp:     343.30000016780104
+  slow ns/cmp:     353.8999999364023
+  spread ns/cmp:   10.599999768601265
+  spread %:        3.029944539303539
+  ns/frame:        2.733135775852604
+  ns/out_samp:     2.733135775852604
+------------------------------------
+Throughput
+  frames/s:        365880103.2993135
+  fast frames/s:   372851732.99573284
+  slow frames/s:   361684091.6162822
+  out_samp/s:      365880103.2993135
+  fast out_samp/s: 372851732.99573284
+  slow out_samp/s: 361684091.6162822
+------------------------------------
+Validation
+  checksum:        8.256000048073474

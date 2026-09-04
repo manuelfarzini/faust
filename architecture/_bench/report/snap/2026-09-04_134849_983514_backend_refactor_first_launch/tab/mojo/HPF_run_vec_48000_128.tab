@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_HPF_run_vec_48000_128_f0a028399bf3
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             HPF
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         1
+  warm-up iters:   50
+  run iters:       280000
+  batches:         286
+------------------------------------
+Timing
+  elapsed:         0.09983099999953993 s
+  ns/compute:      356.5392857126426
+  fast ns/cmp:     353.79999990254873
+  slow ns/cmp:     360.6999998737592
+  spread ns/cmp:   6.899999971210491
+  spread %:        1.9352705992605916
+  ns/frame:        2.7854631696300203
+  ns/out_samp:     2.7854631696300203
+------------------------------------
+Throughput
+  frames/s:        359006721.3607514
+  fast frames/s:   361786320.05442774
+  slow frames/s:   354865539.3534752
+  out_samp/s:      359006721.3607514
+  fast out_samp/s: 361786320.05442774
+  slow out_samp/s: 354865539.3534752
+------------------------------------
+Validation
+  checksum:        -1.8953869584947824e-09

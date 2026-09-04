@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_quadecho_run_scalar_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             quadecho
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          4
+  outputs:         4
+  warm-up iters:   50
+  run iters:       520000
+  batches:         525
+------------------------------------
+Timing
+  elapsed:         0.09966899999972156 s
+  ns/compute:      191.67115384561836
+  fast ns/cmp:     188.09999996847182
+  slow ns/cmp:     193.79999998818676
+  spread ns/cmp:   5.700000019714935
+  spread %:        2.973843432020033
+  ns/frame:        1.4974308894188935
+  ns/out_samp:     0.37435772235472337
+------------------------------------
+Throughput
+  frames/s:        667810452.5999653
+  fast frames/s:   680489101.6557926
+  slow frames/s:   660474716.2425302
+  out_samp/s:      2671241810.3998613
+  fast out_samp/s: 2721956406.6231704
+  slow out_samp/s: 2641898864.970121
+------------------------------------
+Validation
+  checksum:        102394897.91210938

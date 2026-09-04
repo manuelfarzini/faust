@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_dbmeter_run_vec_48000_128_c54964c01bfe
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_dbmeter_run_vec_48000_128_4e259c16133a
 
 Faust compute benchmark
 ------------------------------------
@@ -17,26 +17,26 @@ Configuration
   inputs:         8
   outputs:        8
   warm-up iters:  50
-  run iters:      106829
-  batches:        422
+  run iters:      105864
+  batches:        426
 ------------------------------------
 Timing
-  elapsed:        0.247242624 s
-  ns/compute:     2314.377
-  fast ns/cmp:    2295.203
-  slow ns/cmp:    2438.311
-  spread ns/cmp:  143.107
-  spread %:       6.183
-  ns/frame:       18.081
-  ns/out_samp:    2.260
+  elapsed:        0.244694040 s
+  ns/compute:     2311.400
+  fast ns/cmp:    2289.486
+  slow ns/cmp:    2321.740
+  spread ns/cmp:  32.255
+  spread %:       1.395
+  ns/frame:       18.058
+  ns/out_samp:    2.257
 ------------------------------------
 Throughput
-  frames/s:       55306450.719
-  fast frames/s:  55768475.714
-  slow frames/s:  52495365.005
-  out_samp/s: 442451605.755
-  fast out_samp/s: 446147805.712
-  slow out_samp/s: 419962920.042
+  frames/s:       55377695.346
+  fast frames/s:  55907756.297
+  slow frames/s:  55131056.095
+  out_samp/s: 443021562.765
+  fast out_samp/s: 447262050.375
+  slow out_samp/s: 441048448.762
 ------------------------------------
 Validation
   checksum:       0

@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_osc_run_scalar_48000_128_f0a028399bf3
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             osc
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          0
+  outputs:         1
+  warm-up iters:   50
+  run iters:       320000
+  batches:         324
+------------------------------------
+Timing
+  elapsed:         0.10012299999652896 s
+  ns/compute:      312.884374989153
+  fast ns/cmp:     312.39999989338685
+  slow ns/cmp:     314.3999998428626
+  spread ns/cmp:   1.9999999494757503
+  spread %:        0.6392137509407704
+  ns/frame:        2.444409179602758
+  ns/out_samp:     2.444409179602758
+------------------------------------
+Throughput
+  frames/s:        409096810.9367477
+  fast frames/s:   409731114.09629554
+  slow frames/s:   407124682.1373235
+  out_samp/s:      409096810.9367477
+  fast out_samp/s: 409731114.09629554
+  slow out_samp/s: 407124682.1373235
+------------------------------------
+Validation
+  checksum:        11.010009929537773

@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_osc_run_vec_48000_128_c54964c01bfe
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            osc
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         0
+  outputs:        1
+  warm-up iters:  50
+  run iters:      210000
+  batches:        212
+------------------------------------
+Timing
+  elapsed:        0.100144834 s
+  ns/compute:     476.880
+  fast ns/cmp:    474.962
+  slow ns/cmp:    479.379
+  spread ns/cmp:  4.417
+  spread %:       0.926
+  ns/frame:       3.726
+  ns/out_samp:    3.726
+------------------------------------
+Throughput
+  frames/s:       268411249.251
+  fast frames/s:  269494960.128
+  slow frames/s:  267012002.189
+  out_samp/s: 268411249.251
+  fast out_samp/s: 269494960.128
+  slow out_samp/s: 267012002.189
+------------------------------------
+Validation
+  checksum:       -11.875598222017288
