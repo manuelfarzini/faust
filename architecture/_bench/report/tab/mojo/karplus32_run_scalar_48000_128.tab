@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_karplus32_run_scalar_48000_128_22939a0fc5ac
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_karplus32_run_scalar_48000_128_c54964c01bfe
 
 Faust compute benchmark
 ------------------------------------
@@ -17,26 +17,26 @@ Configuration
   inputs:          0
   outputs:         2
   warm-up iters:   50
-  run iters:       112362
-  batches:         557
+  run iters:       111488
+  batches:         556
 ------------------------------------
 Timing
-  elapsed:         0.3733779999965918 s
-  ns/compute:      3322.991758749327
-  fast ns/cmp:     3306.8965511594947
-  slow ns/cmp:     3339.7964132656048
-  spread ns/cmp:   32.89986210611005
-  spread %:        0.9900675203146624
-  ns/frame:        25.960873115229116
-  ns/out_samp:     12.980436557614558
+  elapsed:         0.36789800000042305 s
+  ns/compute:      3299.888777271303
+  fast ns/cmp:     3286.410131468486
+  slow ns/cmp:     3312.0155038862204
+  spread ns/cmp:   25.605372417734543
+  spread %:        0.775946528685969
+  ns/frame:        25.780381072432053
+  ns/out_samp:     12.890190536216027
 ------------------------------------
 Throughput
-  frames/s:        38519505.70234797
-  fast frames/s:   38706986.45082183
-  slow frames/s:   38325689.40178107
-  out_samp/s:      77039011.40469594
-  fast out_samp/s: 77413972.90164366
-  slow out_samp/s: 76651378.80356213
+  frames/s:        38789186.133068375
+  fast frames/s:   38948273.30720436
+  slow frames/s:   38647162.082969904
+  out_samp/s:      77578372.26613675
+  fast out_samp/s: 77896546.61440872
+  slow out_samp/s: 77294324.16593981
 ------------------------------------
 Validation
   checksum:        0.06297259308485081

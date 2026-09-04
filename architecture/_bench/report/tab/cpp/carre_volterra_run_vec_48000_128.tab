@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_carre_volterra_run_vec_48000_128_22939a0fc5ac
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_carre_volterra_run_vec_48000_128_c54964c01bfe
 
 Faust compute benchmark
 ------------------------------------
@@ -17,26 +17,26 @@ Configuration
   inputs:         0
   outputs:        1
   warm-up iters:  50
-  run iters:      96836
-  batches:        206
+  run iters:      99785
+  batches:        208
 ------------------------------------
 Timing
-  elapsed:        0.102759623 s
-  ns/compute:     1061.172
-  fast ns/cmp:    1030.484
-  slow ns/cmp:    1093.570
-  spread ns/cmp:  63.087
-  spread %:       5.945
-  ns/frame:       8.290
-  ns/out_samp:    8.290
+  elapsed:        0.106332042 s
+  ns/compute:     1065.611
+  fast ns/cmp:    1034.557
+  slow ns/cmp:    1087.820
+  spread ns/cmp:  53.263
+  spread %:       4.998
+  ns/frame:       8.325
+  ns/out_samp:    8.325
 ------------------------------------
 Throughput
-  frames/s:       120621384.530
-  fast frames/s:  124213508.808
-  slow frames/s:  117047786.343
-  out_samp/s: 120621384.530
-  fast out_samp/s: 124213508.808
-  slow out_samp/s: 117047786.343
+  frames/s:       120118825.518
+  fast frames/s:  123724464.640
+  slow frames/s:  117666497.999
+  out_samp/s: 120118825.518
+  fast out_samp/s: 123724464.640
+  slow out_samp/s: 117666497.999
 ------------------------------------
 Validation
   checksum:       -2.6376740452833474

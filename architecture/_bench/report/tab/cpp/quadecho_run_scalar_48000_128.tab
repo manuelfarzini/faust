@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_quadecho_run_scalar_48000_128_22939a0fc5ac
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_quadecho_run_scalar_48000_128_c54964c01bfe
 
 Faust compute benchmark
 ------------------------------------
@@ -17,26 +17,26 @@ Configuration
   inputs:         4
   outputs:        4
   warm-up iters:  50
-  run iters:      550000
-  batches:        557
+  run iters:      600000
+  batches:        605
 ------------------------------------
 Timing
-  elapsed:        0.100720417 s
-  ns/compute:     183.128
-  fast ns/cmp:    179.287
-  slow ns/cmp:    189.979
-  spread ns/cmp:  10.692
-  spread %:       5.838
-  ns/frame:       1.431
-  ns/out_samp:    0.358
+  elapsed:        0.099570546 s
+  ns/compute:     165.951
+  fast ns/cmp:    157.588
+  slow ns/cmp:    167.683
+  spread ns/cmp:  10.096
+  spread %:       6.084
+  ns/frame:       1.296
+  ns/out_samp:    0.324
 ------------------------------------
 Throughput
-  frames/s:       698964540.625
-  fast frames/s:  713937112.180
-  slow frames/s:  673757969.293
-  out_samp/s: 2795858162.501
-  fast out_samp/s: 2855748448.721
-  slow out_samp/s: 2695031877.174
+  frames/s:       771312432.092
+  fast frames/s:  812247164.274
+  slow frames/s:  763343755.759
+  out_samp/s: 3085249728.368
+  fast out_samp/s: 3248988657.095
+  slow out_samp/s: 3053375023.034
 ------------------------------------
 Validation
-  checksum:       108683737.41894531
+  checksum:       118117396.93847656

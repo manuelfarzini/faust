@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_virtual_analog_oscillators_run_scalar_48000_128_22939a0fc5ac
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_virtual_analog_oscillators_run_scalar_48000_128_c54964c01bfe
 
 Faust compute benchmark
 ------------------------------------
@@ -17,26 +17,26 @@ Configuration
   inputs:         1
   outputs:        2
   warm-up iters:  50
-  run iters:      113350
+  run iters:      114750
   batches:        1000
 ------------------------------------
 Timing
-  elapsed:        3.019159426 s
-  ns/compute:     26635.725
-  fast ns/cmp:    26601.820
-  slow ns/cmp:    26747.933
-  spread ns/cmp:  146.113
-  spread %:       0.549
-  ns/frame:       208.092
-  ns/out_samp:    104.046
+  elapsed:        2.966175787 s
+  ns/compute:     25849.026
+  fast ns/cmp:    25274.849
+  slow ns/cmp:    26593.741
+  spread ns/cmp:  1318.892
+  spread %:       5.102
+  ns/frame:       201.946
+  ns/out_samp:    100.973
 ------------------------------------
 Throughput
-  frames/s:       4805575.974
-  fast frames/s:  4811700.860
-  slow frames/s:  4785416.454
-  out_samp/s: 9611151.948
-  fast out_samp/s: 9623401.719
-  slow out_samp/s: 9570832.907
+  frames/s:       4951830.591
+  fast frames/s:  5064323.086
+  slow frames/s:  4813162.663
+  out_samp/s: 9903661.182
+  fast out_samp/s: 10128646.172
+  slow out_samp/s: 9626325.326
 ------------------------------------
 Validation
-  checksum:       0.0030629363382104202
+  checksum:       0.0021757333630603171

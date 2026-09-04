@@ -22,7 +22,7 @@ class Config:
 
     faust_options: tuple[str, ...] = ()
     scalar_options: tuple[str, ...] = ()
-    vec_options: tuple[str, ...] = ("-vec", "-vs", "4", "-dfs")
+    vec_options: tuple[str, ...] = ("-vec", "-vs", "4", "-dfs", "-mcd", "4")
     cpp_options: tuple[str, ...] = ("-O3",)
     mojo_options: tuple[str, ...] = ("-O3",)
 
@@ -34,7 +34,6 @@ class Config:
     fill_inputs: bool = True
     inspect_compute_iters: int = 1
 
-    # Wall-clock limits include startup/initialization, outside measured compute time.
     generate_timeout: float = 120
     build_timeout: float = 600
     run_timeout: float = 120
@@ -67,7 +66,6 @@ class Config:
         for name in ("faust", "cpp", "mojo"):
             if not getattr(self, name):
                 raise ValueError(f"{name} command is empty")
-        # Precision is fixed, not a configurable matrix axis.
         for option in self.faust_options + self.scalar_options + self.vec_options:
             if option in ("-single", "-double", "-quad", "-fx", "-fixed"):
                 raise ValueError("remove precision options; Faust always receives -double")

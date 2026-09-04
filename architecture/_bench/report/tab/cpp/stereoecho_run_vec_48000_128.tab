@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_stereoecho_run_vec_48000_128_22939a0fc5ac
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_stereoecho_run_vec_48000_128_c54964c01bfe
 
 Faust compute benchmark
 ------------------------------------
@@ -17,26 +17,26 @@ Configuration
   inputs:         2
   outputs:        2
   warm-up iters:  50
-  run iters:      950000
-  batches:        954
+  run iters:      980000
+  batches:        980
 ------------------------------------
 Timing
-  elapsed:        0.099587829 s
-  ns/compute:     104.829
-  fast ns/cmp:    103.500
-  slow ns/cmp:    108.208
-  spread ns/cmp:  4.708
-  spread %:       4.491
-  ns/frame:       0.819
-  ns/out_samp:    0.409
+  elapsed:        0.100671323 s
+  ns/compute:     102.726
+  fast ns/cmp:    101.892
+  slow ns/cmp:    104.883
+  spread ns/cmp:  2.992
+  spread %:       2.912
+  ns/frame:       0.803
+  ns/out_samp:    0.401
 ------------------------------------
 Throughput
-  frames/s:       1221032742.867
-  fast frames/s:  1236714975.845
-  slow frames/s:  1182903714.410
-  out_samp/s: 2442065485.733
-  fast out_samp/s: 2473429951.691
-  slow out_samp/s: 2365807428.820
+  frames/s:       1246035079.920
+  fast frames/s:  1256235787.606
+  slow frames/s:  1220404010.934
+  out_samp/s: 2492070159.841
+  fast out_samp/s: 2512471575.212
+  slow out_samp/s: 2440808021.868
 ------------------------------------
 Validation
   checksum:       1588.0442246198654

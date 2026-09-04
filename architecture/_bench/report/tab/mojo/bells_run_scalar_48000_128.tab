@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_bells_run_scalar_48000_128_22939a0fc5ac
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_bells_run_scalar_48000_128_c54964c01bfe
 
 Faust compute benchmark
 ------------------------------------
@@ -17,26 +17,26 @@ Configuration
   inputs:          0
   outputs:         1
   warm-up iters:   50
-  run iters:       116250
+  run iters:       116350
   batches:         1000
 ------------------------------------
 Timing
-  elapsed:         2.662541000001511 s
-  ns/compute:      22903.578494636655
-  fast ns/cmp:     22580.75313814565
-  slow ns/cmp:     22983.914210114224
-  spread ns/cmp:   403.1610719685741
-  spread %:        1.7602536305101082
-  ns/frame:        178.93420698934887
-  ns/out_samp:     178.93420698934887
+  elapsed:         2.6655390000000807 s
+  ns/compute:      22909.660507091372
+  fast ns/cmp:     22562.809917421084
+  slow ns/cmp:     23397.87798421653
+  spread ns/cmp:   835.0680667954475
+  spread %:        3.6450477585076553
+  ns/frame:        178.98172271165134
+  ns/out_samp:     178.98172271165134
 ------------------------------------
 Throughput
-  frames/s:        5588646.3344570305
-  fast frames/s:   5668544.322543861
-  slow frames/s:   5569112.329164227
-  out_samp/s:      5588646.3344570305
-  fast out_samp/s: 5668544.322543861
-  slow out_samp/s: 5569112.329164227
+  frames/s:        5587162.671414506
+  fast frames/s:   5673052.269131128
+  slow frames/s:   5470581.566685011
+  out_samp/s:      5587162.671414506
+  fast out_samp/s: 5673052.269131128
+  slow out_samp/s: 5470581.566685011
 ------------------------------------
 Validation
   checksum:        0.0

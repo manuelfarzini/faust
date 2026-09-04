@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_phaser_flanger_run_vec_48000_128_22939a0fc5ac
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_phaser_flanger_run_vec_48000_128_c54964c01bfe
 
 Faust compute benchmark
 ------------------------------------
@@ -17,26 +17,26 @@ Configuration
   inputs:         1
   outputs:        2
   warm-up iters:  50
-  run iters:      123250
+  run iters:      122350
   batches:        1000
 ------------------------------------
 Timing
-  elapsed:        2.275160289 s
-  ns/compute:     18459.718
-  fast ns/cmp:    18071.715
-  slow ns/cmp:    18555.132
-  spread ns/cmp:  483.418
-  spread %:       2.619
-  ns/frame:       144.217
-  ns/out_samp:    72.108
+  elapsed:        2.256646836 s
+  ns/compute:     18444.192
+  fast ns/cmp:    18166.972
+  slow ns/cmp:    18858.539
+  spread ns/cmp:  691.566
+  spread %:       3.750
+  ns/frame:       144.095
+  ns/out_samp:    72.048
 ------------------------------------
 Throughput
-  frames/s:       6934016.947
-  fast frames/s:  7082891.791
-  slow frames/s:  6898360.939
-  out_samp/s: 13868033.893
-  fast out_samp/s: 14165783.581
-  slow out_samp/s: 13796721.878
+  frames/s:       6939854.190
+  fast frames/s:  7045753.018
+  slow frames/s:  6787376.388
+  out_samp/s: 13879708.380
+  fast out_samp/s: 14091506.036
+  slow out_samp/s: 13574752.776
 ------------------------------------
 Validation
-  checksum:       -0.0043026981097682437
+  checksum:       -0.011296230924926931

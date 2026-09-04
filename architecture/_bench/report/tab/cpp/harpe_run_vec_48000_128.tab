@@ -1,5 +1,5 @@
 cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
-/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_harpe_run_vec_48000_128_22939a0fc5ac
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_harpe_run_vec_48000_128_c54964c01bfe
 
 Faust compute benchmark
 ------------------------------------
@@ -17,26 +17,26 @@ Configuration
   inputs:         0
   outputs:        2
   warm-up iters:  50
-  run iters:      106865
-  batches:        445
+  run iters:      107847
+  batches:        435
 ------------------------------------
 Timing
-  elapsed:        0.265039581 s
-  ns/compute:     2480.135
-  fast ns/cmp:    2419.874
-  slow ns/cmp:    2500.353
-  spread ns/cmp:  80.479
-  spread %:       3.245
-  ns/frame:       19.376
-  ns/out_samp:    9.688
+  elapsed:        0.276218751 s
+  ns/compute:     2561.209
+  fast ns/cmp:    2439.462
+  slow ns/cmp:    4764.144
+  spread ns/cmp:  2324.682
+  spread %:       90.765
+  ns/frame:       20.009
+  ns/out_samp:    10.005
 ------------------------------------
 Throughput
-  frames/s:       51610102.719
-  fast frames/s:  52895313.099
-  slow frames/s:  51192763.543
-  out_samp/s: 103220205.438
-  fast out_samp/s: 105790626.198
-  slow out_samp/s: 102385527.086
+  frames/s:       49976389.908
+  fast frames/s:  52470583.055
+  slow frames/s:  26867363.960
+  out_samp/s: 99952779.817
+  fast out_samp/s: 104941166.110
+  slow out_samp/s: 53734727.919
 ------------------------------------
 Validation
   checksum:       1.5185174942016602
