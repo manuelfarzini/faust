@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_stereoecho_run_vec_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            stereoecho
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         2
+  outputs:        2
+  warm-up iters:  50
+  run iters:      980000
+  batches:        981
+------------------------------------
+Timing
+  elapsed:        0.100093828 s
+  ns/compute:     102.137
+  fast ns/cmp:    98.125
+  slow ns/cmp:    103.975
+  spread ns/cmp:  5.850
+  spread %:       5.728
+  ns/frame:       0.798
+  ns/out_samp:    0.399
+------------------------------------
+Throughput
+  frames/s:       1253224124.868
+  fast frames/s:  1304458598.726
+  slow frames/s:  1231065159.894
+  out_samp/s: 2506448249.736
+  fast out_samp/s: 2608917197.452
+  slow out_samp/s: 2462130319.788
+------------------------------------
+Validation
+  checksum:       1588.0442246198654

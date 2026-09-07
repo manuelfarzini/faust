@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_osc_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            osc
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         0
+  outputs:        1
+  warm-up iters:  50
+  run iters:      310000
+  batches:        314
+------------------------------------
+Timing
+  elapsed:        0.099803709 s
+  ns/compute:     321.947
+  fast ns/cmp:    321.325
+  slow ns/cmp:    322.942
+  spread ns/cmp:  1.617
+  spread %:       0.502
+  ns/frame:       2.515
+  ns/out_samp:    2.515
+------------------------------------
+Throughput
+  frames/s:       397580414.572
+  fast frames/s:  398350579.631
+  slow frames/s:  396356370.206
+  out_samp/s: 397580414.572
+  fast out_samp/s: 398350579.631
+  slow out_samp/s: 396356370.206
+------------------------------------
+Validation
+  checksum:       -11.875598222017288

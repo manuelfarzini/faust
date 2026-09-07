@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_lowboost_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            lowboost
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      280000
+  batches:        285
+------------------------------------
+Timing
+  elapsed:        0.099841126 s
+  ns/compute:     356.575
+  fast ns/cmp:    355.575
+  slow ns/cmp:    359.150
+  spread ns/cmp:  3.575
+  spread %:       1.003
+  ns/frame:       2.786
+  ns/out_samp:    2.786
+------------------------------------
+Throughput
+  frames/s:       358970310.491
+  fast frames/s:  359980313.577
+  slow frames/s:  356397048.587
+  out_samp/s: 358970310.491
+  fast out_samp/s: 359980313.577
+  slow out_samp/s: 356397048.587
+------------------------------------
+Validation
+  checksum:       8.2560000285739079

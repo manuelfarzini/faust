@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_carre_volterra_run_scalar_48000_128_4e259c16133a
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            carre_volterra
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         0
+  outputs:        1
+  warm-up iters:  50
+  run iters:      158449
+  batches:        199
+------------------------------------
+Timing
+  elapsed:        0.098943082 s
+  ns/compute:     624.448
+  fast ns/cmp:    597.511
+  slow ns/cmp:    629.863
+  spread ns/cmp:  32.352
+  spread %:       5.181
+  ns/frame:       4.878
+  ns/out_samp:    4.878
+------------------------------------
+Throughput
+  frames/s:       204981203.234
+  fast frames/s:  214221944.851
+  slow frames/s:  203218761.600
+  out_samp/s: 204981203.234
+  fast out_samp/s: 214221944.851
+  slow out_samp/s: 203218761.600
+------------------------------------
+Validation
+  checksum:       -5.515689889434725

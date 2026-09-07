@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_HPF_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             HPF
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         1
+  warm-up iters:   50
+  run iters:       330000
+  batches:         332
+------------------------------------
+Timing
+  elapsed:         0.10124799999994138 s
+  ns/compute:      306.8121212119437
+  fast ns/cmp:     305.60000000150467
+  slow ns/cmp:     308.3000000060565
+  spread ns/cmp:   2.700000004551839
+  spread %:        0.8800173845435194
+  ns/frame:        2.39696969696831
+  ns/out_samp:     2.39696969696831
+------------------------------------
+Throughput
+  frames/s:        417193426.0432251
+  fast frames/s:   418848167.53720474
+  slow frames/s:   415180019.4534073
+  out_samp/s:      417193426.0432251
+  fast out_samp/s: 418848167.53720474
+  slow out_samp/s: 415180019.4534073
+------------------------------------
+Validation
+  checksum:        -1.8953869584947824e-09

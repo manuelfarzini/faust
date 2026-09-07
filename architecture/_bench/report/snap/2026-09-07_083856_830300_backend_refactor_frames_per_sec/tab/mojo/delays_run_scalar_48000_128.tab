@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_delays_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             delays
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          3
+  outputs:         3
+  warm-up iters:   50
+  run iters:       780000
+  batches:         782
+------------------------------------
+Timing
+  elapsed:         0.10625899999968169 s
+  ns/compute:      136.22948717907914
+  fast ns/cmp:     121.89999997644918
+  slow ns/cmp:     266.10000004438916
+  spread ns/cmp:   144.20000006793998
+  spread %:        105.85079857078466
+  ns/frame:        1.0642928685865558
+  ns/out_samp:     0.3547642895288519
+------------------------------------
+Throughput
+  frames/s:        939590999.3534579
+  fast frames/s:   1050041017.4301012
+  slow frames/s:   481022172.0355048
+  out_samp/s:      2818772998.060374
+  fast out_samp/s: 3150123052.290303
+  slow out_samp/s: 1443066516.1065145
+------------------------------------
+Validation
+  checksum:        408.7679988145828

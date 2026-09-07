@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_phasor_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             phasor
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          0
+  outputs:         3
+  warm-up iters:   50
+  run iters:       320000
+  batches:         323
+------------------------------------
+Timing
+  elapsed:         0.10038600000007136 s
+  ns/compute:      313.70625000022295
+  fast ns/cmp:     312.6999999949476
+  slow ns/cmp:     317.1000000293134
+  spread ns/cmp:   4.400000034365803
+  spread %:        1.402586028924408
+  ns/frame:        2.450830078126742
+  ns/out_samp:     0.8169433593755806
+------------------------------------
+Throughput
+  frames/s:        408025023.4093487
+  fast frames/s:   409338023.6714683
+  slow frames/s:   403658151.9652079
+  out_samp/s:      1224075070.2280462
+  fast out_samp/s: 1228014071.014405
+  slow out_samp/s: 1210974455.8956237
+------------------------------------
+Validation
+  checksum:        149.41249981964938

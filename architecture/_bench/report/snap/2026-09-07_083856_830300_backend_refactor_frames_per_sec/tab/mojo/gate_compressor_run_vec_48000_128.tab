@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_gate_compressor_run_vec_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             gate_compressor
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         2
+  warm-up iters:   50
+  run iters:       139750
+  batches:         1000
+------------------------------------
+Timing
+  elapsed:         1.6281030000004648 s
+  ns/compute:      11650.110912346794
+  fast ns/cmp:     11240.029006508
+  slow ns/cmp:     11785.663591297382
+  spread ns/cmp:   545.6345847893808
+  spread %:        4.683514078918485
+  ns/frame:        91.01649150270933
+  ns/out_samp:     45.508245751354664
+------------------------------------
+Throughput
+  frames/s:        10987019.86299079
+  fast frames/s:   11387870.967760647
+  slow frames/s:   10860652.77601476
+  out_samp/s:      21974039.72598158
+  fast out_samp/s: 22775741.935521293
+  slow out_samp/s: 21721305.55202952
+------------------------------------
+Validation
+  checksum:        0.0

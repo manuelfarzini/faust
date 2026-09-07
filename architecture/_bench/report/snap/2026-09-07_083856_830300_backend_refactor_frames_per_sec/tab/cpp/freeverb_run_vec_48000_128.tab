@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_freeverb_run_vec_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            freeverb
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         2
+  outputs:        2
+  warm-up iters:  50
+  run iters:      117063
+  batches:        648
+------------------------------------
+Timing
+  elapsed:        0.517789960 s
+  ns/compute:     4423.174
+  fast ns/cmp:    4094.323
+  slow ns/cmp:    10615.264
+  spread ns/cmp:  6520.941
+  spread %:       147.427
+  ns/frame:       34.556
+  ns/out_samp:    17.278
+------------------------------------
+Throughput
+  frames/s:       28938498.537
+  fast frames/s:  31262799.650
+  slow frames/s:  12058107.533
+  out_samp/s: 57876997.074
+  fast out_samp/s: 62525599.299
+  slow out_samp/s: 24116215.066
+------------------------------------
+Validation
+  checksum:       1622.8697748184204

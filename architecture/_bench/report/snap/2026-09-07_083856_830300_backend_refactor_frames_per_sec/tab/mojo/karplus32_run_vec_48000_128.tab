@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_karplus32_run_vec_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             karplus32
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          0
+  outputs:         2
+  warm-up iters:   50
+  run iters:       107128
+  batches:         444
+------------------------------------
+Timing
+  elapsed:         0.26895899999954054 s
+  ns/compute:      2510.6321409859283
+  fast ns/cmp:     2446.601941641153
+  slow ns/cmp:     2525.6723716545794
+  spread ns/cmp:   79.07043001342618
+  spread %:        3.1494231561289228
+  ns/frame:        19.614313601452565
+  ns/out_samp:     9.807156800726283
+------------------------------------
+Throughput
+  frames/s:        50983175.87447687
+  fast frames/s:   52317460.31973597
+  slow frames/s:   50679574.05581731
+  out_samp/s:      101966351.74895374
+  fast out_samp/s: 104634920.63947193
+  slow out_samp/s: 101359148.11163463
+------------------------------------
+Validation
+  checksum:        0.06297259308485081

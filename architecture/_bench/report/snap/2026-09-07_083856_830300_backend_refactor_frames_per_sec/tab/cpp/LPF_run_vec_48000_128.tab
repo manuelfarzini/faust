@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_LPF_run_vec_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            LPF
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      210000
+  batches:        217
+------------------------------------
+Timing
+  elapsed:        0.098975291 s
+  ns/compute:     471.311
+  fast ns/cmp:    467.804
+  slow ns/cmp:    475.663
+  spread ns/cmp:  7.858
+  spread %:       1.667
+  ns/frame:       3.682
+  ns/out_samp:    3.682
+------------------------------------
+Throughput
+  frames/s:       271582934.775
+  fast frames/s:  273618807.531
+  slow frames/s:  269098362.810
+  out_samp/s: 271582934.775
+  fast out_samp/s: 273618807.531
+  slow out_samp/s: 269098362.810
+------------------------------------
+Validation
+  checksum:       8.2560000480734743

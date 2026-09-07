@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_quadecho_run_vec_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            quadecho
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         4
+  outputs:        4
+  warm-up iters:  50
+  run iters:      320000
+  batches:        327
+------------------------------------
+Timing
+  elapsed:        0.099050538 s
+  ns/compute:     309.533
+  fast ns/cmp:    308.179
+  slow ns/cmp:    312.825
+  spread ns/cmp:  4.646
+  spread %:       1.501
+  ns/frame:       2.418
+  ns/out_samp:    0.605
+------------------------------------
+Throughput
+  frames/s:       413526274.840
+  fast frames/s:  415342761.614
+  slow frames/s:  409174458.563
+  out_samp/s: 1654105099.358
+  fast out_samp/s: 1661371046.456
+  slow out_samp/s: 1636697834.252
+------------------------------------
+Validation
+  checksum:       63481152.002441406

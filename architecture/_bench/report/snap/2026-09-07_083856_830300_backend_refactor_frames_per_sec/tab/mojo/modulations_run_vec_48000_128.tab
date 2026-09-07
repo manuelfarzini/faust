@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_modulations_run_vec_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             modulations
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          0
+  outputs:         2
+  warm-up iters:   50
+  run iters:       126465
+  batches:         771
+------------------------------------
+Timing
+  elapsed:         0.7462969999996858 s
+  ns/compute:      5901.213774559648
+  fast ns/cmp:     5738.12423878561
+  slow ns/cmp:     5996.94935941524
+  spread ns/cmp:   258.82512062962996
+  spread %:        4.385964151060493
+  ns/frame:        46.10323261374725
+  ns/out_samp:     23.051616306873626
+------------------------------------
+Throughput
+  frames/s:        21690452.99660432
+  fast frames/s:   22306941.201239888
+  slow frames/s:   21344185.57312634
+  out_samp/s:      43380905.99320864
+  fast out_samp/s: 44613882.402479775
+  slow out_samp/s: 42688371.14625268
+------------------------------------
+Validation
+  checksum:        -3.653209408512339

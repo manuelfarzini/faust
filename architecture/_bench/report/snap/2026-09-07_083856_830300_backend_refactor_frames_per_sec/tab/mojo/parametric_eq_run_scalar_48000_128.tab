@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_parametric_eq_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             parametric_eq
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         2
+  warm-up iters:   50
+  run iters:       111450
+  batches:         1000
+------------------------------------
+Timing
+  elapsed:         3.5022670000003018 s
+  ns/compute:      31424.558097804405
+  fast ns/cmp:     30638.22222247836
+  slow ns/cmp:     32489.535941872946
+  spread ns/cmp:   1851.313719394584
+  spread %:        5.891295952778833
+  ns/frame:        245.50436013909692
+  ns/out_samp:     122.75218006954846
+------------------------------------
+Throughput
+  frames/s:        4073247.413746231
+  fast frames/s:   4177788.0932690073
+  slow frames/s:   3939730.017350968
+  out_samp/s:      8146494.827492462
+  fast out_samp/s: 8355576.186538015
+  slow out_samp/s: 7879460.034701936
+------------------------------------
+Validation
+  checksum:        0.10116144143648853

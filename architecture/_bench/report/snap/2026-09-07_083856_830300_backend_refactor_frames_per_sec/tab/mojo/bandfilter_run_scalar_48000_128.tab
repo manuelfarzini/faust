@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_bandfilter_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             bandfilter
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         1
+  warm-up iters:   50
+  run iters:       330000
+  batches:         336
+------------------------------------
+Timing
+  elapsed:         0.10135700000000725 s
+  ns/compute:      307.1424242424461
+  fast ns/cmp:     295.8000000035099
+  slow ns/cmp:     328.20000001265726
+  spread ns/cmp:   32.400000009147334
+  spread %:        10.548852080288345
+  ns/frame:        2.3995501893941102
+  ns/out_samp:     2.3995501893941102
+------------------------------------
+Throughput
+  frames/s:        416744773.424598
+  fast frames/s:   432724814.0584218
+  slow frames/s:   390006093.83017546
+  out_samp/s:      416744773.424598
+  fast out_samp/s: 432724814.0584218
+  slow out_samp/s: 390006093.83017546
+------------------------------------
+Validation
+  checksum:        8.256000028573908

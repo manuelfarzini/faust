@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_thru_zero_flanger_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            thru_zero_flanger
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         2
+  outputs:        2
+  warm-up iters:  50
+  run iters:      160284
+  batches:        199
+------------------------------------
+Timing
+  elapsed:        0.097052960 s
+  ns/compute:     605.506
+  fast ns/cmp:    604.228
+  slow ns/cmp:    608.966
+  spread ns/cmp:  4.738
+  spread %:       0.782
+  ns/frame:       4.731
+  ns/out_samp:    2.365
+------------------------------------
+Throughput
+  frames/s:       211393367.085
+  fast frames/s:  211840427.298
+  slow frames/s:  210192333.465
+  out_samp/s: 422786734.171
+  fast out_samp/s: 423680854.596
+  slow out_samp/s: 420384666.931
+------------------------------------
+Validation
+  checksum:       -0.0027647968381643295

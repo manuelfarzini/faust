@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_lowShelf_run_vec_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            lowShelf
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      220000
+  batches:        221
+------------------------------------
+Timing
+  elapsed:        0.101629834 s
+  ns/compute:     461.954
+  fast ns/cmp:    461.142
+  slow ns/cmp:    463.746
+  spread ns/cmp:  2.604
+  spread %:       0.564
+  ns/frame:       3.609
+  ns/out_samp:    3.609
+------------------------------------
+Throughput
+  frames/s:       277083990.908
+  fast frames/s:  277571948.058
+  slow frames/s:  276013221.896
+  out_samp/s: 277083990.908
+  fast out_samp/s: 277571948.058
+  slow out_samp/s: 276013221.896
+------------------------------------
+Validation
+  checksum:       8.2560000285739079

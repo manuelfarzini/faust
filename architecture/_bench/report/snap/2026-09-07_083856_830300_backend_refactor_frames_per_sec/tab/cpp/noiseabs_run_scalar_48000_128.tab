@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_noiseabs_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            noiseabs
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         0
+  outputs:        1
+  warm-up iters:  50
+  run iters:      850000
+  batches:        853
+------------------------------------
+Timing
+  elapsed:        0.100385878 s
+  ns/compute:     118.101
+  fast ns/cmp:    117.412
+  slow ns/cmp:    121.904
+  spread ns/cmp:  4.492
+  spread %:       3.803
+  ns/frame:       0.923
+  ns/out_samp:    0.923
+------------------------------------
+Throughput
+  frames/s:       1083817785.605
+  fast frames/s:  1090173533.482
+  slow frames/s:  1050004839.866
+  out_samp/s: 1083817785.605
+  fast out_samp/s: 1090173533.482
+  slow out_samp/s: 1050004839.866
+------------------------------------
+Validation
+  checksum:       64.749209291301668

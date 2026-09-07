@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_spectral_level_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             spectral_level
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         2
+  warm-up iters:   50
+  run iters:       108550
+  batches:         1000
+------------------------------------
+Timing
+  elapsed:         4.070514000000003 s
+  ns/compute:      37498.9774297559
+  fast ns/cmp:     36546.60633475439
+  slow ns/cmp:     38445.3262789401
+  spread ns/cmp:   1898.7199441857083
+  spread %:        5.063391255781419
+  ns/frame:        292.96076116996795
+  ns/out_samp:     146.48038058498398
+------------------------------------
+Throughput
+  frames/s:        3413426.412487462
+  fast frames/s:   3502377.1790891844
+  slow frames/s:   3329403.3992921766
+  out_samp/s:      6826852.824974924
+  fast out_samp/s: 7004754.358178369
+  slow out_samp/s: 6658806.798584353
+------------------------------------
+Validation
+  checksum:        16.512000057147816

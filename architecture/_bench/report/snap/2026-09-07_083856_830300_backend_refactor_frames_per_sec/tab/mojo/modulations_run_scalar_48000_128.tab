@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_modulations_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             modulations
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          0
+  outputs:         2
+  warm-up iters:   50
+  run iters:       129514
+  batches:         836
+------------------------------------
+Timing
+  elapsed:         0.8757570000002488 s
+  ns/compute:      6761.8713034903485
+  fast ns/cmp:     6560.586734733487
+  slow ns/cmp:     6887.966804571075
+  spread ns/cmp:   327.38006983758805
+  spread %:        4.8415602004817915
+  ns/frame:        52.82711955851835
+  ns/out_samp:     26.413559779259174
+------------------------------------
+Throughput
+  frames/s:        18929671.130228236
+  fast frames/s:   19510450.082510766
+  slow frames/s:   18583132.53122171
+  out_samp/s:      37859342.26045647
+  fast out_samp/s: 39020900.16502153
+  slow out_samp/s: 37166265.06244342
+------------------------------------
+Validation
+  checksum:        -3.653209408512339

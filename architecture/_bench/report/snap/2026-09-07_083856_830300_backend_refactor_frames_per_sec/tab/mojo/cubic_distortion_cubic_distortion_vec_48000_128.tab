@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_cubic_distortion_cubic_distortion_vec_48000_128_2fa3fff900b4
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             cubic_distortion
+  bench case:      cubic_distortion
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          0
+  outputs:         2
+  warm-up iters:   50
+  run iters:       121250
+  batches:         1000
+------------------------------------
+Timing
+  elapsed:         2.3248090000006414 s
+  ns/compute:      19173.68247423209
+  fast ns/cmp:     18619.126133312522
+  slow ns/cmp:     19690.082644806087
+  spread ns/cmp:   1070.956511493565
+  spread %:        5.585554642061303
+  ns/frame:        149.7943943299382
+  ns/out_samp:     74.8971971649691
+------------------------------------
+Throughput
+  frames/s:        6675817.239177807
+  fast frames/s:   6874651.317334814
+  slow frames/s:   6500734.522501573
+  out_samp/s:      13351634.478355614
+  fast out_samp/s: 13749302.634669628
+  slow out_samp/s: 13001469.045003146
+------------------------------------
+Validation
+  checksum:        -2.805454184534028

@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_harpe_run_vec_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            harpe
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         0
+  outputs:        2
+  warm-up iters:  50
+  run iters:      107284
+  batches:        423
+------------------------------------
+Timing
+  elapsed:        0.264551291 s
+  ns/compute:     2465.897
+  fast ns/cmp:    2422.173
+  slow ns/cmp:    2485.105
+  spread ns/cmp:  62.932
+  spread %:       2.552
+  ns/frame:       19.265
+  ns/out_samp:    9.632
+------------------------------------
+Throughput
+  frames/s:       51908089.158
+  fast frames/s:  52845116.672
+  slow frames/s:  51506879.359
+  out_samp/s: 103816178.315
+  fast out_samp/s: 105690233.343
+  slow out_samp/s: 103013758.717
+------------------------------------
+Validation
+  checksum:       1.5185174942016602

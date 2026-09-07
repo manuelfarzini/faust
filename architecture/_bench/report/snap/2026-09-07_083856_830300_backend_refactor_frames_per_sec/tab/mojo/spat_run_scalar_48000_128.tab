@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_spat_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             spat
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         8
+  warm-up iters:   50
+  run iters:       580000
+  batches:         588
+------------------------------------
+Timing
+  elapsed:         0.10003000000006068 s
+  ns/compute:      172.4655172414839
+  fast ns/cmp:     171.600000021499
+  slow ns/cmp:     174.70000002504094
+  spread ns/cmp:   3.100000003541936
+  spread %:        1.7974607638240854
+  ns/frame:        1.347386853449093
+  ns/out_samp:     0.16842335668113662
+------------------------------------
+Throughput
+  frames/s:        742177346.795511
+  fast frames/s:   745920745.8272928
+  slow frames/s:   732684602.0701368
+  out_samp/s:      5937418774.364088
+  fast out_samp/s: 5967365966.618342
+  slow out_samp/s: 5861476816.561094
+------------------------------------
+Validation
+  checksum:        14.948810350266285

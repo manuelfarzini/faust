@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_delays_run_vec_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            delays
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         3
+  outputs:        3
+  warm-up iters:  50
+  run iters:      290000
+  batches:        296
+------------------------------------
+Timing
+  elapsed:        0.099776875 s
+  ns/compute:     344.058
+  fast ns/cmp:    342.954
+  slow ns/cmp:    347.679
+  spread ns/cmp:  4.725
+  spread %:       1.373
+  ns/frame:       2.688
+  ns/out_samp:    0.896
+------------------------------------
+Throughput
+  frames/s:       372030092.143
+  fast frames/s:  373227787.625
+  slow frames/s:  368155472.056
+  out_samp/s: 1116090276.429
+  fast out_samp/s: 1119683362.876
+  slow out_samp/s: 1104466416.168
+------------------------------------
+Validation
+  checksum:       408.76799881458282

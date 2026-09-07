@@ -27,8 +27,7 @@ def plot(csv_path: Path, destination: Path, case: str | None = None) -> None:
         for r in rows
     }
 
-    # Generators and effects use output throughput. Sinks have no output samples.
-    metric = "frames_per_s" if any(int(r["outputs"]) == 0 for r in rows) else "out_samp_per_s"
+    metric = "frames_per_s"
     per_row = max(1, 36 // len(series))
     panels = [groups[start:start + per_row] for start in range(0, len(groups), per_row)]
 

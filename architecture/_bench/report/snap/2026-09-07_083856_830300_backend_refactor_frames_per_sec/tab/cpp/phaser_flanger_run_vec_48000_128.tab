@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_phaser_flanger_run_vec_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            phaser_flanger
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        2
+  warm-up iters:  50
+  run iters:      123550
+  batches:        1000
+------------------------------------
+Timing
+  elapsed:        2.292385580 s
+  ns/compute:     18554.315
+  fast ns/cmp:    17980.955
+  slow ns/cmp:    29077.722
+  spread ns/cmp:  11096.767
+  spread %:       59.807
+  ns/frame:       144.956
+  ns/out_samp:    72.478
+------------------------------------
+Throughput
+  frames/s:       6898664.927
+  fast frames/s:  7118643.020
+  slow frames/s:  4401995.418
+  out_samp/s: 13797329.854
+  fast out_samp/s: 14237286.039
+  slow out_samp/s: 8803990.837
+------------------------------------
+Validation
+  checksum:       0.026693272061976359

@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_modulations_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            modulations
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         0
+  outputs:        2
+  warm-up iters:  50
+  run iters:      130389
+  batches:        821
+------------------------------------
+Timing
+  elapsed:        0.826538784 s
+  ns/compute:     6339.022
+  fast ns/cmp:    6172.228
+  slow ns/cmp:    6476.262
+  spread ns/cmp:  304.034
+  spread %:       4.796
+  ns/frame:       49.524
+  ns/out_samp:    24.762
+------------------------------------
+Throughput
+  frames/s:       20192388.213
+  fast frames/s:  20738054.498
+  slow frames/s:  19764488.444
+  out_samp/s: 40384776.427
+  fast out_samp/s: 41476108.995
+  slow out_samp/s: 39528976.888
+------------------------------------
+Validation
+  checksum:       -3.653209408512339

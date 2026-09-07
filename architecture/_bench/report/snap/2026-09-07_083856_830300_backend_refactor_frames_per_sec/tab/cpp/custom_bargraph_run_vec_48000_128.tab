@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_custom_bargraph_run_vec_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            custom_bargraph
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        8
+  warm-up iters:  50
+  run iters:      480000
+  batches:        482
+------------------------------------
+Timing
+  elapsed:        0.100678001 s
+  ns/compute:     209.746
+  fast ns/cmp:    204.129
+  slow ns/cmp:    212.704
+  spread ns/cmp:  8.575
+  spread %:       4.088
+  ns/frame:       1.639
+  ns/out_samp:    0.205
+------------------------------------
+Throughput
+  frames/s:       610262414.726
+  fast frames/s:  627054153.474
+  slow frames/s:  601774954.032
+  out_samp/s: 4882099317.804
+  fast out_samp/s: 5016433227.796
+  slow out_samp/s: 4814199632.259
+------------------------------------
+Validation
+  checksum:       29.928000086176326

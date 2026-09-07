@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_panpot_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             panpot
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         2
+  warm-up iters:   50
+  run iters:       1000000
+  batches:         1000
+------------------------------------
+Timing
+  elapsed:         0.03732200000058583 s
+  ns/compute:      37.322000000585845
+  fast ns/cmp:     36.499999987427145
+  slow ns/cmp:     38.89999998136773
+  spread ns/cmp:   2.3999999939405825
+  spread %:        6.430523535456056
+  ns/frame:        0.2915781250045769
+  ns/out_samp:     0.14578906250228846
+------------------------------------
+Throughput
+  frames/s:        3429612560.902171
+  fast frames/s:   3506849316.2764688
+  slow frames/s:   3290488433.4526806
+  out_samp/s:      6859225121.804342
+  fast out_samp/s: 7013698632.5529375
+  slow out_samp/s: 6580976866.905361
+------------------------------------
+Validation
+  checksum:        11.675747242406942

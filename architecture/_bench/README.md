@@ -365,11 +365,11 @@ The command:
 
 produces an SVG plot from the contents of `report/report.csv`.
 
-The plot compares results as relative percentages of the average throughput value. Columns are grouped by
-DSP; for each DSP, the highest average value is set to 100%, and the height of the other columns represents
-their respective average value as a percentage of that maximum.
+The plot compares results using the average throughput in frames per second for every DSP, including those
+with no outputs. Columns are grouped by DSP; for each DSP, the highest average value is set to 100%, and the
+height of the other columns represents their respective average value as a percentage of that maximum.
 
-Above each column, the average throughput value is shown in `frame/s`.
+Above each column, the average throughput value is shown in `frames/s`.
 
 The error bars associated with each column show the fast and slow extremes.
 

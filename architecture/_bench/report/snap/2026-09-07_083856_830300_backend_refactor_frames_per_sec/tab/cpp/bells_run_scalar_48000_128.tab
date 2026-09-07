@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_bells_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            bells
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         0
+  outputs:        1
+  warm-up iters:  50
+  run iters:      118750
+  batches:        1000
+------------------------------------
+Timing
+  elapsed:        2.406466252 s
+  ns/compute:     20264.979
+  fast ns/cmp:    19934.617
+  slow ns/cmp:    20719.902
+  spread ns/cmp:  785.285
+  spread %:       3.875
+  ns/frame:       158.320
+  ns/out_samp:    158.320
+------------------------------------
+Throughput
+  frames/s:       6316315.464
+  fast frames/s:  6420991.074
+  slow frames/s:  6177635.422
+  out_samp/s: 6316315.464
+  fast out_samp/s: 6420991.074
+  slow out_samp/s: 6177635.422
+------------------------------------
+Validation
+  checksum:       0

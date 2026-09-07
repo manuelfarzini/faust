@@ -366,11 +366,11 @@ Il comando:
 
 produce un grafico SVG a partire dal contenuto di `report/report.csv`.
 
-Il plot confronta i risultati in termini relativi percentuali sul valore medio di throughput. Le colonne
-vengono raggruppate per DSP, per ciascun DSP il valore medio più alto viene posto al 100% e l'altezza delle
-altre colonne rappresenta il rispettivo valore medio in percentuale rispetto a quel massimo.
+Il plot confronta tutti i DSP tramite il throughput medio in frame al secondo, inclusi quelli senza output.
+Le colonne vengono raggruppate per DSP: per ciascun DSP il valore medio più alto viene posto al 100% e
+l'altezza delle altre colonne rappresenta il rispettivo valore medio in percentuale rispetto a quel massimo.
 
-Sopra ogni colonna viene invece riportato il valore medio di throughput espresso in campioni in `frame/s`.
+Sopra ogni colonna viene riportato il throughput medio espresso in `frames/s`.
 
 Gli error bar associati a ciascuna colonna mostrano gli estremi fast e slow.
 
@@ -461,4 +461,3 @@ richiesta esplicitamente anche la loro eliminazione con l'opzione `--snapshots`.
 
 Durante lo sviluppo è inoltre possibile mantenere i sorgenti intermedi con l'opzione `--keep-tmp`, utile
 quando si vuole osservare direttamente il codice prodotto da FAUST prima della compilazione target.
-

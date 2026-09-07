@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_delays_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            delays
+  bench case:     run
+  mode:           scalar
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         3
+  outputs:        3
+  warm-up iters:  50
+  run iters:      780000
+  batches:        787
+------------------------------------
+Timing
+  elapsed:        0.099654334 s
+  ns/compute:     127.762
+  fast ns/cmp:    127.246
+  slow ns/cmp:    130.396
+  spread ns/cmp:  3.150
+  spread %:       2.466
+  ns/frame:       0.998
+  ns/out_samp:    0.333
+------------------------------------
+Throughput
+  frames/s:       1001863100.104
+  fast frames/s:  1005927111.150
+  slow frames/s:  981626708.836
+  out_samp/s: 3005589300.311
+  fast out_samp/s: 3017781333.451
+  slow out_samp/s: 2944880126.507
+------------------------------------
+Validation
+  checksum:       408.76799881458282

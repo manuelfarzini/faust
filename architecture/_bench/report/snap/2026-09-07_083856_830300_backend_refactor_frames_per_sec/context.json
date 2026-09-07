@@ -1,0 +1,129 @@
+{
+  "run_id": "2fa3fff900b4",
+  "status": "complete",
+  "timestamp": "2026-09-07T08:38:17.199523+00:00",
+  "command": [
+    "/Users/manuelfarzini/personal/dev/repo/faust/architecture/_bench/script/bench.py",
+    "run-transpiled",
+    "vec",
+    "mojo",
+    "../mojo/cubic_distortion.mojo"
+  ],
+  "platform": "macOS-26.3-arm64-arm-64bit-Mach-O",
+  "python": "3.14.7",
+  "config": {
+    "root": "/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench",
+    "faust": [
+      "../../build/bin/faust"
+    ],
+    "cpp": [
+      "clang++"
+    ],
+    "mojo": [
+      "pixi",
+      "run",
+      "mojo"
+    ],
+    "modes": [
+      "scalar",
+      "vec"
+    ],
+    "langs": [
+      "cpp",
+      "mojo"
+    ],
+    "jobs": 10,
+    "keep_tmp": false,
+    "faust_options": [],
+    "scalar_options": [],
+    "vec_options": [
+      "-vec",
+      "-vs",
+      "4",
+      "-dfs",
+      "-mcd",
+      "4"
+    ],
+    "cpp_options": [
+      "-O3"
+    ],
+    "mojo_options": [
+      "-O3"
+    ],
+    "warmup_iters": 50,
+    "compute_iters": 1000000,
+    "min_runtime_secs": 1,
+    "max_runtime_secs": 60,
+    "max_batch_size": 10000,
+    "fill_inputs": true,
+    "inspect_compute_iters": 1,
+    "generate_timeout": 120,
+    "build_timeout": 600,
+    "run_timeout": 120
+  },
+  "sample_rate": 48000,
+  "buffer_size": 128,
+  "commands": [
+    {
+      "stage": "build",
+      "label": "mojo/cubic_distortion_cubic_distortion_vec_48000_128",
+      "argv": [
+        "pixi",
+        "run",
+        "mojo",
+        "build",
+        "-O3",
+        "-I",
+        "/Users/manuelfarzini/Personal/dev/repo/faust/architecture/mojo",
+        "-I",
+        "/Users/manuelfarzini/Personal/dev/repo/faust/architecture/mojo",
+        "-D",
+        "DFAUST=DType.float32",
+        "-D",
+        "SAMP_RATE=48000",
+        "-D",
+        "BUFF_SIZE=128",
+        "-D",
+        "COMPUTE_ITERS=1000000",
+        "-D",
+        "BENCH_LANG=mojo",
+        "-D",
+        "BENCH_DSP=cubic_distortion",
+        "-D",
+        "BENCH_CASE=cubic_distortion",
+        "-D",
+        "BENCH_MODE=vec",
+        "-D",
+        "BENCH_OPTIM=O3",
+        "-D",
+        "PRECISION=double",
+        "-D",
+        "WRITE_CSV=True",
+        "-D",
+        "CSV_PATH=/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/tmp/2fa3fff900b4/mojo_cubic_distortion_cubic_distortion_vec_48000_128.csv",
+        "-D",
+        "FILL_INPUTS=True",
+        "-D",
+        "WARMUP_ITERS=50",
+        "-D",
+        "MIN_RUNTIME_SECS=1",
+        "-D",
+        "MAX_RUNTIME_SECS=60",
+        "-D",
+        "MAX_BATCH_SIZE=10000",
+        "/Users/manuelfarzini/Personal/dev/repo/faust/architecture/mojo/cubic_distortion.mojo",
+        "-o",
+        "/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_cubic_distortion_cubic_distortion_vec_48000_128_2fa3fff900b4"
+      ],
+      "log": "/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/tmp/2fa3fff900b4/mojo_cubic_distortion_cubic_distortion_vec_48000_128.build.log",
+      "output": "/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_cubic_distortion_cubic_distortion_vec_48000_128_2fa3fff900b4",
+      "timeout": 600,
+      "cwd": "/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench"
+    }
+  ],
+  "failures": [],
+  "owned": [
+    "/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/tmp/2fa3fff900b4/mojo_cubic_distortion_cubic_distortion_vec_48000_128.csv",
+    "/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_cubic_distortion_cubic_distortion_vec_48000_128_2fa3fff900b4"
+  ]
+}

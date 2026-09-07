@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_karplus32_run_vec_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            karplus32
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         0
+  outputs:        2
+  warm-up iters:  50
+  run iters:      118614
+  batches:        676
+------------------------------------
+Timing
+  elapsed:        0.528511416 s
+  ns/compute:     4455.725
+  fast ns/cmp:    4251.705
+  slow ns/cmp:    4508.408
+  spread ns/cmp:  256.703
+  spread %:       5.761
+  ns/frame:       34.810
+  ns/out_samp:    17.405
+------------------------------------
+Throughput
+  frames/s:       28727084.298
+  fast frames/s:  30105568.003
+  slow frames/s:  28391395.669
+  out_samp/s: 57454168.596
+  fast out_samp/s: 60211136.006
+  slow out_samp/s: 56782791.338
+------------------------------------
+Validation
+  checksum:       0.062972593084850814

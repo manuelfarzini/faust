@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_echo_1_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             echo_1
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         1
+  warm-up iters:   50
+  run iters:       1000000
+  batches:         1000
+------------------------------------
+Timing
+  elapsed:         0.04933499999970081 s
+  ns/compute:      49.334999999700834
+  fast ns/cmp:     46.70000002988672
+  slow ns/cmp:     57.8000000132306
+  spread ns/cmp:   11.099999983343878
+  spread %:        22.499239856919402
+  ns/frame:        0.38542968749766277
+  ns/out_samp:     0.38542968749766277
+------------------------------------
+Throughput
+  frames/s:        2594506942.3487635
+  fast frames/s:   2740899355.8476124
+  slow frames/s:   2214532871.465405
+  out_samp/s:      2594506942.3487635
+  fast out_samp/s: 2740899355.8476124
+  slow out_samp/s: 2214532871.465405
+------------------------------------
+Validation
+  checksum:        516.0004947185516

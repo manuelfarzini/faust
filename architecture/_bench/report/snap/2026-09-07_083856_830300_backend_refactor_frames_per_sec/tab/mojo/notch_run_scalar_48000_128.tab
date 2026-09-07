@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_notch_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             notch
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         1
+  warm-up iters:   50
+  run iters:       340000
+  batches:         345
+------------------------------------
+Timing
+  elapsed:         0.09981099999959042 s
+  ns/compute:      293.5617647046778
+  fast ns/cmp:     292.699999999968
+  slow ns/cmp:     295.89999999188876
+  spread ns/cmp:   3.1999999919207767
+  spread %:        1.090060211056425
+  ns/frame:        2.293451286755295
+  ns/out_samp:     2.293451286755295
+------------------------------------
+Throughput
+  frames/s:        436024085.52342516
+  fast frames/s:   437307823.7103314
+  slow frames/s:   432578573.85437226
+  out_samp/s:      436024085.52342516
+  fast out_samp/s: 437307823.7103314
+  slow out_samp/s: 432578573.85437226
+------------------------------------
+Validation
+  checksum:        8.256000047898851

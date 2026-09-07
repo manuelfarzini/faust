@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_APF_run_vec_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             APF
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         1
+  warm-up iters:   50
+  run iters:       320000
+  batches:         326
+------------------------------------
+Timing
+  elapsed:         0.09900599999900805 s
+  ns/compute:      309.39374999690017
+  fast ns/cmp:     307.99999999544525
+  slow ns/cmp:     311.60000003183086
+  spread ns/cmp:   3.600000036385609
+  spread %:        1.163565856266223
+  ns/frame:        2.4171386718507826
+  ns/out_samp:     2.4171386718507826
+------------------------------------
+Throughput
+  frames/s:        413712300.2687754
+  fast frames/s:   415584415.59056133
+  slow frames/s:   410783055.1570103
+  out_samp/s:      413712300.2687754
+  fast out_samp/s: 415584415.59056133
+  slow out_samp/s: 410783055.1570103
+------------------------------------
+Validation
+  checksum:        8.256000025001413

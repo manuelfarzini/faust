@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_spectral_tilt_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             spectral_tilt
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         1
+  warm-up iters:   50
+  run iters:       116550
+  batches:         1000
+------------------------------------
+Timing
+  elapsed:         2.785721000000194 s
+  ns/compute:      23901.510081511748
+  fast ns/cmp:     23091.225021696122
+  slow ns/cmp:     24616.474756300297
+  spread ns/cmp:   1525.2497346041746
+  spread %:        6.381394854980242
+  ns/frame:        186.73054751181053
+  ns/out_samp:     186.73054751181053
+------------------------------------
+Throughput
+  frames/s:        5355310.169252039
+  fast frames/s:   5543231.243891711
+  slow frames/s:   5199769.717930059
+  out_samp/s:      5355310.169252039
+  fast out_samp/s: 5543231.243891711
+  slow out_samp/s: 5199769.717930059
+------------------------------------
+Validation
+  checksum:        -0.02354786789874197

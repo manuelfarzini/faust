@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_peakNotch_run_vec_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            peakNotch
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        1
+  warm-up iters:  50
+  run iters:      240000
+  batches:        247
+------------------------------------
+Timing
+  elapsed:        0.098521375 s
+  ns/compute:     410.506
+  fast ns/cmp:    410.146
+  slow ns/cmp:    411.700
+  spread ns/cmp:  1.554
+  spread %:       0.379
+  ns/frame:       3.207
+  ns/out_samp:    3.207
+------------------------------------
+Throughput
+  frames/s:       311810508.126
+  fast frames/s:  312084065.695
+  slow frames/s:  310905999.514
+  out_samp/s: 311810508.126
+  fast out_samp/s: 312084065.695
+  slow out_samp/s: 310905999.514
+------------------------------------
+Validation
+  checksum:       8.2560000285739079

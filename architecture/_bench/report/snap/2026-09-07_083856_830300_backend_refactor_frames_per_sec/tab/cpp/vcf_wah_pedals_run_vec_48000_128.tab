@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/cpp/cpp_vcf_wah_pedals_run_vec_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:       cpp
+  dsp:            vcf_wah_pedals
+  bench case:     run
+  mode:           vec
+  precision:      double
+  optimization:   O3
+------------------------------------
+Configuration
+  sample rate:    48000
+  buffer size:    128
+  inputs:         1
+  outputs:        2
+  warm-up iters:  50
+  run iters:      127550
+  batches:        1000
+------------------------------------
+Timing
+  elapsed:        2.048892754 s
+  ns/compute:     16063.448
+  fast ns/cmp:    15538.310
+  slow ns/cmp:    26221.889
+  spread ns/cmp:  10683.579
+  spread %:       66.509
+  ns/frame:       125.496
+  ns/out_samp:    62.748
+------------------------------------
+Throughput
+  frames/s:       7968401.454
+  fast frames/s:  8237704.293
+  slow frames/s:  4881417.984
+  out_samp/s: 15936802.908
+  fast out_samp/s: 16475408.586
+  slow out_samp/s: 9762835.968
+------------------------------------
+Validation
+  checksum:       2.3181726302112793e-05

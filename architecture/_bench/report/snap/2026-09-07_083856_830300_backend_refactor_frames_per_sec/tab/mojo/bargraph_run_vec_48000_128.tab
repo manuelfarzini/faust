@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_bargraph_run_vec_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             bargraph
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          0
+  outputs:         10
+  warm-up iters:   50
+  run iters:       1000000
+  batches:         1000
+------------------------------------
+Timing
+  elapsed:         0.0547830000000431 s
+  ns/compute:      54.78300000004313
+  fast ns/cmp:     53.600000001097214
+  slow ns/cmp:     56.00000004051253
+  spread ns/cmp:   2.4000000394153176
+  spread %:        4.380921160603523
+  ns/frame:        0.42799218750033696
+  ns/out_samp:     0.042799218750033695
+------------------------------------
+Throughput
+  frames/s:        2336491247.282903
+  fast frames/s:   2388059701.4436526
+  slow frames/s:   2285714284.060713
+  out_samp/s:      23364912472.829033
+  fast out_samp/s: 23880597014.436527
+  slow out_samp/s: 22857142840.60713
+------------------------------------
+Validation
+  checksum:        26240.0

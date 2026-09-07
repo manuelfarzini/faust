@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_multibandfilter_run_vec_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             multibandfilter
+  bench case:      run
+  mode:            vec
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          1
+  outputs:         1
+  warm-up iters:   50
+  run iters:       96737
+  batches:         217
+------------------------------------
+Timing
+  elapsed:         0.10848899999973582 s
+  ns/compute:      1121.4840236903751
+  fast ns/cmp:     1117.9904106235329
+  slow ns/cmp:     1125.4159733973888
+  spread ns/cmp:   7.425562773855972
+  spread %:        0.6621193540877457
+  ns/frame:        8.761593935081056
+  ns/out_samp:     8.761593935081056
+------------------------------------
+Throughput
+  frames/s:        114134483.68065105
+  fast frames/s:   114491143.02206852
+  slow frames/s:   113735723.52416104
+  out_samp/s:      114134483.68065105
+  fast out_samp/s: 114491143.02206852
+  slow out_samp/s: 113735723.52416104
+------------------------------------
+Validation
+  checksum:        8.256000028573908

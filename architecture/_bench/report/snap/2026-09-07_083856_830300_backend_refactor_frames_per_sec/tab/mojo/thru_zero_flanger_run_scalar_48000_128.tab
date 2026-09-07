@@ -1,0 +1,42 @@
+cwd: /Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench
+/Users/manuelfarzini/Personal/dev/repo/faust/architecture/_bench/report/bin/mojo/mojo_thru_zero_flanger_run_scalar_48000_128_55c43da939fc
+
+Faust compute benchmark
+------------------------------------
+Identity
+  language:        mojo
+  dsp:             thru_zero_flanger
+  bench case:      run
+  mode:            scalar
+  precision:       double
+  optimization:    O3
+------------------------------------
+Configuration
+  sample rate:     48000
+  buffer size:     128
+  inputs:          2
+  outputs:         2
+  warm-up iters:   50
+  run iters:       123557
+  batches:         193
+------------------------------------
+Timing
+  elapsed:         0.1018659999999727 s
+  ns/compute:      824.4453976704899
+  fast ns/cmp:     822.379559837822
+  slow ns/cmp:     826.3141714747276
+  spread ns/cmp:   3.934611636905629
+  spread %:        0.4772434472947588
+  ns/frame:        6.440979669300702
+  ns/out_samp:     3.220489834650351
+------------------------------------
+Throughput
+  frames/s:        155255885.18253624
+  fast frames/s:   155645891.81331593
+  slow frames/s:   154904761.9158675
+  out_samp/s:      310511770.3650725
+  fast out_samp/s: 311291783.62663186
+  slow out_samp/s: 309809523.831735
+------------------------------------
+Validation
+  checksum:        0.010547200217843056
